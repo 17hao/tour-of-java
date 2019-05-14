@@ -6,7 +6,7 @@ public class SweetShop {
         new Candy();
         try {
             /*
-              每个类会创建一个Class对象，保存在.class文件中
+              每个类或接口会创建一个Class对象，保存在.class文件中
               调用类的static成员会使Class对象被加载
               .class文件被加载时会加载static成员
               类只有被需要用到时，类加载器才会将.class文件加载到内存
@@ -14,7 +14,7 @@ public class SweetShop {
               */
             Class.forName("typeinfo.Gum"); // fully qualified name
         } catch (ClassNotFoundException e) {
-            System.out.println("couldn't find gum");
+            System.out.println("couldn't find Gum");
         }
         System.out.println("after Class.forName(\"Gum\")");
         new Cookie();
