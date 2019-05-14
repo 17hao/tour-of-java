@@ -18,6 +18,9 @@ abstract class Shape {
     void draw() {
         System.out.println(this + ".draw()");
     }
+
+    /* 将toString声明为abstract强制子类实现 */
+    abstract public String toString();
 }
 
 class Circle extends Shape {
