@@ -12,7 +12,7 @@ class Drawing extends Art {
     }
 }
 
-/* 子类构造器初始化之前会自动调用父类的构造器 */
+/* 子类构造器初始化之前会自动调用父类的无参构造器 */
 public class Cartoon extends Drawing {
     private Cartoon() {
         System.out.println("Cartoon constructor");
