@@ -1,4 +1,4 @@
-package arrays;
+package chapter16_arrays;
 
 public class CopyArrays {
     public static void main(String[] args) {
