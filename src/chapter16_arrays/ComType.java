@@ -6,7 +6,6 @@ public class ComType implements Comparable<ComType> {
     private int i;
     private int j;
     private int count = 1;
-    //private Random random = new Random(47);
 
     private ComType(int m, int n) {
         i = m;
@@ -24,16 +23,19 @@ public class ComType implements Comparable<ComType> {
 
     @Override
     public int compareTo(ComType ct) {
-        return (i < ct.j ? -1 : (i == ct.i ? 0 : -1));
+        return (i < ct.i ? -1 : (i == ct.i ? 0 : 1));
     }
 
     public static void main(String[] args) {
         System.out.println("before sorting:");
         ComType ct1 = new ComType(58, 55);
-        ComType ct2 = new ComType(93, 61);
-        ComType[] array = {ct1, ct2};
-        System.out.println(array.toString());
+        ComType ct2 = new ComType(13, 61);
+        ComType ct3 = new ComType(26, 60);
+        ComType ct4 = new ComType(36, 30);
+        ComType[] array = {ct1, ct2, ct3, ct4};
+        System.out.println(Arrays.toString(array));
         Arrays.sort(array);
         System.out.println("after sorting:");
+        System.out.println(Arrays.toString(array));
     }
 }
