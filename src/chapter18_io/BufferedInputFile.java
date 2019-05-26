@@ -1,4 +1,4 @@
-package io;
+package chapter18_io;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
