@@ -1,4 +1,4 @@
-package typeinfo;
+package chapter14_typeinfo;
 
 public class SimpleProxyDemo {
     private static void consumer(Interface iface) {

@@ -1,5 +1,7 @@
 package chapter18_io;
 
+import com.sun.istack.internal.Nullable;
+
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.Arrays;
@@ -7,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class DirList {
     public static void main(String[] args) {
-        File file = new File(".");
+        File file = new File("./src/chapter14_typeinfo");
         String[] list;
         if (args.length == 0) {
             list = file.list();

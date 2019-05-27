@@ -1,4 +1,4 @@
-package typeinfo;
+package chapter14_typeinfo;
 
 class RealObject implements Interface {
     public void doSomething() {

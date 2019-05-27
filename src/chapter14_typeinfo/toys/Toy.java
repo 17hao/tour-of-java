@@ -1,4 +1,4 @@
-package typeinfo.toys;
+package chapter14_typeinfo.toys;
 
 class Toy {
     Toy() {

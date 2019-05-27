@@ -1,4 +1,4 @@
-package typeinfo;
+package chapter14_typeinfo;
 
 import java.util.Arrays;
 import java.util.List;

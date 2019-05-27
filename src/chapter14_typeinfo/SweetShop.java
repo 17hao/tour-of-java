@@ -1,4 +1,4 @@
-package typeinfo;
+package chapter14_typeinfo;
 
 public class SweetShop {
     public static void main(String[] args) {
@@ -12,7 +12,7 @@ public class SweetShop {
               类只有被需要用到时，类加载器才会将.class文件加载到内存
               一旦类的.class文件被加载，它就被用来创建类的对象
               */
-            Class.forName("typeinfo.Gum"); // fully qualified name
+            Class.forName("chapter14_typeinfo.Gum"); // fully qualified name
         } catch (ClassNotFoundException e) {
             System.out.println("couldn't find Gum");
         }

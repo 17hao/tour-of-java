@@ -1,4 +1,4 @@
-package typeinfo;
+package chapter14_typeinfo;
 
 class SimpleProxy implements Interface {
     private Interface proxied;

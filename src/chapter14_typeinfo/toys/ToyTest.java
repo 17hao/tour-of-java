@@ -1,4 +1,4 @@
-package typeinfo.toys;
+package chapter14_typeinfo.toys;
 
 public class ToyTest {
     private static void printInfo(Class cc) {
@@ -10,7 +10,7 @@ public class ToyTest {
     public static void main(String[] args) {
         Class c = null;
         try {
-            c = Class.forName("typeinfo.toys.FancyToy");
+            c = Class.forName("chapter14_typeinfo.toys.FancyToy");
         } catch (ClassNotFoundException e) {
             System.out.println("FancyToy not found");
             System.exit(1);
