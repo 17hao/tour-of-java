@@ -1,4 +1,4 @@
-package exceptions;
+package chapter12_exceptions;
 
 class SimpleException extends Exception {
 }
