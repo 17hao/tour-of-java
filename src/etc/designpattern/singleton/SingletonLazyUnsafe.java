@@ -1,4 +1,4 @@
-package etc.designpattern;
+package etc.designpattern.singleton;
 
 /**
  * Singleton mode
@@ -6,20 +6,20 @@ package etc.designpattern;
  * If multiple threads access field uniqueInstance, and uniqueInstance == null,
  * then multi object will be created.
  */
-public class SingletonLazyUnsafe {
+class SingletonLazyUnsafe {
     private static SingletonLazyUnsafe uniqueInstance;
 
     private SingletonLazyUnsafe() {
     }
 
-    public static SingletonLazyUnsafe getUniqueInstance() {
+    static SingletonLazyUnsafe getUniqueInstance() {
         if (uniqueInstance == null)
             uniqueInstance = new SingletonLazyUnsafe();
         return uniqueInstance;
     }
 
-    public static void main(String[] args) {
-        SingletonLazyUnsafe s = getUniqueInstance();
-        System.out.println(s);
+    @Override
+    public String toString() {
+        return "lazyUnsafe";
     }
 }

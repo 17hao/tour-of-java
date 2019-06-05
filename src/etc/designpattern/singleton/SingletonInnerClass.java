@@ -1,4 +1,4 @@
-package etc.designpattern;
+package etc.designpattern.singleton;
 
 /**
  * When SingletonInnerClass has been loaded, static inner class SingletonHolder
@@ -6,7 +6,7 @@ package etc.designpattern;
  * SingletonHolder will be loaded. Initializing 'INSTANCE', JVM will ensure 'INSTANCE'
  * is only been initialized once.
  */
-public class SingletonInnerClass {
+class SingletonInnerClass {
     private SingletonInnerClass() {
     }
 
@@ -14,12 +14,12 @@ public class SingletonInnerClass {
         private static final SingletonInnerClass INSTANCE = new SingletonInnerClass();
     }
 
-    public static SingletonInnerClass getUniqueInstance() {
+    static SingletonInnerClass getUniqueInstance() {
         return SingletonHolder.INSTANCE;
     }
 
-    public static void main(String[] args) {
-        SingletonInnerClass s = getUniqueInstance();
-        System.out.println(s);
+    @Override
+    public String toString() {
+        return "innerClass";
     }
 }
