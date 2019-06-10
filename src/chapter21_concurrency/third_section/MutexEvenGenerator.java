@@ -39,7 +39,7 @@ public class MutexEvenGenerator extends IntGenerator {
     //     }
     //     return value;
     // }
-
+    
     public static void main(String[] args) {
         EvenChecker.test(new MutexEvenGenerator());
     }
