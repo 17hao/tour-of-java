@@ -20,26 +20,25 @@ public class MutexEvenGenerator extends IntGenerator {
             ++currentEvenValue;
             Thread.yield();
             ++currentEvenValue;
+            return currentEvenValue;
         } finally {
             lock.unlock();
         }
-        return currentEvenValue;
     }
 
-    // @Override
-    // public int next() {
-    //     int value = 0;
-    //     lock.lock();
-    //     try {
-    //         ++value;
-    //         Thread.yield();
-    //         ++value;
-    //     } finally {
-    //         lock.unlock();
-    //     }
-    //     return value;
-    // }
-    
+    public int nextV2() {
+        int value = 0;
+        lock.lock();
+        try {
+            ++value;
+            Thread.yield();
+            ++value;
+        } finally {
+            lock.unlock();
+        }
+        return value;
+    }
+
     public static void main(String[] args) {
         EvenChecker.test(new MutexEvenGenerator());
     }
