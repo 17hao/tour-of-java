@@ -16,9 +16,9 @@ public class Item16_UseAccessorMethod {
  * Expose mutable fields in public class is dangerous.
  */
 class Point {
-    private double x;
+    private double x; // good
     public final double y; // questionable
-    public double z;
+    public double z; // awful
 
     public Point(double x, double y, double z) {
         this.x = x;

@@ -1,4 +1,4 @@
-package effectivejava.chapter01_CreateAndDestoryObjects;
+package effectivejava.chapter02_CreateAndDestoryObj;
 
 import java.math.BigInteger;
 

@@ -1,4 +1,4 @@
-package effectivejava.chapter01_CreateAndDestoryObjects;
+package effectivejava.chapter02_CreateAndDestoryObj;
 
 public class Item02_Builder {
     public static void main(String[] args) {

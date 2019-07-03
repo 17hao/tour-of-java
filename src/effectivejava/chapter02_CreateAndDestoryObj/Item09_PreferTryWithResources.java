@@ -2,7 +2,7 @@ package effectivejava.chapter02_CreateAndDestoryObj;
 
 import java.io.*;
 
-public class Item9_PreferTryWithResources {
+public class Item09_PreferTryWithResources {
     /**
      * try-finally: No longer the best way to close resources
      */
@@ -63,7 +63,7 @@ public class Item9_PreferTryWithResources {
 
     public static void main(String[] args) {
         try {
-            String res = firstLineOfFileV2("/Users/17hao/IdeaProjects/javacode/src/effectivejava/chapter02_CreateAndDestoryObj/Item9_PreferTryWithResources.java");
+            String res = firstLineOfFileV2("/Users/17hao/IdeaProjects/javacode/src/effectivejava/chapter02_CreateAndDestoryObj/Item09_PreferTryWithResources.java");
             System.out.println(res);
         } catch (IOException e) {
             System.out.println(e.getMessage());
