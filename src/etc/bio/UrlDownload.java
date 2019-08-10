@@ -1,10 +1,10 @@
-package etc;
+package etc.bio;
 
 import java.io.*;
 import java.net.URL;
 import java.util.Base64;
 
-public class FileIO {
+public class UrlDownload {
     public static void main(String[] args) throws Exception {
         // String h = "https://statics.growingio.com/media/20190730/3/1564542344548/0730img.jpeg";
         // OutputStream html = saveHtml(h);
