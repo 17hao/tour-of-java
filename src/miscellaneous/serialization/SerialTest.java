@@ -1,4 +1,4 @@
-package etc.serialization;
+package miscellaneous.serialization;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

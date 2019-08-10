@@ -1,4 +1,4 @@
-package etc;
+package miscellaneous;
 
 public class Demo {
     private String str;

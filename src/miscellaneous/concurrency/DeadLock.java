@@ -1,4 +1,4 @@
-package etc.concurrency;
+package miscellaneous.concurrency;
 
 public class DeadLock {
     private static final Object apple = new Object();

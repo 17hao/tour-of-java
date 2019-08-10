@@ -1,4 +1,4 @@
-package etc;
+package miscellaneous;
 
 abstract class Func implements base {
     abstract int add(int n, int m);

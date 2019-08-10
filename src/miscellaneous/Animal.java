@@ -1,4 +1,4 @@
-package etc;
+package miscellaneous;
 
 public interface Animal {
     default String eat() {

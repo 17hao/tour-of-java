@@ -1,4 +1,4 @@
-package etc;
+package miscellaneous;
 
 public interface Abstract {
     int add(int m, int n);

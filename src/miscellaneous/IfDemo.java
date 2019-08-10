@@ -1,4 +1,4 @@
-package etc;
+package miscellaneous;
 
 public class IfDemo {
     static int ifTest(int pre1, int pre2, int n) {

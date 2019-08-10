@@ -1,4 +1,4 @@
-package etc.reflection;
+package miscellaneous.reflection;
 
 public class MyObj extends SuperClass implements MyInterface {
     private String str;

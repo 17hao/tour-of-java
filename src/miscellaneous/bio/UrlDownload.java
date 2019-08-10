@@ -1,4 +1,4 @@
-package etc.bio;
+package miscellaneous.bio;
 
 import java.io.*;
 import java.net.URL;

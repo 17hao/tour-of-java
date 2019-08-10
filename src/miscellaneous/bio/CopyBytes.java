@@ -1,4 +1,4 @@
-package etc.bio;
+package miscellaneous.bio;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

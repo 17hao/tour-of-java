@@ -1,4 +1,4 @@
-package etc.reflection;
+package miscellaneous.reflection;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;

@@ -1,4 +1,4 @@
-package etc;
+package miscellaneous;
 
 public class ConstantPool {
     public static void main(String[] args) {
