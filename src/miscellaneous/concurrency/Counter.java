@@ -1,19 +1,9 @@
 package miscellaneous.concurrency;
 
-class Counter {
-    private int c = 0;
+interface Counter {
+    void increment();
 
-    void increment() {
-        c++;
-    }
+    void decrement();
 
-
-    void decrement() {
-        c--;
-    }
-
-
-    int value() {
-        return c;
-    }
+    int value();
 }

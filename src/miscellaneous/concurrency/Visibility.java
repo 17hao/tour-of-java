@@ -1,21 +1,6 @@
 package miscellaneous.concurrency;
 
 public class Visibility {
-    static class SynchronizeThread implements Runnable {
-        private Counter counter;
-
-        SynchronizeThread(Counter counter) {
-            this.counter = counter;
-        }
-
-        @Override
-        public void run() {
-            for (int i = 0; i < 10000; i++) {
-                counter.increment();
-            }
-        }
-    }
-
     static class Thread1 implements Runnable {
         private Counter counter;
 
@@ -25,10 +10,7 @@ public class Visibility {
 
         @Override
         public void run() {
-            for (int i = 0; i < 10000; i++) {
-                counter.increment();
-            }
-            System.out.println("thread1: " + counter.value());
+            counter.increment();
         }
     }
 
@@ -46,7 +28,7 @@ public class Visibility {
     }
 
     public static void main(String[] args) {
-        Counter counter = new Counter();
+        Counter counter = new UnsafeCounter();
         new Thread(new Thread1(counter)).start();
         new Thread(new Thread2(counter)).start();
     }

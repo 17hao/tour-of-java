@@ -2,9 +2,12 @@ package miscellaneous.concurrency;
 
 public class ThreadInterference {
     public static void main(String[] args) {
-        Counter counter = new Counter();
+        Counter counter = new UnsafeCounter();
+        Counter counter2 = new SynchronizedCounter();
         new Thread(new Thread1(counter)).start();
         new Thread(new Thread2(counter)).start();
+        new Thread(new Thread1(counter2)).start();
+        new Thread(new Thread2(counter2)).start();
     }
 }
 
@@ -17,10 +20,7 @@ class Thread1 implements Runnable {
 
     @Override
     public void run() {
-        for (int i = 0; i < 10000; i++) {
-            counter.increment();
-        }
-        System.out.println(counter.value());
+        counter.increment();
     }
 }
 
@@ -33,9 +33,6 @@ class Thread2 implements Runnable {
 
     @Override
     public void run() {
-        for (int i = 0; i < 10000; i++) {
-            counter.decrement();
-        }
-        System.out.println(counter.value());
+        counter.decrement();
     }
 }
