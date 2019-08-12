@@ -1,9 +1,18 @@
 package miscellaneous.concurrency;
 
-public class ThreadObj {
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class BasicThread {
     public static void main(String[] args) {
         new Thread(new Hello()).start();
         new Hi().start();
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        for (int i = 0; i < 2; i++) {
+            executorService.execute(new Hello());
+            executorService.execute(new Hi());
+        }
+        executorService.shutdown();
     }
 }
 
