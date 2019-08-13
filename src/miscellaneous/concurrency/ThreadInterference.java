@@ -31,8 +31,13 @@ public class ThreadInterference {
         // Counter counter = new UnsafeCounter();
         // new Thread(new Thread1(counter)).start();
         // new Thread(new Thread2(counter)).start();
-        Counter counter2 = new SynchronizedCounter();
-        new Thread(new Thread1(counter2)).start();
-        new Thread(new Thread2(counter2)).start();
+
+        // Counter counter2 = new SynchronizedCounter();
+        // new Thread(new Thread1(counter2)).start();
+        // new Thread(new Thread2(counter2)).start();
+
+        Counter counter3 = new LockCounter();
+        new Thread(new Thread1(counter3)).start();
+        new Thread(new Thread2(counter3)).start();
     }
 }
