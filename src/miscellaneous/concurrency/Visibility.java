@@ -1,35 +1,26 @@
 package miscellaneous.concurrency;
 
 public class Visibility {
-    static class Thread1 implements Runnable {
-        private Counter counter;
+    private int count;
 
-        Thread1(Counter counter) {
-            this.counter = counter;
-        }
-
-        @Override
-        public void run() {
-            counter.increment();
+    private void add() {
+        int i = 0;
+        while (i < 100000) {
+            count++;
+            i++;
         }
     }
 
-    static class Thread2 implements Runnable {
-        private Counter counter;
+    public static void main(String[] args) throws InterruptedException {
+        final Visibility v = new Visibility();
+        Thread th1 = new Thread(v::add);
+        Thread th2 = new Thread(v::add);
 
-        Thread2(Counter counter) {
-            this.counter = counter;
-        }
+        th1.start();
+        th2.start();
+        th1.join();
+        th2.join();
 
-        @Override
-        public void run() {
-            System.out.println("thread2: " + counter.value());
-        }
-    }
-
-    public static void main(String[] args) {
-        Counter counter = new UnsafeCounter();
-        new Thread(new Thread1(counter)).start();
-        new Thread(new Thread2(counter)).start();
+        System.out.println(v.count);
     }
 }
