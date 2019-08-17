@@ -47,3 +47,23 @@ class AuxSync2 {
         System.out.println("aux2 write i is: " + i);
     }
 }
+
+class AuxSync3 {
+    private int i = 0;
+
+    void add() {
+        synchronized (new Object()) {
+            int count = 0;
+            while (count < 100000) {
+                count++;
+                i++;
+            }
+        }
+    }
+
+    int value() {
+        synchronized (new Object()) {
+            return i;
+        }
+    }
+}
