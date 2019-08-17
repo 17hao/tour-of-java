@@ -2,15 +2,21 @@ package miscellaneous.concurrency;
 
 public class Sync {
     public static void main(String[] args) {
-        SubSync subSync = new SubSync();
-        Thread t1 = new Thread(subSync::writer);
-        Thread t2 = new Thread(subSync::reader);
+        final AuxSync auxSync = new AuxSync();
+        Thread t1 = new Thread(auxSync::writer);
+        Thread t2 = new Thread(auxSync::reader);
         t1.start();
         t2.start();
+
+        final AuxSync2 auxSync2 = new AuxSync2();
+        Thread t3 = new Thread(auxSync2::writer);
+        Thread t4 = new Thread(AuxSync2::reader);
+        t3.start();
+        t4.start();
     }
 }
 
-class SubSync {
+class AuxSync {
     private int i = 0;
     void reader() {
         System.out.println("read i is: " + i);
@@ -23,5 +29,21 @@ class SubSync {
             i++;
         }
         System.out.println("write i is: " + i);
+    }
+}
+
+class AuxSync2 {
+    private static int i = 0;
+    synchronized static void reader() {
+        System.out.println("aux2 read i is: " + i);
+    }
+
+    synchronized void writer() {
+        int count = 0;
+        while (count < 10000) {
+            count++;
+            i++;
+        }
+        System.out.println("aux2 write i is: " + i);
     }
 }
