@@ -10,7 +10,7 @@ import com.aliyuncs.profile.DefaultProfile;
 
 public class Alibaba {
     public static void main(String[] args) {
-        DefaultProfile profile = DefaultProfile.getProfile("default", "LTAIW4bvqPDsfHO7", "iocm1VXv2ZALuKBXSYI9raM44zWOfh");
+        DefaultProfile profile = DefaultProfile.getProfile("default", "id", "secret");
         IAcsClient client = new DefaultAcsClient(profile);
 
         CommonRequest request = new CommonRequest();
@@ -18,7 +18,7 @@ public class Alibaba {
         request.setDomain("dysmsapi.aliyuncs.com");
         request.setVersion("2017-05-25");
         request.setAction("QuerySmsTemplate");
-        request.putQueryParameter("TemplateCode", "SMS_172352361");
+        request.putQueryParameter("TemplateCode", "code");
         try {
             CommonResponse response = client.getCommonResponse(request);
             System.out.println(response.getData());
