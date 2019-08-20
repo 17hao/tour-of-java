@@ -10,6 +10,11 @@ import com.aliyuncs.profile.DefaultProfile;
 
 public class Alibaba {
     public static void main(String[] args) {
+        queryTemplate();
+        sendMsg();
+    }
+
+    private static void queryTemplate() {
         DefaultProfile profile = DefaultProfile.getProfile("default", "id", "secret");
         IAcsClient client = new DefaultAcsClient(profile);
 
@@ -25,5 +30,9 @@ public class Alibaba {
         } catch (ClientException e) {
             e.printStackTrace();
         }
+    }
+
+    private static void sendMsg() {
+
     }
 }
