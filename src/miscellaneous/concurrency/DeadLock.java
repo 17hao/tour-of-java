@@ -12,11 +12,11 @@ public class DeadLock {
         public void run() {
             synchronized (apple) {
                 System.out.println("kid 1 has an apple");
-                // try {
-                //     Thread.sleep(10);
-                // } catch (InterruptedException e) {
-                //     System.out.println(e.toString());
-                // }
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    System.out.println(e.toString());
+                }
                 System.out.println("kid 1 is waiting for pear");
                 synchronized (pear) {
                     System.out.println("kid 1 has apple and pear");
@@ -30,11 +30,11 @@ public class DeadLock {
         public void run() {
             synchronized (pear) {
                 System.out.println("kid 2 has a pear");
-                // try {
-                //     Thread.sleep(10);
-                // } catch (InterruptedException e) {
-                //     System.out.println(e.toString());
-                // }
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    System.out.println(e.toString());
+                }
                 System.out.println("kid 2 is waiting for apple");
                 synchronized (apple) {
                     System.out.println("kid 2 has apple and pear");

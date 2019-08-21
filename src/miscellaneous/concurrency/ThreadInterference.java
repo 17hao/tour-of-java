@@ -1,10 +1,10 @@
 package miscellaneous.concurrency;
 
 public class ThreadInterference {
-    static class Thread1 implements Runnable {
+    static class Inc implements Runnable {
         private Counter counter;
 
-        Thread1(Counter counter) {
+        Inc(Counter counter) {
             this.counter = counter;
         }
 
@@ -14,10 +14,10 @@ public class ThreadInterference {
         }
     }
 
-    static class Thread2 implements Runnable {
+    static class Dec implements Runnable {
         private Counter counter;
 
-        Thread2(Counter counter) {
+        Dec(Counter counter) {
             this.counter = counter;
         }
 
@@ -27,17 +27,29 @@ public class ThreadInterference {
         }
     }
 
-    public static void main(String[] args) {
-        // Counter counter = new UnsafeCounter();
-        // new Thread(new Thread1(counter)).start();
-        // new Thread(new Thread2(counter)).start();
+    public static void main(String[] args) throws InterruptedException {
+        Counter unsafeCounter = new UnsafeCounter();
+        Thread t1 = new Thread(new Inc(unsafeCounter));
+        Thread t2 = new Thread(new Dec(unsafeCounter));
+        t1.start();
+        t2.start();
+        // t1.join();
+        // t2.join();
 
-        // Counter counter2 = new SynchronizedCounter();
-        // new Thread(new Thread1(counter2)).start();
-        // new Thread(new Thread2(counter2)).start();
+        // Counter synchronizedCounter = new SynchronizedCounter();
+        // Thread t1 = new Thread(new Inc(synchronizedCounter));
+        // Thread t2 = new Thread(new Dec(synchronizedCounter));
+        // t1.start();
+        // t2.start();
+        // t1.join();
+        // t2.join();
 
-        Counter counter3 = new LockCounter();
-        new Thread(new Thread1(counter3)).start();
-        new Thread(new Thread2(counter3)).start();
+        // Counter lockCounter = new LockCounter();
+        // Thread t1 = new Thread(new Inc(lockCounter));
+        // Thread t2 = new Thread(new Dec(lockCounter));
+        // t1.start();
+        // t2.start();
+        // t1.join();
+        // t2.join();
     }
 }
