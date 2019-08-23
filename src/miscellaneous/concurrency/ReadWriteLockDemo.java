@@ -11,10 +11,13 @@ public class ReadWriteLockDemo {
     private ReentrantReadWriteLock.WriteLock writeLock = readWriteLock.writeLock();
     private int value;
 
-    private int read(Lock lock) throws InterruptedException {
+    private int read(Lock lock) {
         try {
             lock.lock();
             Thread.sleep(1000);
+            return value;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
             return value;
         } finally {
             lock.unlock();
@@ -35,24 +38,14 @@ public class ReadWriteLockDemo {
 
     public static void main(String[] args) {
         ReadWriteLockDemo demo = new ReadWriteLockDemo();
-        Runnable readHandler = new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    //demo.read(demo.lock);
-                    demo.read(demo.readLock);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
+        Runnable readHandler = () -> {
+            //demo.read(demo.lock);
+            demo.read(demo.readLock);
         };
 
-        Runnable writeHandler = new Runnable() {
-            @Override
-            public void run() {
-                //demo.write(demo.lock);
-                demo.write(demo.writeLock);
-            }
+        Runnable writeHandler = () -> {
+            //demo.write(demo.lock);
+            demo.write(demo.writeLock);
         };
 
         for (int i = 0; i < 18; i++) {
