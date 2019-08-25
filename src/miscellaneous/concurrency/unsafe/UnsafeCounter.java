@@ -1,4 +1,4 @@
-package miscellaneous.concurrency;
+package miscellaneous.concurrency.unsafe;
 
 class UnsafeCounter implements Counter {
     private int c = 0;

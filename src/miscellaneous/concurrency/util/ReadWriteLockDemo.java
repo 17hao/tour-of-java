@@ -1,9 +1,12 @@
-package miscellaneous.concurrency;
+package miscellaneous.concurrency.util;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+/**
+ * ReadWriteLock demo
+ */
 public class ReadWriteLockDemo {
     private Lock lock = new ReentrantLock();
     private ReentrantReadWriteLock readWriteLock = new ReentrantReadWriteLock();

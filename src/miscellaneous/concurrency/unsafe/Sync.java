@@ -1,4 +1,4 @@
-package miscellaneous.concurrency;
+package miscellaneous.concurrency.unsafe;
 
 public class Sync {
     public static void main(String[] args) {

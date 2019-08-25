@@ -1,4 +1,4 @@
-package miscellaneous.concurrency;
+package miscellaneous.concurrency.unsafe;
 
 public class HappensBefore {
     private static int x = 0;

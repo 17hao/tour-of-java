@@ -1,4 +1,4 @@
-package miscellaneous.concurrency;
+package miscellaneous.concurrency.unsafe;
 
 public class ThreadInterference {
     static class Inc implements Runnable {

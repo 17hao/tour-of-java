@@ -1,8 +1,11 @@
-package miscellaneous.concurrency;
+package miscellaneous.concurrency.util;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * ReentrantLock and condition demo
+ */
 public class ReenterLockCondition implements Runnable {
     private static ReentrantLock lock = new ReentrantLock();
     private static Condition condition = lock.newCondition();

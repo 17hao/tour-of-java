@@ -1,4 +1,4 @@
-package miscellaneous.concurrency;
+package miscellaneous.concurrency.unsafe;
 
 import java.util.concurrent.locks.ReentrantLock;
 
