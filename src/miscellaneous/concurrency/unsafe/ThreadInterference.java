@@ -33,8 +33,8 @@ public class ThreadInterference {
         Thread t2 = new Thread(new Dec(unsafeCounter));
         t1.start();
         t2.start();
-        // t1.join();
-        // t2.join();
+         t1.join();
+         t2.join();
 
         // Counter synchronizedCounter = new SynchronizedCounter();
         // Thread t1 = new Thread(new Inc(synchronizedCounter));
