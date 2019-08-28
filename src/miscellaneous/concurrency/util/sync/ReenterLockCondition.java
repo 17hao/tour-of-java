@@ -1,4 +1,4 @@
-package miscellaneous.concurrency.util;
+package miscellaneous.concurrency.util.sync;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;

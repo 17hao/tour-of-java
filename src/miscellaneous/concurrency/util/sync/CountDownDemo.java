@@ -1,4 +1,4 @@
-package miscellaneous.concurrency.util;
+package miscellaneous.concurrency.util.sync;
 
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
