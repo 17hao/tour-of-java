@@ -11,23 +11,25 @@ public class SimulateCAS {
         return curValue;
     }
 
-    void add10k() {
+    void add() {
         int newValue;
+        int oldValue;
         do {
-            newValue = count + 1;                       // ①
-        } while (count != cas(count, newValue));        // ②
+            oldValue = count;
+            newValue = oldValue + 1;                       // ①
+        } while (count != cas(oldValue, newValue));        // ②
     }
 
     public static void main(String[] args) throws InterruptedException {
         final SimulateCAS demo = new SimulateCAS();
         Thread t1 = new Thread(() -> {
             for (int i = 0; i < 10000; i++) {
-                demo.add10k();
+                demo.add();
             }
         });
         Thread t2 = new Thread(() -> {
             for (int i = 0; i < 10000; i++) {
-                demo.add10k();
+                demo.add();
             }
         });
 
