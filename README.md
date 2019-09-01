@@ -1,2 +1,2 @@
-# ThinkingInJava
-code in thinking in java
+## Java Code
+code from \<effective java>, \<thinking in java> or written by myself
