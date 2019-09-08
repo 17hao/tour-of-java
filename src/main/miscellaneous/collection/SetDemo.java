@@ -5,8 +5,10 @@ import java.util.*;
 public class SetDemo {
     // Store elements in HashMap's key set.
     private final Set<String> hashSet = new HashSet<>();
+
     // The elements are ordered using their natural ordering or by a comparator provided.
     private Set<String> treeSet = new TreeSet<>();
+
     // Insertion order.
     private Set<String> linkedHashSet = new LinkedHashSet<>();
     private Random random = new Random();
