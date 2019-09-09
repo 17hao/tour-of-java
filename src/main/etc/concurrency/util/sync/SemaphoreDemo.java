@@ -16,7 +16,7 @@ public class SemaphoreDemo {
 }
 
 class Task implements Runnable {
-    private Semaphore semaphore;
+    private final Semaphore semaphore;
 
     Task(Semaphore semaphore) {
         this.semaphore = semaphore;
