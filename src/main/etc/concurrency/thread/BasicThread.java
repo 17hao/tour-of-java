@@ -1,4 +1,4 @@
-package main.etc.concurrency;
+package main.etc.concurrency.thread;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
