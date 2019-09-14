@@ -1,5 +1,8 @@
 package main.designpattern.observer;
 
+/**
+ * Observer
+ */
 public class CurrentConditionsDisplay implements Observer, DisplayElement {
     private Subject weatherData;
     private double temperature;

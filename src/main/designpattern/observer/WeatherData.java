@@ -2,6 +2,9 @@ package main.designpattern.observer;
 
 import java.util.List;
 
+/**
+ * Publisher
+ */
 public class WeatherData implements Subject {
     private List<Observer> observers;
     private double temperature;

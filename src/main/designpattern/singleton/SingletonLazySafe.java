@@ -1,7 +1,7 @@
 package main.designpattern.singleton;
 
 /**
- * Singleton mode
+ * Singleton pattern
  * Thread safe
  * When a thread enters the method, other threads trying to enter must wait even
  * if the class has been instantiation.

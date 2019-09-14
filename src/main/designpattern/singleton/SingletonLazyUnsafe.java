@@ -1,9 +1,9 @@
 package main.designpattern.singleton;
 
 /**
- * Singleton mode
+ * Singleton pattern
  * Thread unsafe
- * If multiple threads access field uniqueInstance, and uniqueInstance == null,
+ * If multiple threads access field `uniqueInstance`, and `uniqueInstance` == null,
  * then multi object will be created.
  */
 class SingletonLazyUnsafe {

@@ -1,12 +1,12 @@
 package main.designpattern.singleton;
 
 /**
- * Singleton mode
+ * Singleton pattern
  * Thread safe
  * Created object at the beginning. But lost the advantage of lazy creating.
  */
 class SingletonHungrySafe {
-    private static SingletonHungrySafe uniqueInstance = new SingletonHungrySafe();
+    private static volatile SingletonHungrySafe uniqueInstance = new SingletonHungrySafe();
 
     private SingletonHungrySafe() {
     }
