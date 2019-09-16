@@ -12,8 +12,7 @@ public class JedisDemo {
         String userJson = new Gson().toJson(user);
         Jedis jedis = pool.getResource();
         jedis.set("sqh", userJson);
-        jedis.hset("sqh", "","");
-        String sqh = jedis.get("sqh");
+        User sqh = new Gson().fromJson(jedis.get("sqh"), User.class);
         System.out.println(sqh);
     }
 }

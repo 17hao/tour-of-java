@@ -10,4 +10,9 @@ class User {
         this.age = age;
         this.email = email;
     }
+
+    @Override
+    public String toString() {
+        return "name: " + name + ", age: " + age + ", email: " + email;
+    }
 }
