@@ -1,8 +1,8 @@
 package main.designpattern.decorator;
 
-class Espresso extends Beverage {
-    Espresso() {
-        description = "espresso";
+public class HouseBlend extends Beverage {
+    HouseBlend() {
+        description = "House Blend";
     }
 
     @Override
