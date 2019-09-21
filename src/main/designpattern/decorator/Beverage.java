@@ -1,7 +1,7 @@
 package main.designpattern.decorator;
 
 abstract class Beverage {
-    String description;
+    protected String description;
 
     String getDescription() {
         return description;
