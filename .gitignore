@@ -24,8 +24,11 @@ hs_err_pid*
 
 .idea
 .gradle
-*.iml
 out/
 target/
 *.out
 *.txt
+*.ipr
+*.iws
+*.iml
+*.ids
