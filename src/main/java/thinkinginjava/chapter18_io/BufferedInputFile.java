@@ -1,4 +1,4 @@
-package main.thinkinginjava.chapter18_io;
+package thinkinginjava.chapter18_io;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

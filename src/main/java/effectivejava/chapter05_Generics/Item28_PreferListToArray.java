@@ -1,4 +1,4 @@
-package main.effectivejava.chapter05_Generics;
+package effectivejava.chapter05_Generics;
 
 import java.util.ArrayList;
 import java.util.List;

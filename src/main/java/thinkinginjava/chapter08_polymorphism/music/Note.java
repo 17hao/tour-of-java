@@ -1,4 +1,4 @@
-package main.thinkinginjava.chapter08_polymorphism.music;
+package thinkinginjava.chapter08_polymorphism.music;
 
 public enum Note {
     MIDDLE_C,

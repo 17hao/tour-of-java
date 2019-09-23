@@ -1,4 +1,4 @@
-package main.effectivejava.chapter06_EnumsAndAnnotations;
+package effectivejava.chapter06_EnumsAndAnnotations;
 
 public class Item40_ConsistentlyUseOverrideAnnotation {
 }

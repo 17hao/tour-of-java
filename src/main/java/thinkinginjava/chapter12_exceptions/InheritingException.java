@@ -1,4 +1,4 @@
-package main.thinkinginjava.chapter12_exceptions;
+package thinkinginjava.chapter12_exceptions;
 
 class SimpleException extends Exception {
 }

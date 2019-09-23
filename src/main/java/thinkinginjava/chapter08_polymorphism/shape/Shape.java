@@ -1,4 +1,4 @@
-package main.thinkinginjava.chapter08_polymorphism.shape;
+package thinkinginjava.chapter08_polymorphism.shape;
 
 class Shape {
     void draw() {}

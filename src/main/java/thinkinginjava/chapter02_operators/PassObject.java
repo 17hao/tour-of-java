@@ -1,4 +1,4 @@
-package main.thinkinginjava.chapter02_operators;
+package thinkinginjava.chapter02_operators;
 
 class Letter {
     char c;

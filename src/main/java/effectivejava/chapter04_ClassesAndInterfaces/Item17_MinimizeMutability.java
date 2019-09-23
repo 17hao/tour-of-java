@@ -1,4 +1,4 @@
-package main.effectivejava.chapter04_ClassesAndInterfaces;
+package effectivejava.chapter04_ClassesAndInterfaces;
 
 public class Item17_MinimizeMutability {
 

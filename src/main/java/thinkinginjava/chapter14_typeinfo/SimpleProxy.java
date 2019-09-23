@@ -1,4 +1,4 @@
-package main.thinkinginjava.chapter14_typeinfo;
+package thinkinginjava.chapter14_typeinfo;
 
 class SimpleProxy implements Interface {
     private Interface proxied;

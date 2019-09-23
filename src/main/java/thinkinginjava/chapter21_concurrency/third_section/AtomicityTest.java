@@ -1,4 +1,4 @@
-package main.thinkinginjava.chapter21_concurrency.third_section;
+package thinkinginjava.chapter21_concurrency.third_section;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

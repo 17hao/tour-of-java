@@ -1,4 +1,4 @@
-package main.thinkinginjava.chapter14_typeinfo;
+package thinkinginjava.chapter14_typeinfo;
 
 public class SweetShop {
     public static void main(String[] args) {

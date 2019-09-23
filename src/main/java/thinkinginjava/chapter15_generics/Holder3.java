@@ -1,4 +1,4 @@
-package main.thinkinginjava.chapter15_generics;
+package thinkinginjava.chapter15_generics;
 
 public class Holder3<T> {
     private T a;

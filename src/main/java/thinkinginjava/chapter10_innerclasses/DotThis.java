@@ -1,4 +1,4 @@
-package main.thinkinginjava.chapter10_innerclasses;
+package thinkinginjava.chapter10_innerclasses;
 
 public class DotThis {
     private void f() {

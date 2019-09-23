@@ -1,4 +1,4 @@
-package main.thinkinginjava.chapter08_polymorphism.shape;
+package thinkinginjava.chapter08_polymorphism.shape;
 
 /**
  * RandomShapeGenerator随机返回Shape类型的对象

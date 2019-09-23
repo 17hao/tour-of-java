@@ -1,4 +1,4 @@
-package main.thinkinginjava.chapter16_arrays;
+package thinkinginjava.chapter16_arrays;
 
 import java.util.Arrays;
 

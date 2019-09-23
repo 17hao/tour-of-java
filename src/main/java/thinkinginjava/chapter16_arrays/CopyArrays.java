@@ -1,4 +1,4 @@
-package main.thinkinginjava.chapter16_arrays;
+package thinkinginjava.chapter16_arrays;
 
 public class CopyArrays {
     public static void main(String[] args) {

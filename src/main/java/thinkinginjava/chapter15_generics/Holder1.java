@@ -1,4 +1,4 @@
-package main.thinkinginjava.chapter15_generics;
+package thinkinginjava.chapter15_generics;
 
 class Automobile {
 }

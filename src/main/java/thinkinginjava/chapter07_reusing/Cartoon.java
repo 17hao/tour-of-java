@@ -1,4 +1,4 @@
-package main.thinkinginjava.chapter07_reusing;
+package thinkinginjava.chapter07_reusing;
 
 class Art {
     Art() {

@@ -1,4 +1,4 @@
-package main.thinkinginjava.chapter21_concurrency;
+package thinkinginjava.chapter21_concurrency;
 
 /**
  * The most basic use of the Thread class

@@ -1,4 +1,4 @@
-package main.effectivejava.chapter09_GeneralProgramming;
+package effectivejava.chapter09_GeneralProgramming;
 
 import java.util.ArrayList;
 import java.util.Iterator;

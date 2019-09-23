@@ -1,4 +1,4 @@
-package main.thinkinginjava.chapter05_initialization;
+package thinkinginjava.chapter05_initialization;
 
 class Person {
     void eat(Apple apple) {

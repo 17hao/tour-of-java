@@ -1,4 +1,4 @@
-package main.effectivejava.chapter04_ClassesAndInterfaces;
+package effectivejava.chapter04_ClassesAndInterfaces;
 
 public class Item16_UseAccessorMethod {
     static private Point p = new Point(1.0, 2.0, 3.0);

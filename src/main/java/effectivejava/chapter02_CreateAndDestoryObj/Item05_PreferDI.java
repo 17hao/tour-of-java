@@ -1,4 +1,4 @@
-package main.effectivejava.chapter02_CreateAndDestoryObj;
+package effectivejava.chapter02_CreateAndDestoryObj;
 
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package main.effectivejava.chapter03_MethodsCommonToAllObj;
+package effectivejava.chapter03_MethodsCommonToAllObj;
 
 import java.util.Objects;
 

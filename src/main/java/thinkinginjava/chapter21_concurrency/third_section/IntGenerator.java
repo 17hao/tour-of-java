@@ -1,4 +1,4 @@
-package main.thinkinginjava.chapter21_concurrency.third_section;
+package thinkinginjava.chapter21_concurrency.third_section;
 
 public abstract class IntGenerator {
     private volatile boolean canceled = false;

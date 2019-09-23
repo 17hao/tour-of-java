@@ -1,4 +1,4 @@
-package main.thinkinginjava.chapter13_strings;
+package thinkinginjava.chapter13_strings;
 
 public class Concatenation {
     public static void main(String[] args) {

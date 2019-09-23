@@ -1,4 +1,4 @@
-package main.thinkinginjava.chapter13_strings;
+package thinkinginjava.chapter13_strings;
 
 public class Immutable {
     /* String所有的方法都是返回一个新的String对象，这是String保证是不可变的重要手段 */

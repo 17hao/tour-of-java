@@ -1,4 +1,4 @@
-package main.effectivejava.chapter09_GeneralProgramming;
+package effectivejava.chapter09_GeneralProgramming;
 
 /**
  * To minimize the scope of variables, for is better than while

@@ -1,4 +1,4 @@
-package main.thinkinginjava.chapter08_polymorphism.music;
+package thinkinginjava.chapter08_polymorphism.music;
 
 class Wind extends Instrument {
     public void play(Note n) {

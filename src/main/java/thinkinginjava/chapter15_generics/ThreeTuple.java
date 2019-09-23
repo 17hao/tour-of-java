@@ -1,4 +1,4 @@
-package main.thinkinginjava.chapter15_generics;
+package thinkinginjava.chapter15_generics;
 
 public class ThreeTuple<A, B, C> extends TwoTuple<A, B> {
     public final C third;
