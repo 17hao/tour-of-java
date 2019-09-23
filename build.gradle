@@ -5,7 +5,6 @@
 plugins {
     id 'java'
     id 'maven-publish'
-    id 'idea'
 }
 
 repositories {
@@ -42,11 +41,4 @@ publishing {
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
-}
-
-idea {
-    module {
-        sourceDirs += file('src/main')
-        testSourceDirs += file('src/test')
-    }
 }
