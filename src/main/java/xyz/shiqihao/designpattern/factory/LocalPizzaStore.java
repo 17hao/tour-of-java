@@ -4,12 +4,10 @@ class LocalPizzaStore extends PizzaStore {
 
     @Override
     Pizza createPizza(String type) {
-        if (type.equals("little")) {
-            return new Pizza(type, 1);
-        } else if (type.equals("middle")) {
-            return new Pizza(type, 2);
+        if (type.equals("small")) {
+            return new SmallPizza(type, 1);
         } else {
-            return new Pizza(type, 3);
+            return new BigPizza(type, 2);
         }
     }
 }
