@@ -1,9 +1,15 @@
 package xyz.shiqihao.designpattern.factory;
 
-public class NBPizzaStore extends PizzaStore {
+class LocalPizzaStore extends PizzaStore {
 
     @Override
     Pizza createPizza(String type) {
-        return null;
+        if (type.equals("little")) {
+            return new Pizza(type, 1);
+        } else if (type.equals("middle")) {
+            return new Pizza(type, 2);
+        } else {
+            return new Pizza(type, 3);
+        }
     }
 }
