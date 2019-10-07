@@ -15,7 +15,6 @@ public class ClassLoaderTest {
                         return super.loadClass(name);
                     }
                     byte[] b = new byte[is.available()];
-                    is.read(b);
                     return defineClass(name, b, 0, b.length);
                 } catch (IOException e) {
                     throw new ClassNotFoundException(name);
