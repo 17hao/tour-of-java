@@ -14,5 +14,12 @@ public class MyTest5 {
         while (urls.hasMoreElements()) {
             System.out.println(urls.nextElement());
         }
+
+        System.out.println("===separator===");
+
+        Class<?> myClazz  = MyTest5.class;
+        System.out.println(myClazz.getClassLoader());
+        Class<?> systemClazz = String.class;
+        System.out.println(systemClazz.getClassLoader());
     }
 }
