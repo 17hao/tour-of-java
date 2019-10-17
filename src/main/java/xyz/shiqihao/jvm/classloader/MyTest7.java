@@ -28,7 +28,7 @@ public class MyTest7 extends ClassLoader {
     }
 
     @Override
-    protected Class<?> findClass(String name) throws ClassNotFoundException {
+    protected Class<?> findClass(String name) {
         byte[] data = loadClassData(name);
         return defineClass(name, data, 0, data.length);
     }
@@ -43,7 +43,7 @@ public class MyTest7 extends ClassLoader {
 
             is = new FileInputStream(new File(name + fileExtension));
             outputStream = new ByteArrayOutputStream();
-            int ch = 0;
+            int ch;
             while ((ch = is.read()) != 0) {
                 outputStream.write(ch);
             }
@@ -53,7 +53,9 @@ public class MyTest7 extends ClassLoader {
             e.printStackTrace();
         } finally {
             try {
+                assert is != null;
                 is.close();
+                assert outputStream != null;
                 outputStream.close();
             } catch (Exception e) {
                 e.printStackTrace();
