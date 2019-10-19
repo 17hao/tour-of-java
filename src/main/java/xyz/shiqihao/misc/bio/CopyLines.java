@@ -13,7 +13,7 @@ public class CopyLines {
                 writer.println(l);
             }
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 }

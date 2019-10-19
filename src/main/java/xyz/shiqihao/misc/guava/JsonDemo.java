@@ -1,4 +1,4 @@
-package xyz.shiqihao.misc;
+package xyz.shiqihao.misc.guava;
 
 import com.google.gson.Gson;
 

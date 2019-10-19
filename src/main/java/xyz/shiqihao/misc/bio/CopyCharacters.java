@@ -5,15 +5,15 @@ import java.io.*;
 public class CopyCharacters {
     public static void main(String[] args) {
         try (
-                Reader reader = new FileReader("F:\\javacode\\src\\xyz.shiqihao.etc\\io\\xanadu.txt");
-                Writer writer = new FileWriter("characteroutput.txt")
+                Reader reader = new FileReader(new File("./src/main/resources/input.txt"));
+                Writer writer = new FileWriter(new File("./src/main/resources/char-output.txt"))
         ) {
             int n;
             while ((n = reader.read()) != -1) {
                 writer.write(n);
             }
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 }

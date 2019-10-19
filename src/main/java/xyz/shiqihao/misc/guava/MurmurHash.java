@@ -1,4 +1,4 @@
-package xyz.shiqihao.misc;
+package xyz.shiqihao.misc.guava;
 
 import com.google.common.base.Charsets;
 import com.google.common.hash.*;

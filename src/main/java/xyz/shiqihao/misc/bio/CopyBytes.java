@@ -1,21 +1,20 @@
 package xyz.shiqihao.misc.bio;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 public class CopyBytes {
     public static void main(String[] args) {
         try (
-                FileInputStream inputStream = new FileInputStream("F:\\javacode\\src\\xyz.shiqihao.etc\\io\\xanadu.txt");
-                FileOutputStream outputStream = new FileOutputStream("outagin.txt")
+                InputStream is = new FileInputStream(new File("./src/main/resources/input.txt"));
+                InputStream inputStream = new BufferedInputStream(is);
+                OutputStream outputStream = new FileOutputStream(new File("./src/main/resources/output.txt"))
         ) {
             int n;
             while ((n = inputStream.read()) != -1) {
                 outputStream.write(n);
             }
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 }
