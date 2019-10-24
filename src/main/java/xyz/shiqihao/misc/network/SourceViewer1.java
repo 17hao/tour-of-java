@@ -11,13 +11,11 @@ public class SourceViewer1 {
             URL url = new URL("http://shiqihao.xyz");
             URLConnection uc = url.openConnection();
             try (InputStream is = uc.getInputStream();
-                 InputStream bufferedIs = new BufferedInputStream(is);
-                 Reader reader = new InputStreamReader(bufferedIs);
+                 Reader reader = new InputStreamReader(is);
                  OutputStream os = new FileOutputStream(new File("./src/main/resources/Source.html"));
                  OutputStream bufferedOs = new BufferedOutputStream(os)) {
 
-                int ch;
-                while ((ch = reader.read()) != -1) {
+                for (int ch = reader.read(); ch != -1; ch = reader.read()) {
                     bufferedOs.write(ch);
                 }
                 System.out.println("Success!");
