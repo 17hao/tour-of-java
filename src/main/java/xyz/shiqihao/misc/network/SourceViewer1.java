@@ -12,11 +12,12 @@ public class SourceViewer1 {
             URLConnection uc = url.openConnection();
             try (InputStream is = uc.getInputStream();
                  Reader reader = new InputStreamReader(is);
-                 OutputStream os = new FileOutputStream(new File("./src/main/resources/Source.html"));
-                 OutputStream bufferedOs = new BufferedOutputStream(os)) {
+                 OutputStream out = new FileOutputStream(new File("./src/main/resources/Source.html"));
+                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out))) {
 
                 for (int ch = reader.read(); ch != -1; ch = reader.read()) {
-                    bufferedOs.write(ch);
+                    writer.write(ch);
+                    writer.flush();
                 }
                 System.out.println("Success!");
             }

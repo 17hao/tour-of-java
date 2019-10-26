@@ -7,7 +7,9 @@ import java.net.Socket;
 
 public class DatetimeClient {
     public static void main(String[] args) {
-        try (Socket socket = new Socket("time.nist.gov", 13);
+        final String localTimeServer = "localhost";
+        final String remoteTimeServer = "time.nist.gov";
+        try (Socket socket = new Socket(localTimeServer, 13);
              InputStream is = new BufferedInputStream(socket.getInputStream())) {
 
             StringBuilder sb = new StringBuilder();
