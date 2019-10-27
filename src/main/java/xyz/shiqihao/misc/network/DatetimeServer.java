@@ -10,14 +10,18 @@ import java.util.Date;
 public class DatetimeServer {
     public static void main(String[] args) {
         final int port = 13;
-        try (ServerSocket server = new ServerSocket(port);
-             Socket connection = server.accept();
-             Writer writer = new OutputStreamWriter(connection.getOutputStream())) {
+        try (ServerSocket server = new ServerSocket(port)) {
+            while (true) {
+                try (Socket connection = server.accept();
+                     Writer writer = new OutputStreamWriter(connection.getOutputStream())) {
 
-            Date date = new Date();
-            writer.write(date.toString());
-            writer.flush();
-        } catch (IOException e) {
+                    writer.write(new Date().toString() + "\r\n");
+                    writer.flush();
+                } catch (IOException e) { // A client exception.
+                    e.printStackTrace();
+                }
+            }
+        } catch (IOException e) { // A server exception.
             e.printStackTrace();
         }
     }
