@@ -1,6 +1,9 @@
 package xyz.shiqihao.misc.network;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -20,11 +23,10 @@ public class HttpResponseAwareViewer {
             }
             System.out.println();
             try (InputStream is = uc.getInputStream();
-                 Reader reader = new InputStreamReader(is);
-                 Reader bufferedReader = new BufferedReader(reader)) {
-                int ch;
-                while ((ch = bufferedReader.read()) != -1) {
-                    System.out.print((char) ch);
+                 BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
+
+                for (String line = reader.readLine(); line != null; line = reader.readLine()) {
+                    System.out.println(line);
                 }
             }
         } catch (IOException e) {
