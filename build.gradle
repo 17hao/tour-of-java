@@ -4,8 +4,6 @@
 
 plugins {
     id 'java'
-    id 'maven-publish'
-    id 'idea'
     id "com.google.protobuf" version "0.8.8"
 }
 
@@ -34,22 +32,8 @@ version = '1.0-SNAPSHOT'
 description = 'javacode'
 sourceCompatibility = '1.8'
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            from(components.java)
-        }
-    }
-}
-
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
-}
-
-idea {
-    module {
-        sourceDirs += file("${projectDir}/src/main/proto")
-    }
 }
 
 sourceSets {
@@ -57,14 +41,14 @@ sourceSets {
         java {
             srcDirs 'build/generated/source/proto/main/grpc'
             srcDirs 'build/generated/source/proto/main/java'
-            //srcDirs 'src/main/proto'
+            srcDirs 'src/main/proto'
         }
     }
 }
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.7.0"
+        artifact = "com.google.protobuf:protoc:3.9.1"
     }
     plugins {
         grpc {
