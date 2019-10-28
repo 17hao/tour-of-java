@@ -5,27 +5,28 @@
 plugins {
     id 'java'
     id 'maven-publish'
+    id 'idea'
+    id "com.google.protobuf" version "0.8.8"
 }
 
 repositories {
     mavenLocal()
-    maven {
-        url = 'http://repo.maven.apache.org/maven2'
-    }
+    mavenCentral()
 }
 
 dependencies {
-    compile 'org.junit.jupiter:junit-jupiter-api:5.3.1'
-    compile 'com.aliyun:aliyun-java-sdk-core:4.1.0'
-    compile 'com.google.code.gson:gson:2.8.5'
-    compile 'io.grpc:grpc-protobuf:1.23.0'
-    compile 'io.grpc:grpc-stub:1.23.0'
-    compile 'org.apache.logging.log4j:log4j-api:2.12.1'
-    compile 'org.apache.logging.log4j:log4j-core:2.12.1'
-    compile 'redis.clients:jedis:2.9.0'
-    compile 'org.apache.kafka:kafka-clients:2.3.0'
-    compile 'javax.inject:javax.inject:1'
-    compile 'com.google.inject:guice:4.2.2'
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    implementation 'com.aliyun:aliyun-java-sdk-core:4.1.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'org.apache.logging.log4j:log4j-api:2.12.1'
+    implementation 'org.apache.logging.log4j:log4j-core:2.12.1'
+    implementation 'redis.clients:jedis:2.9.0'
+    implementation 'org.apache.kafka:kafka-clients:2.3.0'
+    implementation 'javax.inject:javax.inject:1'
+    implementation 'com.google.inject:guice:4.2.2'
+    implementation 'io.grpc:grpc-netty-shaded:1.24.0'
+    implementation 'io.grpc:grpc-protobuf:1.24.0'
+    implementation 'io.grpc:grpc-stub:1.24.0'
 }
 
 group = 'xyz.shiqihao'
@@ -43,4 +44,36 @@ publishing {
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
+}
+
+idea {
+    module {
+        sourceDirs += file("${projectDir}/src/main/proto")
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs 'build/generated/source/proto/main/grpc'
+            srcDirs 'build/generated/source/proto/main/java'
+            //srcDirs 'src/main/proto'
+        }
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.7.0"
+    }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:1.19.0"
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
 }
