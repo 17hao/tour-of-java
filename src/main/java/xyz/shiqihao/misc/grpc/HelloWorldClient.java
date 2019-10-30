@@ -12,14 +12,14 @@ import java.util.logging.Logger;
 public class HelloWorldClient {
     private static final Logger logger = Logger.getLogger(HelloWorldClient.class.getName());
     private final ManagedChannel channel;
-    private final GreeterGrpc.GreeterBlockingStub blockingStub;
+    private final GreeterGrpc.GreeterFutureStub stub;
 
-    public HelloWorldClient(ManagedChannel channel) {
+    private HelloWorldClient(ManagedChannel channel) {
         this.channel = channel;
-        blockingStub = GreeterGrpc.newBlockingStub(channel);
+        stub = GreeterGrpc.newFutureStub(channel);
     }
 
-    public HelloWorldClient(String host, int port) {
+    private  HelloWorldClient(String host, int port) {
         this(ManagedChannelBuilder.forAddress(host, port)
                 .usePlaintext()
                 .build());
@@ -29,12 +29,14 @@ public class HelloWorldClient {
         channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
     }
 
-    public void greet(String name) {
+    private void greet(String name) {
         logger.info("Will try to greet " + name + "...");
         HelloRequest request = HelloRequest.newBuilder().setName(name).build();
         HelloReply response;
         try {
-            response = blockingStub.sayHello(request);
+            logger.info("do something else...");
+            Thread.sleep(3000);
+            response = stub.sayHello(request).get();
         } catch (Exception e) {
             logger.warning("RPC failed");
             return;

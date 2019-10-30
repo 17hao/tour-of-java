@@ -41,7 +41,7 @@ sourceSets {
         java {
             srcDirs 'build/generated/source/proto/main/grpc'
             srcDirs 'build/generated/source/proto/main/java'
-            srcDirs 'src/main/proto'
+            srcDirs 'src/main/proto/generated'
         }
     }
 }
@@ -60,6 +60,7 @@ protobuf {
             grpc {}
         }
     }
+    generatedFilesBaseDir = "$projectDir/src/main/proto/generated"
 }
 
 task hello() {
