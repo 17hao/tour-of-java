@@ -75,3 +75,42 @@ task intro() {
         println "I am gradle."
     }
 }
+
+hello.doFirst {
+    println("hello, first")
+}
+
+hello.doLast {
+    println("hello, jupiter")
+}
+
+task myTask {
+    ext.myProperty = "mar"
+}
+
+task printTaskProperty {
+    doLast {
+        println(myTask.myProperty)
+    }
+}
+
+task distribution {
+    doLast {
+        println "We build the zip with version=$version"
+    }
+}
+
+task release {
+    dependsOn distribution
+    doLast {
+        println "We release now."
+    }
+}
+
+gradle.taskGraph.whenReady { taskGraph ->
+    if (taskGraph.hasTask(":release")) {
+        version = '1.0'
+    } else {
+        version = '1.0-snapshot'
+    }
+}
