@@ -2,23 +2,23 @@ package xyz.shiqihao.java8;
 
 class Apple {
     private final String color;
-    private final int heavy;
+    private final int weight;
 
-    Apple(String color, int heavy) {
+    Apple(String color, int weight) {
         this.color = color;
-        this.heavy = heavy;
+        this.weight = weight;
     }
 
     String color() {
         return color;
     }
 
-    int heavy() {
-        return heavy;
+    int weight() {
+        return weight;
     }
 
     @Override
     public String toString() {
-        return "color is: " + color + ", heavy is: " + heavy;
+        return "color is: " + color + ", heavy is: " + weight;
     }
 }

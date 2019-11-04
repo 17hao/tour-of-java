@@ -1,6 +1,7 @@
 package xyz.shiqihao.java8;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -19,12 +20,18 @@ public class AppleMain {
         }
 
         // Using lambda.
-        for (Apple apple : filterApple(inventory, a -> a.heavy() < 10)) {
+        for (Apple apple : filterApple(inventory, a -> a.weight() < 10)) {
             System.out.println(apple);
         }
 
         // Using stream.
-        for (Apple apple : inventory.stream().filter((apple -> apple.heavy() < 10)).collect(Collectors.toList())) {
+        for (Apple apple : inventory.stream().filter((apple -> apple.weight() < 10)).collect(Collectors.toList())) {
+            System.out.println(apple);
+        }
+
+        // Compare element by parameterize action.
+        inventory.sort(Comparator.comparingInt(Apple::weight));
+        for (Apple apple : inventory) {
             System.out.println(apple);
         }
     }
@@ -45,7 +52,7 @@ public class AppleMain {
     static List<Apple> filterLightApples(List<Apple> inventory) {
         List<Apple> result = new ArrayList<>();
         for (Apple apple : inventory) {
-            if (apple.heavy() < 10) {
+            if (apple.weight() < 10) {
                 result.add(apple);
             }
         }
@@ -70,6 +77,6 @@ public class AppleMain {
     }
 
     static boolean isLightApple(Apple apple) {
-        return apple.heavy() < 10;
+        return apple.weight() < 10;
     }
 }
