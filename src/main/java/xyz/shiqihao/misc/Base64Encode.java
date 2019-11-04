@@ -7,7 +7,7 @@ public class Base64Encode {
         System.out.println(new String(encode()));
     }
 
-    static byte[] encode() {
+    private static byte[] encode() {
         return Base64.getEncoder().encode("hello, world\n".getBytes());
     }
 }
