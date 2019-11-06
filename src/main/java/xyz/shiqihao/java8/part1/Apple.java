@@ -1,4 +1,4 @@
-package xyz.shiqihao.java8;
+package xyz.shiqihao.java8.part1;
 
 class Apple {
     private final String color;

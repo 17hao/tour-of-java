@@ -1,4 +1,4 @@
-package xyz.shiqihao.java8.FunctionalInterface;
+package xyz.shiqihao.java8.part1.FunctionalInterface;
 
 import java.util.ArrayList;
 import java.util.List;
