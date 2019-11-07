@@ -1,4 +1,4 @@
-package xyz.shiqihao.misc.network;
+package xyz.shiqihao.network;
 
 import com.google.common.base.Charsets;
 

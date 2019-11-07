@@ -1,4 +1,4 @@
-package xyz.shiqihao.misc.network;
+package xyz.shiqihao.network;
 
 import java.io.IOException;
 import java.net.Socket;
