@@ -1,4 +1,4 @@
-package xyz.shiqihao.java8.part1.FunctionalInterface;
+package xyz.shiqihao.java8.part_01.FunctionalInterface;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

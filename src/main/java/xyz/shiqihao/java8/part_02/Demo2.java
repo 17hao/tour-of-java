@@ -1,15 +1,14 @@
-package xyz.shiqihao.java8.part2;
+package xyz.shiqihao.java8.part_02;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Demo3 {
+public class Demo2 {
     public static void main(String[] args) {
-        List<String> l = Arrays.asList("hello", "world");
-        List<String> result = l.stream()
-                .map(s -> s.split(""))
-                .flatMap(Arrays::stream)
+        List<Integer> l = Arrays.asList(1, 2, 3, 4, 2, 3, 4, 3, 4, 5, 6, 7, 8, 9, 10);
+        List<Integer> result = l.stream()
+                .filter(i -> i % 2 == 0)
                 .distinct()
                 .collect(Collectors.toList());
         System.out.println(result);

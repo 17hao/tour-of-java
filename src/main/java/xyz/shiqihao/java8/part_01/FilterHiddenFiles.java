@@ -1,4 +1,4 @@
-package xyz.shiqihao.java8.part1;
+package xyz.shiqihao.java8.part_01;
 
 import java.io.File;
 import java.io.FileFilter;

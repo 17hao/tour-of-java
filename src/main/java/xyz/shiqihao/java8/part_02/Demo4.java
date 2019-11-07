@@ -1,4 +1,4 @@
-package xyz.shiqihao.java8.part2;
+package xyz.shiqihao.java8.part_02;
 
 import java.io.IOException;
 import java.nio.file.Files;
