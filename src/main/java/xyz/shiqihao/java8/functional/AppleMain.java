@@ -63,13 +63,14 @@ public class AppleMain {
      * Passing function as parameter.
      */
     static List<Apple> filterApple(List<Apple> inventory, Predicate<Apple> p) {
-        List<Apple> result = new ArrayList<>();
-        for (Apple apple : inventory) {
-            if (p.test(apple)) {
-                result.add(apple);
-            }
-        }
-        return result;
+        return inventory.stream().filter(p).collect(Collectors.toList());
+//        List<Apple> result = new ArrayList<>();
+//        for (Apple apple : inventory) {
+//            if (p.test(apple)) {
+//                result.add(apple);
+//            }
+//        }
+//        return result;
     }
 
     static boolean isGreenApple(Apple apple) {
@@ -78,5 +79,28 @@ public class AppleMain {
 
     static boolean isLightApple(Apple apple) {
         return apple.weight() < 10;
+    }
+}
+
+class Apple {
+    private final String color;
+    private final int weight;
+
+    Apple(String color, int weight) {
+        this.color = color;
+        this.weight = weight;
+    }
+
+    String color() {
+        return color;
+    }
+
+    int weight() {
+        return weight;
+    }
+
+    @Override
+    public String toString() {
+        return "color is: " + color + ", heavy is: " + weight;
     }
 }
