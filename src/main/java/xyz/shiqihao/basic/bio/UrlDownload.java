@@ -6,9 +6,6 @@ import java.util.Base64;
 
 public class UrlDownload {
     public static void main(String[] args) throws Exception {
-        // String h = "https://statics.growingio.com/media/20190730/3/1564542344548/0730img.jpeg";
-        // OutputStream html = saveHtml(h);
-        // System.out.println(html);
         String i = "https://statics.growingio.com/media/20190730/3/1564542344548/0730img.jpeggg";
         String image = "image.jpg";
         //saveImage(i, image);

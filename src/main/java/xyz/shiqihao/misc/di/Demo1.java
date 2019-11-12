@@ -1,4 +1,4 @@
-package xyz.shiqihao.misc.DI;
+package xyz.shiqihao.misc.di;
 
 import com.google.inject.Guice;
 import com.google.inject.Inject;

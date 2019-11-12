@@ -1,4 +1,4 @@
-package xyz.shiqihao.misc.DI;
+package xyz.shiqihao.misc.di;
 
 import javax.inject.Inject;
 
