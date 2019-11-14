@@ -1,4 +1,4 @@
-package xyz.shiqihao.basic.anonymous;
+package xyz.shiqihao.basic.nestedclass;
 
 /**
  * lambda expression can replace interface that has only one abstract method.

@@ -1,4 +1,4 @@
-package xyz.shiqihao.basic.anonymous;
+package xyz.shiqihao.basic.nestedclass;
 
 public class MethodReference {
     interface Bicycle {

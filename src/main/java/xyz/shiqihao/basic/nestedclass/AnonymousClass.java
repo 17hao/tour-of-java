@@ -1,4 +1,4 @@
-package xyz.shiqihao.basic.anonymous;
+package xyz.shiqihao.basic.nestedclass;
 
 /**
  * Local classes and Anonymous classes
