@@ -1,5 +1,6 @@
 package xyz.shiqihao.java8.async;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -38,34 +39,22 @@ class Shop {
         }
     }
 
-    static List<Shop> fourShops = Arrays.asList(
+    static List<Shop> valueOf(int i) {
+        if (i <= 4) {
+            return fourShops;
+        } else {
+            List<Shop> result = new ArrayList<>();
+            for (int j = 1; j <= i - 4; j++) {
+                result.add(new Shop("PlainShop" + j));
+            }
+            result.addAll(fourShops);
+            return result;
+        }
+    }
+
+    private static List<Shop> fourShops = Arrays.asList(
             new Shop("BestPrice"),
             new Shop("LetsSaveBig"),
             new Shop("MyFavoriteShop"),
             new Shop("BuyItAll"));
-
-    static List<Shop> nineShops = Arrays.asList(
-            new Shop("BestPrice"),
-            new Shop("LetsSaveBig"),
-            new Shop("MyFavoriteShop"),
-            new Shop("BuyItAll"),
-            new Shop("PlainShop1"),
-            new Shop("PlainShop2"),
-            new Shop("PlainShop3"),
-            new Shop("PlainShop4"),
-            new Shop("PlainShop5"));
-
-    static List<Shop> twelveShops = Arrays.asList(
-            new Shop("BestPrice"),
-            new Shop("LetsSaveBig"),
-            new Shop("MyFavoriteShop"),
-            new Shop("BuyItAll"),
-            new Shop("PlainShop1"),
-            new Shop("PlainShop2"),
-            new Shop("PlainShop3"),
-            new Shop("PlainShop4"),
-            new Shop("PlainShop5"),
-            new Shop("PlainShop6"),
-            new Shop("PlainShop7"),
-            new Shop("PlainShop8"));
 }
