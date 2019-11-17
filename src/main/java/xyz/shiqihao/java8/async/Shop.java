@@ -22,6 +22,16 @@ class Shop {
         return calculatePrice(product);
     }
 
+    /**
+     * @return ShopName:price:DiscountCode
+     */
+    String getPriceV2(String product) {
+        double price = calculatePrice(product);
+        Discount.Code code = Discount.Code.values()[
+                new Random().nextInt(Discount.Code.values().length)];
+        return String.format("%s:%.2f:%s", name, price, code);
+    }
+
     public Future<Double> getPriceAsync(String product) {
         return CompletableFuture.supplyAsync(() -> calculatePrice(product));
     }
