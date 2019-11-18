@@ -9,4 +9,21 @@ public class Discount {
             percentage = i;
         }
     }
+
+    static String applyDiscount(Quote quote) {
+        return quote.getShopName() + " price is: " + apply(quote.getPrice(), quote.getDiscountCode());
+    }
+
+    private static double apply(double price, Code code) {
+        delay();
+        return price * (100 - code.percentage) / 100;
+    }
+
+    private static void delay() {
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -16,6 +16,10 @@ public class Main {
         m.printExecTime(Main::findPricesParallel, "iPhone11");
         System.out.print("CompletableFuture: ");
         m.printExecTime(Main::findPricesFuture, "iPhone11");
+        System.out.print("Find discount prices: ");
+        m.printExecTime(Main::findDiscountPrices, "iPhone11");
+        System.out.print("Find discount prices in future: ");
+        m.printExecTime(Main::findDiscountPricesFuture, "iPhone11");
     }
 
     /**
@@ -54,12 +58,26 @@ public class Main {
                 .collect(Collectors.toList());
     }
 
-    // static CompletableFuture<List<String>> findPriceFutureV2(String product) {
-    //     return CompletableFuture.supplyAsync(() -> Shop.valueOf(12).stream()
-    //             .map(shop -> String.format("%s price is %.2f",
-    //                     shop.getName(), shop.getPrice(product)))
-    //             .collect(Collectors.toList()));
-    // }
+    static List<String> findDiscountPrices(String product) {
+        return Shop.valueOf(13).stream()
+                .map(shop -> shop.getPriceV2(product))
+                .map(Quote::parse)
+                .map(Discount::applyDiscount)
+                .collect(Collectors.toList());
+    }
+
+    static List<String> findDiscountPricesFuture(String product) {
+        List<CompletableFuture<String>> priceFutures = Shop.valueOf(13).stream()
+                .map(shop -> CompletableFuture.supplyAsync(() -> shop.getPriceV2(product), executor))
+                .map(future -> future.thenApply(Quote::parse))
+                .map(future -> future.thenCompose(quote ->
+                        CompletableFuture.supplyAsync(() -> Discount.applyDiscount(quote))))
+                .collect(Collectors.toList());
+
+        return priceFutures.stream()
+                .map(CompletableFuture::join)
+                .collect(Collectors.toList());
+    }
 
     private void printExecTime(PriceFinder<String> p, String product) {
         long start = System.nanoTime();
