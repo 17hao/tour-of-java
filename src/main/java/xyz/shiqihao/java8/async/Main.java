@@ -11,28 +11,37 @@ public class Main {
         Main m = new Main();
         System.out.println(Runtime.getRuntime().availableProcessors());
         System.out.print("Sequentially: ");
-        m.printExecTime(Main::findPrice, "iPhone11");
+        m.printExecTime(Main::findPrices, "iPhone11");
         System.out.print("Parallel: ");
-        m.printExecTime(Main::findPriceParallel, "iPhone11");
+        m.printExecTime(Main::findPricesParallel, "iPhone11");
         System.out.print("CompletableFuture: ");
-        m.printExecTime(Main::findPriceFuture, "iPhone11");
+        m.printExecTime(Main::findPricesFuture, "iPhone11");
     }
 
-    static List<String> findPrice(String product) {
+    /**
+     * Finding prices sequentially.
+     */
+    static List<String> findPrices(String product) {
         return Shop.valueOf(13).stream()
                 .map(shop -> String.format("%s price is %.2f",
                         shop.getName(), shop.getPrice(product)))
                 .collect(Collectors.toList());
     }
 
-    static List<String> findPriceParallel(String product) {
+    /**
+     * Finding prices parallel.
+     */
+    static List<String> findPricesParallel(String product) {
         return Shop.valueOf(13).parallelStream()
                 .map(shop -> String.format("%s price is %.2f",
                         shop.getName(), shop.getPrice(product)))
                 .collect(Collectors.toList());
     }
 
-    static List<String> findPriceFuture(String product) {
+    /**
+     * Finding prices in future.
+     */
+    static List<String> findPricesFuture(String product) {
         List<CompletableFuture<String>> priceFuture = Shop.valueOf(13).stream()
                 .map(shop ->
                         CompletableFuture.supplyAsync(() ->
