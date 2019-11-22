@@ -1,5 +1,8 @@
 package xyz.shiqihao.advanced.concurrency.unsafe;
 
+/**
+ * Visibility between multiple threads.
+ */
 public class Visibility {
     private int count;
 

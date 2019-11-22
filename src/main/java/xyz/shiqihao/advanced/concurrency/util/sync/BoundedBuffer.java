@@ -6,7 +6,47 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class ConditionDemo {
+/**
+ * A BoundedBuffer that uses `Condition`.
+ */
+class BoundedBuffer {
+    private final Lock lock = new ReentrantLock();
+    private final Condition notFull = lock.newCondition();
+    private final Condition notNull = lock.newCondition();
+    private final Object[] items = new Object[100];
+    private int putptr, takeptr, count;
+
+    void put(Object x) throws InterruptedException {
+        lock.lock();
+        try {
+            while (count == items.length)
+                notFull.await();
+            items[putptr] = x;
+            if (++putptr == items.length) putptr = 0;
+            ++count;
+            notNull.signalAll();
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    Object take() throws InterruptedException {
+        lock.lock();
+        try {
+            while (count == 0)
+                notNull.await();
+            Object result = items[takeptr];
+            if (--takeptr == items.length) takeptr = 0;
+            --count;
+            notFull.signalAll();
+            return result;
+        } finally {
+            lock.unlock();
+        }
+    }
+}
+
+class Main {
     private static BoundedBuffer buffer = new BoundedBuffer();
 
     static private class put extends Thread {
@@ -47,42 +87,5 @@ public class ConditionDemo {
             es.execute(p);
         }
         es.shutdown();
-    }
-}
-
-class BoundedBuffer {
-    private final Lock lock = new ReentrantLock();
-    private final Condition notFull = lock.newCondition();
-    private final Condition notNull = lock.newCondition();
-    private final Object[] items = new Object[100];
-    private int putptr, takeptr, count;
-
-    void put(Object x) throws InterruptedException {
-        lock.lock();
-        try {
-            while (count == items.length)
-                notFull.await();
-            items[putptr] = x;
-            if (++putptr == items.length) putptr = 0;
-            ++count;
-            notNull.signalAll();
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    Object take() throws InterruptedException {
-        lock.lock();
-        try {
-            while (count == 0)
-                notNull.await();
-            Object result = items[takeptr];
-            if (--takeptr == items.length) takeptr = 0;
-            --count;
-            notFull.signalAll();
-            return result;
-        } finally {
-            lock.unlock();
-        }
     }
 }

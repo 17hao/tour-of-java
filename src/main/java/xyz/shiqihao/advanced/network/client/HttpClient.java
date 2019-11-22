@@ -8,13 +8,13 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class HttpClientSendPost {
+public class HttpClient {
     public static void main(String[] args) {
-        HttpClientSendPost client = new HttpClientSendPost();
-        System.out.println(client.sendRequest());
+        HttpClient client = new HttpClient();
+        System.out.println(client.sendPostRequest());
     }
 
-    private String sendRequest() {
+    private String sendPostRequest() {
         try {
             URL url = new URL("http://shiqihao.xyz:9000/users");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();

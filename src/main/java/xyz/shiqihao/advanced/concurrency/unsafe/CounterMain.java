@@ -1,6 +1,6 @@
 package xyz.shiqihao.advanced.concurrency.unsafe;
 
-public class ThreadInterference {
+public class CounterMain {
     static class Inc implements Runnable {
         private Counter counter;
 

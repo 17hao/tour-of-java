@@ -1,6 +1,6 @@
 package xyz.shiqihao.advanced.concurrency;
 
-public class SimulateCAS {
+public class CasSimulator {
     private volatile int count;
 
     private synchronized int cas(int expectation, int newValue) {
@@ -21,7 +21,7 @@ public class SimulateCAS {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        final SimulateCAS demo = new SimulateCAS();
+        final CasSimulator demo = new CasSimulator();
         Thread t1 = new Thread(() -> {
             for (int i = 0; i < 10000; i++) {
                 demo.add();

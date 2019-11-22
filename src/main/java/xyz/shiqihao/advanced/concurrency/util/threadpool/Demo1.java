@@ -3,7 +3,10 @@ package xyz.shiqihao.advanced.concurrency.util.threadpool;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class ThreadPoolDemo {
+/**
+ * FixedThreadPool
+ */
+public class Demo1 {
     private static class MyTask implements Runnable {
         @Override
         public void run() {

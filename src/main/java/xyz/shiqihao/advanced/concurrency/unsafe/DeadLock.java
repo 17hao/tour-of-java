@@ -3,6 +3,9 @@ package xyz.shiqihao.advanced.concurrency.unsafe;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * Deadlock demo.
+ */
 public class DeadLock {
     private static final Object apple = new Object();
     private static final Object pear = new Object();

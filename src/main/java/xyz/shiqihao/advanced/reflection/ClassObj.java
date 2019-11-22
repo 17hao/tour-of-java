@@ -1,5 +1,7 @@
 package xyz.shiqihao.advanced.reflection;
 
+import xyz.shiqihao.advanced.reflection.resource.MyClass;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -10,7 +12,7 @@ import java.lang.reflect.Modifier;
  */
 public class ClassObj {
     public static void main(String[] args) {
-        Class aClass = MyObj.class;
+        Class aClass = MyClass.class;
 
         // Get declared methods
         Method[] methods = aClass.getDeclaredMethods();

@@ -2,7 +2,7 @@ package xyz.shiqihao.advanced.concurrency.unsafe;
 
 import java.util.ArrayList;
 
-public class ArrayListMultiThread {
+public class ThreadUnsafeList {
     private static ArrayList<Integer> list = new ArrayList<>(10);
 
     private static class AddThread implements Runnable {

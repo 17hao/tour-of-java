@@ -1,9 +1,9 @@
-package xyz.shiqihao.advanced.reflection;
+package xyz.shiqihao.advanced.reflection.resource;
 
-public class MyObj extends SuperClass implements MyInterface {
+public class MyClass extends SuperClass implements MyInterface {
     private String str;
 
-    public MyObj(String str, String str2) {
+    public MyClass(String str, String str2) {
         this.str = str;
     }
 
