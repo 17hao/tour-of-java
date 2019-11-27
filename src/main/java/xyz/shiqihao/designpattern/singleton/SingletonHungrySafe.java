@@ -22,3 +22,18 @@ class SingletonHungrySafe {
         return "hungrySafe";
     }
 }
+
+
+class Singleton {
+    private Singleton() {
+    }
+
+    private volatile static Singleton instance = new Singleton();
+
+    static Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+}

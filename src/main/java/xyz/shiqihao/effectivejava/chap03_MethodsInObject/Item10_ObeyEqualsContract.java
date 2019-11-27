@@ -1,4 +1,4 @@
-package xyz.shiqihao.effectivejava.chap03_MethodsCommonToAllObj;
+package xyz.shiqihao.effectivejava.chap03_MethodsInObject;
 
 import java.util.Objects;
 

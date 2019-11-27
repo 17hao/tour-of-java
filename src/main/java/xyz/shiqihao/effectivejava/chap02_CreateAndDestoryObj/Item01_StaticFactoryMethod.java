@@ -4,8 +4,8 @@ import java.math.BigInteger;
 
 public class Item01_StaticFactoryMethod {
     public static void main(String[] args) {
-        Boolean b = Boolean.valueOf(true);
+        String str = String.valueOf(1);
         BigInteger i = BigInteger.valueOf(100);
-        System.out.println(b + " " + i);
+        System.out.println(str + " " + i);
     }
 }
