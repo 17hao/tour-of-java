@@ -6,6 +6,7 @@ package xyz.shiqihao.advanced.jvm.classload;
  * hello, world
  *
  * 子类调用父类的静态字段会加载子类但不会初始化子类,只会初始化父类.
+ * java -XX:+TraceClassLoading
  */
 public class MyTest1 {
     public static void main(String[] args) {
