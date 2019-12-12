@@ -1,4 +1,4 @@
-package xyz.shiqihao.effectivejava.chap03_MethodsInObject;
+package xyz.shiqihao.effectivejava.chap03;
 
 public class Item12_AlwaysOverrideToString {
 }

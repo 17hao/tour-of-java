@@ -1,4 +1,4 @@
-package xyz.shiqihao.effectivejava.chap09_GeneralConcepts;
+package xyz.shiqihao.effectivejava.chap09;
 
 import java.math.BigDecimal;
 

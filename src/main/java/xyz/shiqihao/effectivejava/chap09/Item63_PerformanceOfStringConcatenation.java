@@ -1,4 +1,4 @@
-package xyz.shiqihao.effectivejava.chap09_GeneralConcepts;
+package xyz.shiqihao.effectivejava.chap09;
 
 public class Item63_PerformanceOfStringConcatenation {
     public static void main(String[] args) {

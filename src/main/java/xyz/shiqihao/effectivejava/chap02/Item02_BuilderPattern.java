@@ -1,6 +1,6 @@
-package xyz.shiqihao.effectivejava.chap02_CreateAndDestoryObj;
+package xyz.shiqihao.effectivejava.chap02;
 
-public class Item02_Builder {
+public class Item02_BuilderPattern {
     public static void main(String[] args) {
         Car smart = new Car.Builder("Benz", "v1").color("green").build();
         Car customize = new Car.Builder("Benz", "v8").color("red").license(666).build();

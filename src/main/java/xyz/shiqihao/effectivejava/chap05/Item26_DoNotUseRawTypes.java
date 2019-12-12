@@ -1,4 +1,4 @@
-package xyz.shiqihao.effectivejava.chap05_Generics;
+package xyz.shiqihao.effectivejava.chap05;
 
 import java.util.ArrayList;
 import java.util.Iterator;

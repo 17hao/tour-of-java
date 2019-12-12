@@ -1,4 +1,4 @@
-package xyz.shiqihao.effectivejava.chap04_ClassesAndInterfaces;
+package xyz.shiqihao.effectivejava.chap04;
 
 public class Item17_MinimizeMutability {
 

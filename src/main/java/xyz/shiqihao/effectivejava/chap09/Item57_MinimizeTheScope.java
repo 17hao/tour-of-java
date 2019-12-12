@@ -1,4 +1,4 @@
-package xyz.shiqihao.effectivejava.chap09_GeneralConcepts;
+package xyz.shiqihao.effectivejava.chap09;
 
 /**
  * To minimize the scope of variables, for is better than while

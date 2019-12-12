@@ -1,4 +1,4 @@
-package xyz.shiqihao.effectivejava.chap03_MethodsInObject;
+package xyz.shiqihao.effectivejava.chap03;
 
 import java.util.Objects;
 

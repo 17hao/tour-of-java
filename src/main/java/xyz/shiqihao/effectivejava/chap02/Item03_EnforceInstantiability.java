@@ -1,4 +1,4 @@
-package xyz.shiqihao.effectivejava.chap02_CreateAndDestoryObj;
+package xyz.shiqihao.effectivejava.chap02;
 
 public class Item03_EnforceInstantiability {
 }

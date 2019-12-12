@@ -1,4 +1,4 @@
-package xyz.shiqihao.effectivejava.chap04_ClassesAndInterfaces;
+package xyz.shiqihao.effectivejava.chap04;
 
 public class Item16_UseAccessorMethod {
     static private Point p = new Point(1.0, 2.0, 3.0);
