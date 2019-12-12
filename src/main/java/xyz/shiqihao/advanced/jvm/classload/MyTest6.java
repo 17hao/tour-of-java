@@ -1,4 +1,4 @@
-package xyz.shiqihao.advanced.jvm.classloader;
+package xyz.shiqihao.advanced.jvm.classload;
 
 /**
  * 第一个null代表bootstrap class loader

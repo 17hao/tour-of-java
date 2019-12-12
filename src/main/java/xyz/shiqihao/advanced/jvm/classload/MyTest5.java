@@ -1,4 +1,4 @@
-package xyz.shiqihao.advanced.jvm.classloader;
+package xyz.shiqihao.advanced.jvm.classload;
 
 import java.io.IOException;
 import java.net.URL;
@@ -9,7 +9,7 @@ public class MyTest5 {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         //System.out.println(classLoader);
 
-        String resourceName = "xyz/shiqihao/advanced/jvm/classloader";
+        String resourceName = "xyz/shiqihao/advanced/jvm/classload";
         Enumeration<URL> urls = classLoader.getResources(resourceName);
         while (urls.hasMoreElements()) {
             System.out.println(urls.nextElement());

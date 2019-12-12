@@ -1,4 +1,4 @@
-package xyz.shiqihao.advanced.jvm.classloader;
+package xyz.shiqihao.advanced.jvm.classload;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,8 +22,8 @@ public class ClassLoaderTest {
             }
         };
 
-        Object obj = myLoader.loadClass("xyz.shiqihao.advanced.jvm.classloader.ClassLoaderTest").newInstance();
+        Object obj = myLoader.loadClass("xyz.shiqihao.advanced.jvm.classload.ClassLoaderTest").newInstance();
         System.out.println(obj.getClass());
-        System.out.println(obj instanceof xyz.shiqihao.advanced.jvm.classloader.ClassLoaderTest);
+        System.out.println(obj instanceof xyz.shiqihao.advanced.jvm.classload.ClassLoaderTest);
     }
 }

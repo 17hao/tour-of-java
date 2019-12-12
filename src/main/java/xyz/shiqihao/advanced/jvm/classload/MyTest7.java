@@ -1,4 +1,4 @@
-package xyz.shiqihao.advanced.jvm.classloader;
+package xyz.shiqihao.advanced.jvm.classload;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -66,7 +66,7 @@ public class MyTest7 extends ClassLoader {
     }
 
     public static void test(ClassLoader classLoader) throws Exception {
-        Object object = classLoader.loadClass("xyz.shiqihao.advanced.jvm.classloader.MyTest1").newInstance();
+        Object object = classLoader.loadClass("xyz.shiqihao.advanced.jvm.classload.MyTest1").newInstance();
         System.out.println(object);
     }
 
