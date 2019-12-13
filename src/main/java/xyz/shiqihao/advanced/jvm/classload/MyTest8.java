@@ -6,6 +6,13 @@ package xyz.shiqihao.advanced.jvm.classload;
  */
 public class MyTest8 {
     public static void main(String[] args) {
-        SuperClass[] arr = new SuperClass[10];
+        System.out.println("creating array");
+        Arr[] arr = new Arr[10];
+    }
+}
+
+class Arr {
+    static {
+        System.out.println("class Arr init");
     }
 }
