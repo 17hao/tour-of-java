@@ -1,4 +1,4 @@
-package xyz.shiqihao.advanced.jvm.parameter;
+package xyz.shiqihao.advanced.jvm;
 
 public class Config {
     public static void main(String[] args) {

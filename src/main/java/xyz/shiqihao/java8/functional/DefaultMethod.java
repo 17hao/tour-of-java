@@ -1,6 +1,9 @@
-package xyz.shiqihao.java8;
+package xyz.shiqihao.java8.functional;
 
+@FunctionalInterface
 public interface DefaultMethod {
+    String abstractMethod();
+
     default String defaultMethod() {
         return "this is a default method in interface";
     }

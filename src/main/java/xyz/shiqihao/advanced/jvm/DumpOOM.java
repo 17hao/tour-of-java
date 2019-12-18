@@ -1,4 +1,4 @@
-package xyz.shiqihao.advanced.jvm.parameter;
+package xyz.shiqihao.advanced.jvm;
 
 import java.util.ArrayList;
 import java.util.List;
