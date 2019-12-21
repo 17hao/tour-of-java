@@ -3,8 +3,8 @@ package xyz.shiqihao.misc.grpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import xyz.shiqihao.misc.grpc.helloworld.GreeterGrpc;
-import xyz.shiqihao.misc.grpc.helloworld.HelloReply;
-import xyz.shiqihao.misc.grpc.helloworld.HelloRequest;
+import xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloReply;
+import xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloRequest;
 
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
@@ -19,7 +19,7 @@ public class HelloWorldClient {
         stub = GreeterGrpc.newFutureStub(channel);
     }
 
-    private  HelloWorldClient(String host, int port) {
+    private HelloWorldClient(String host, int port) {
         this(ManagedChannelBuilder.forAddress(host, port)
                 .usePlaintext()
                 .build());

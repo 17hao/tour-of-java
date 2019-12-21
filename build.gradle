@@ -49,8 +49,10 @@ protobuf {
         }
     }
     generateProtoTasks {
-        all()*.plugins {
-            grpc {}
+        all().each {task ->
+            task.plugins {
+                grpc{}
+            }
         }
     }
     generatedFilesBaseDir = "$projectDir/src/main/proto/generated"

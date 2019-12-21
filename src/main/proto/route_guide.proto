@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_package = "xyz.shiqihao.misc.grpc.routeguide";
+option java_outer_classname = "RouteGuideProto";
+
+package routeguide;
+
+service RouteGuide {
+    rpc GetFeature (Point) returns (Feature) {
+    }
+}
+
+message Point {
+    int32 latitude = 1;
+    int32 longitude = 2;
+}
+
+message Feature {
+    string name = 1;
+    Point location = 2;
+}

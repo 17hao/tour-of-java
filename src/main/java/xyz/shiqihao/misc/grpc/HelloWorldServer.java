@@ -4,8 +4,8 @@ import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 import xyz.shiqihao.misc.grpc.helloworld.GreeterGrpc;
-import xyz.shiqihao.misc.grpc.helloworld.HelloReply;
-import xyz.shiqihao.misc.grpc.helloworld.HelloRequest;
+import xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloReply;
+import xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloRequest;
 
 import java.io.IOException;
 import java.util.logging.Logger;

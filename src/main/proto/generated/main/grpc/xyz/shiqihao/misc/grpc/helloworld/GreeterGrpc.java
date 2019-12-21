@@ -30,30 +30,30 @@ public final class GreeterGrpc {
   public static final String SERVICE_NAME = "helloworld.Greeter";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<xyz.shiqihao.misc.grpc.helloworld.HelloRequest,
-      xyz.shiqihao.misc.grpc.helloworld.HelloReply> getSayHelloMethod;
+  private static volatile io.grpc.MethodDescriptor<xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloRequest,
+      xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloReply> getSayHelloMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "SayHello",
-      requestType = xyz.shiqihao.misc.grpc.helloworld.HelloRequest.class,
-      responseType = xyz.shiqihao.misc.grpc.helloworld.HelloReply.class,
+      requestType = xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloRequest.class,
+      responseType = xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloReply.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<xyz.shiqihao.misc.grpc.helloworld.HelloRequest,
-      xyz.shiqihao.misc.grpc.helloworld.HelloReply> getSayHelloMethod() {
-    io.grpc.MethodDescriptor<xyz.shiqihao.misc.grpc.helloworld.HelloRequest, xyz.shiqihao.misc.grpc.helloworld.HelloReply> getSayHelloMethod;
+  public static io.grpc.MethodDescriptor<xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloRequest,
+      xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloReply> getSayHelloMethod() {
+    io.grpc.MethodDescriptor<xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloRequest, xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloReply> getSayHelloMethod;
     if ((getSayHelloMethod = GreeterGrpc.getSayHelloMethod) == null) {
       synchronized (GreeterGrpc.class) {
         if ((getSayHelloMethod = GreeterGrpc.getSayHelloMethod) == null) {
           GreeterGrpc.getSayHelloMethod = getSayHelloMethod = 
-              io.grpc.MethodDescriptor.<xyz.shiqihao.misc.grpc.helloworld.HelloRequest, xyz.shiqihao.misc.grpc.helloworld.HelloReply>newBuilder()
+              io.grpc.MethodDescriptor.<xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloRequest, xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloReply>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "helloworld.Greeter", "SayHello"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  xyz.shiqihao.misc.grpc.helloworld.HelloRequest.getDefaultInstance()))
+                  xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  xyz.shiqihao.misc.grpc.helloworld.HelloReply.getDefaultInstance()))
+                  xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloReply.getDefaultInstance()))
                   .setSchemaDescriptor(new GreeterMethodDescriptorSupplier("SayHello"))
                   .build();
           }
@@ -97,8 +97,8 @@ public final class GreeterGrpc {
      * Sends a greeting
      * </pre>
      */
-    public void sayHello(xyz.shiqihao.misc.grpc.helloworld.HelloRequest request,
-        io.grpc.stub.StreamObserver<xyz.shiqihao.misc.grpc.helloworld.HelloReply> responseObserver) {
+    public void sayHello(xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloRequest request,
+        io.grpc.stub.StreamObserver<xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloReply> responseObserver) {
       asyncUnimplementedUnaryCall(getSayHelloMethod(), responseObserver);
     }
 
@@ -108,8 +108,8 @@ public final class GreeterGrpc {
             getSayHelloMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                xyz.shiqihao.misc.grpc.helloworld.HelloRequest,
-                xyz.shiqihao.misc.grpc.helloworld.HelloReply>(
+                xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloRequest,
+                xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloReply>(
                   this, METHODID_SAY_HELLO)))
           .build();
     }
@@ -141,8 +141,8 @@ public final class GreeterGrpc {
      * Sends a greeting
      * </pre>
      */
-    public void sayHello(xyz.shiqihao.misc.grpc.helloworld.HelloRequest request,
-        io.grpc.stub.StreamObserver<xyz.shiqihao.misc.grpc.helloworld.HelloReply> responseObserver) {
+    public void sayHello(xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloRequest request,
+        io.grpc.stub.StreamObserver<xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloReply> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getSayHelloMethod(), getCallOptions()), request, responseObserver);
     }
@@ -174,7 +174,7 @@ public final class GreeterGrpc {
      * Sends a greeting
      * </pre>
      */
-    public xyz.shiqihao.misc.grpc.helloworld.HelloReply sayHello(xyz.shiqihao.misc.grpc.helloworld.HelloRequest request) {
+    public xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloReply sayHello(xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloRequest request) {
       return blockingUnaryCall(
           getChannel(), getSayHelloMethod(), getCallOptions(), request);
     }
@@ -206,8 +206,8 @@ public final class GreeterGrpc {
      * Sends a greeting
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<xyz.shiqihao.misc.grpc.helloworld.HelloReply> sayHello(
-        xyz.shiqihao.misc.grpc.helloworld.HelloRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloReply> sayHello(
+        xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getSayHelloMethod(), getCallOptions()), request);
     }
@@ -233,8 +233,8 @@ public final class GreeterGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_SAY_HELLO:
-          serviceImpl.sayHello((xyz.shiqihao.misc.grpc.helloworld.HelloRequest) request,
-              (io.grpc.stub.StreamObserver<xyz.shiqihao.misc.grpc.helloworld.HelloReply>) responseObserver);
+          serviceImpl.sayHello((xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloRequest) request,
+              (io.grpc.stub.StreamObserver<xyz.shiqihao.misc.grpc.helloworld.HelloWorldProto.HelloReply>) responseObserver);
           break;
         default:
           throw new AssertionError();
