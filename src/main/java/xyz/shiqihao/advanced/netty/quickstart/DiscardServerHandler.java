@@ -1,4 +1,4 @@
-package xyz.shiqihao.advanced.nio;
+package xyz.shiqihao.advanced.netty.quickstart;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
