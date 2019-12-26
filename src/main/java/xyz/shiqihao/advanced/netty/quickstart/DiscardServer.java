@@ -1,6 +1,5 @@
 package xyz.shiqihao.advanced.netty.quickstart;
 
-
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
