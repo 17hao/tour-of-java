@@ -41,7 +41,7 @@ public class DiscardServer {
     }
 
     public static void main(String[] args) {
-        int port = 9;
+        int port = 9999;
         new DiscardServer(port).run();
     }
 }
