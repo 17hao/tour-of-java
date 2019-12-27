@@ -1,4 +1,4 @@
-package xyz.shiqihao.advanced.nio;
+package xyz.shiqihao.advanced.netty.rownio;
 
 import java.net.InetSocketAddress;
 import java.nio.channels.ServerSocketChannel;

@@ -7,7 +7,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
- * A server implemented by netty api.
+ * A discard server implemented by netty api.
  */
 public class TestServer {
     public static void main(String... args) {

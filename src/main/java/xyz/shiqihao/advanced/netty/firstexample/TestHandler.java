@@ -25,9 +25,13 @@ public class TestHandler extends SimpleChannelInboundHandler<HttpObject> {
         }
     }
 
+    /**
+     * When the callback is be triggered, the event can be handled by the
+     * implementation of ChannelHandler.
+     */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("channel active");
+        System.out.println("Client " + ctx.channel().remoteAddress() + " connected");
         super.channelActive(ctx);
     }
 
