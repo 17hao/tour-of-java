@@ -26,7 +26,7 @@ public class TestHandler extends SimpleChannelInboundHandler<HttpObject> {
     }
 
     /**
-     * When the callback is be triggered, the event can be handled by the
+     * When the callback is triggered, the event can be handled by the
      * implementation of ChannelHandler.
      */
     @Override

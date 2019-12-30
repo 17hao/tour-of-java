@@ -1,4 +1,4 @@
-package xyz.shiqihao.advanced.netty.echoserver;
+package xyz.shiqihao.advanced.netty.example;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -10,10 +10,13 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 import java.net.InetSocketAddress;
 
-public class EchoServer {
+/**
+ * the server receives the msg sent by client and replies.
+ */
+public class MyServer {
     private int port;
 
-    private EchoServer(int port) {
+    private MyServer(int port) {
         this.port = port;
     }
 
@@ -27,7 +30,7 @@ public class EchoServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) {
-                            ch.pipeline().addLast(new EchoServerHandler());
+                            ch.pipeline().addLast(new MyServerHandler());
                         }
                     });
             ChannelFuture f = b.bind().sync();
@@ -41,6 +44,6 @@ public class EchoServer {
 
     public static void main(String[] args) {
         int port = 6666;
-        new EchoServer(port).start();
+        new MyServer(port).start();
     }
 }
