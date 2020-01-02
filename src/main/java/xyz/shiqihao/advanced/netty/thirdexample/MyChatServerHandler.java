@@ -15,9 +15,9 @@ public class MyChatServerHandler extends SimpleChannelInboundHandler<String> {
         Channel channel = ctx.channel();
         channelGroup.forEach(ch -> {
             if (ch != channel) {
-                ch.writeAndFlush(channel.remoteAddress() + " send " + msg);
+                ch.writeAndFlush("[" + channel.remoteAddress() + "]: " + msg + "\n");
             } else {
-                ch.writeAndFlush("[self] " + " send" + msg);
+                ch.writeAndFlush("[self]: " + msg + "\n");
             }
         });
     }
@@ -25,13 +25,14 @@ public class MyChatServerHandler extends SimpleChannelInboundHandler<String> {
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) {
         Channel channel = ctx.channel();
-        ctx.writeAndFlush("[server] - " + channel.remoteAddress() + " connected.\n");
+        channelGroup.writeAndFlush("[server] - " + channel.remoteAddress() + " connected.\n");
+        channelGroup.add(channel);
     }
 
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) {
         Channel channel = ctx.channel();
-        ctx.writeAndFlush("[server] - " + channel.remoteAddress() + " disconnected\n");
+        channelGroup.writeAndFlush("[server] - " + channel.remoteAddress() + " disconnected\n");
     }
 
     @Override
