@@ -1,4 +1,4 @@
-package xyz.shiqihao.advanced.netty.rownio;
+package xyz.shiqihao.advanced.netty.nio;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -9,7 +9,7 @@ import java.nio.channels.FileChannel;
  * FileChannel is an alternative to Java IO api
  * FileChannel + ByteBuffer
  */
-public class FileProcessor {
+public class MyTest {
     public static void main(String[] args) throws IOException {
         RandomAccessFile file = new RandomAccessFile("./src/main/proto/helloworld.proto", "rw");
         FileChannel ch = file.getChannel();

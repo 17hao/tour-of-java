@@ -7,7 +7,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.http.*;
 import io.netty.util.CharsetUtil;
 
-public class TestHandler extends SimpleChannelInboundHandler<HttpObject> {
+public class MyHandler extends SimpleChannelInboundHandler<HttpObject> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, HttpObject msg) {
         System.out.println(msg.getClass());
@@ -22,6 +22,7 @@ public class TestHandler extends SimpleChannelInboundHandler<HttpObject> {
                     .set(HttpHeaderNames.CONTENT_TYPE, "text/plain")
                     .set(HttpHeaderNames.CONTENT_LENGTH, content.readableBytes());
             ctx.writeAndFlush(response);
+            System.out.println("=== separator ===");
         }
     }
 
@@ -31,19 +32,19 @@ public class TestHandler extends SimpleChannelInboundHandler<HttpObject> {
      */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("Client " + ctx.channel().remoteAddress() + " connected");
+        System.out.println("Client: " + ctx.channel().remoteAddress() + " is connected\n");
         super.channelActive(ctx);
     }
 
     @Override
     public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("channel: " + ctx.channel().getClass() + " is registered");
+        System.out.println("Channel: " + ctx.channel().getClass() + " is registered\n");
         super.channelRegistered(ctx);
     }
 
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("handler: " + ctx.handler().getClass() + " is added");
+        System.out.println("Handler: " + ctx.handler().getClass() + " is added\n");
         super.handlerAdded(ctx);
     }
 

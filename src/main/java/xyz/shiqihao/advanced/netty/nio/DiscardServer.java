@@ -1,4 +1,4 @@
-package xyz.shiqihao.advanced.netty.rownio;
+package xyz.shiqihao.advanced.netty.nio;
 
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;

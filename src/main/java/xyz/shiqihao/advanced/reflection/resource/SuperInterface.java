@@ -1,5 +1,5 @@
 package xyz.shiqihao.advanced.reflection.resource;
 
-public interface ParentInterface {
+public interface SuperInterface {
     void doSomething();
 }

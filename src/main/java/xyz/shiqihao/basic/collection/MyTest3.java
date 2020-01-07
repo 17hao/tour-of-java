@@ -2,7 +2,10 @@ package xyz.shiqihao.basic.collection;
 
 import java.util.*;
 
-public class SetDemo {
+/**
+ * different kinds of sets.
+ */
+public class MyTest3 {
     // Store elements in HashMap's key set.
     private final Set<String> hashSet = new HashSet<>();
 
@@ -41,7 +44,7 @@ public class SetDemo {
     }
 
     public static void main(String[] args) {
-        SetDemo demo = new SetDemo();
+        MyTest3 demo = new MyTest3();
         System.out.print("HashSet: ");
         demo.hashSet();
         System.out.print("\nTreeSet: ");

@@ -25,11 +25,3 @@ public class MyClass extends SuperClass implements MyInterface {
     }
 }
 
-class SuperClass {
-}
-
-interface MyInterface {
-    void method1();
-
-    String method2(String... params);
-}

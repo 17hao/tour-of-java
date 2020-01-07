@@ -1,9 +1,8 @@
 package xyz.shiqihao.advanced.reflection.resource;
 
-public class ChildClass_1 implements ParentInterface {
-
+public class SubClass2 implements SuperInterface {
     @Override
     public void doSomething() {
-        System.out.println("i am child class 1");
+        System.out.println("I am child class 2");
     }
 }

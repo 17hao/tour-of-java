@@ -3,7 +3,10 @@ package xyz.shiqihao.advanced.network;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-public class GetInetAddress {
+/**
+ * find the ip address of a host.
+ */
+public class MyTest1 {
     public static void main(String[] args) {
         try {
             System.out.println(InetAddress.getByName("shiqihao.xyz"));

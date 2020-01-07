@@ -13,7 +13,7 @@ import io.netty.handler.codec.http.HttpServerCodec;
 /**
  * A http server implemented by netty api.
  */
-public class TestHttpServer {
+public class MyHttpServer {
     public static void main(String... args) {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
@@ -26,10 +26,11 @@ public class TestHttpServer {
                         protected void initChannel(SocketChannel ch) {
                             ChannelPipeline pipeline = ch.pipeline();
                             pipeline.addLast("httpServerCodec", new HttpServerCodec());
-                            pipeline.addLast("testHandler", new TestHandler());
+                            pipeline.addLast("testHandler", new MyHandler());
                         }
                     });
-            ChannelFuture channelFuture = serverBootstrap.bind(6666).sync();
+            System.out.println("server is running...\n");
+            ChannelFuture channelFuture = serverBootstrap.bind(80).sync();
             channelFuture.channel().closeFuture().sync();
         } catch (Exception e) {
             e.printStackTrace();

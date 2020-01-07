@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class LowPortScanner {
+/**
+ * find the low ports used.
+ */
+public class MyTest3 {
 
     public static void main(String[] args) {
         final String HOST = args.length > 0 ? args[0] : "127.0.0.1";

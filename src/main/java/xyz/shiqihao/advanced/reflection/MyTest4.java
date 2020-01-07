@@ -8,11 +8,11 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 /**
- * Basic usage of instance of Class
+ * basic usage of Class object.
  */
-public class ClassObj {
+public class MyTest4 {
     public static void main(String[] args) {
-        Class aClass = MyClass.class;
+        Class<MyClass> aClass = MyClass.class;
 
         // Get declared methods
         Method[] methods = aClass.getDeclaredMethods();
@@ -31,22 +31,22 @@ public class ClassObj {
         System.out.println(pkg.getName());
 
         // Get superclass
-        Class superclass = aClass.getSuperclass();
+        Class<?> superclass = aClass.getSuperclass();
         System.out.println(superclass.getSimpleName());
 
         // Get interfaces
-        Class[] interfaces = aClass.getInterfaces();
-        for (Class c : interfaces) {
+        Class<?>[] interfaces = aClass.getInterfaces();
+        for (Class<?> c : interfaces) {
             System.out.println(c.getName());
         }
 
         // Get constructors
-        Constructor[] constructors = aClass.getConstructors();
-        for (Constructor c : constructors) {
+        Constructor<?>[] constructors = aClass.getConstructors();
+        for (Constructor<?> c : constructors) {
             System.out.println(c.getName());
         }
 
         // modifier
-        System.out.println(Modifier.isPublic(ClassObj.class.getModifiers()));
+        System.out.println(Modifier.isPublic(MyTest4.class.getModifiers()));
     }
 }

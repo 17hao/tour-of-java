@@ -18,6 +18,8 @@ dependencies {
             'com.google.code.gson:gson:2.8.5',
             'org.apache.logging.log4j:log4j-api:2.12.1',
             'org.apache.logging.log4j:log4j-core:2.12.1',
+            'org.slf4j:slf4j-api:1.7.25',
+            'org.slf4j:slf4j-simple:1.7.25',
             'redis.clients:jedis:2.9.0',
             'org.apache.kafka:kafka-clients:2.3.0',
             'javax.inject:javax.inject:1',

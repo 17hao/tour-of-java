@@ -18,12 +18,12 @@ public class Demo1 {
     public static void main(String[] args) {
         List<String> l1 = new ArrayList<>();
         List<String> l2 = new ArrayList<>();
-        List[] a = {l1, l2};
-        Collection<List> c = new ArrayList<>();
+        List<?>[] a = {l1, l2};
+        Collection<List<?>> c = new ArrayList<>();
         fromArrToCollection(a, c);
         // fromArrayToCollection(a, c); Compile time error!
 
-        boolean isObject  = Collection.class.isAssignableFrom(Object.class);
+        boolean isObject = Collection.class.isAssignableFrom(Object.class);
         System.out.println(isObject); // false
     }
 }

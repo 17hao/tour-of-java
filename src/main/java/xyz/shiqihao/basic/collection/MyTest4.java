@@ -3,7 +3,7 @@ package xyz.shiqihao.basic.collection;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Test {
+public class MyTest4 {
     public static void main(String[] args) {
         List<List<Integer>> ll = new ArrayList<>();
         List<Integer> l = new ArrayList<>();

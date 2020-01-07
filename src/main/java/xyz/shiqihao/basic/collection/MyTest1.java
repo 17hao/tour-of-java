@@ -5,13 +5,16 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class MapDemo {
+/**
+ * different kind of maps
+ */
+public class MyTest1 {
     private Map<String, String> hashMap = new HashMap<>();
     private Map<String, String> treeMap = new TreeMap<>();
     private Map<String, String> linkedHashMap = new LinkedHashMap<>();
 
     public static void main(String[] args) {
-        MapDemo demo = new MapDemo();
+        MyTest1 demo = new MyTest1();
 
         String res = demo.hashMap.put("k1", "v1");
         System.out.println(res);

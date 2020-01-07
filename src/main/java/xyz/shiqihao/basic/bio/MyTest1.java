@@ -2,7 +2,11 @@ package xyz.shiqihao.basic.bio;
 
 import java.io.*;
 
-public class CopyBytes {
+/**
+ * copy by byte
+ * inputstream/outputstream
+ */
+public class MyTest1 {
     public static void main(String[] args) {
         try (
                 InputStream is = new FileInputStream(new File("./src/main/resources/input.txt"));

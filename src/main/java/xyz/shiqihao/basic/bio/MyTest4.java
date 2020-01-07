@@ -4,7 +4,10 @@ import java.io.*;
 import java.net.URL;
 import java.util.Base64;
 
-public class UrlDownload {
+/**
+ * download images by url.
+ */
+public class MyTest4 {
     public static void main(String[] args) throws Exception {
         String i = "https://statics.growingio.com/media/20190730/3/1564542344548/0730img.jpeggg";
         String image = "image.jpg";

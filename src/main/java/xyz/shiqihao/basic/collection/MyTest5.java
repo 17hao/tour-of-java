@@ -2,7 +2,7 @@ package xyz.shiqihao.basic.collection;
 
 import java.util.*;
 
-public class RemoveDuplicates {
+public class MyTest5 {
     public static void main(String[] args) {
         List<Integer> list = new ArrayList<>();
         list.add(1);

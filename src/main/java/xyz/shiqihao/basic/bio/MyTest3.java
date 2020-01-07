@@ -2,7 +2,10 @@ package xyz.shiqihao.basic.bio;
 
 import java.io.*;
 
-public class CopyLines {
+/**
+ * copy by line.
+ */
+public class MyTest3 {
     public static void main(String[] args) {
         try (
                 BufferedReader reader = new BufferedReader(new FileReader("F:\\javacode\\src\\xyz.shiqihao.etc\\io\\xanadu.txt"));

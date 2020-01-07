@@ -2,7 +2,11 @@ package xyz.shiqihao.basic.bio;
 
 import java.io.*;
 
-public class CopyCharacters {
+/**
+ * copy by character
+ * reader/writer
+ */
+public class MyTest2 {
     public static void main(String[] args) {
         try (
                 Reader reader = new FileReader(new File("./src/main/resources/input.txt"));
