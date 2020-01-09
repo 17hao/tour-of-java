@@ -5,15 +5,15 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 
 public class Demo1 {
-    private final ToBeInjected toBeInjected;
+    private final AClass AClass;
 
     @Inject
-    Demo1(ToBeInjected toBeInjected) {
-        this.toBeInjected = toBeInjected;
+    Demo1(AClass AClass) {
+        this.AClass = AClass;
     }
 
     int doSomething() {
-        return toBeInjected.subtract(10, 1);
+        return AClass.subtract(10, 1);
     }
 
     public static void main(String[] args) {

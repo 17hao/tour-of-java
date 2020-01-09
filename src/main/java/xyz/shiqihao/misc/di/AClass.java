@@ -2,9 +2,9 @@ package xyz.shiqihao.misc.di;
 
 import javax.inject.Inject;
 
-class ToBeInjected {
+class AClass {
     @Inject
-    ToBeInjected() {
+    AClass() {
 
     }
 
