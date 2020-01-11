@@ -1,46 +1,49 @@
-package xyz.shiqihao.advanced.netty.quickstart;
+package xyz.shiqihao.advanced.netty.discard;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
+/**
+ * Discards any incoming data.<br>
+ * <a href = "https://tools.ietf.org/html/rfc863">https://tools.ietf.org/html/rfc863</a>
+ */
 public class DiscardServer {
     private final int port;
 
-    private DiscardServer(int port) {
+    public DiscardServer(int port) {
         this.port = port;
     }
 
-    public void run() {
+    private void run() {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
             ServerBootstrap b = new ServerBootstrap();
-            b.group(bossGroup, workerGroup)
-                    .channel(NioServerSocketChannel.class)
+            b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
-                        public void initChannel(SocketChannel ch) {
+                        protected void initChannel(SocketChannel ch) {
                             ch.pipeline().addLast(new DiscardServerHandler());
                         }
-                    })
-                    .option(ChannelOption.SO_BACKLOG, 128)
-                    .childOption(ChannelOption.SO_KEEPALIVE, true);
-
+                    });
             ChannelFuture f = b.bind(port).sync();
             f.channel().closeFuture().sync();
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            bossGroup.shutdownGracefully();
+            workerGroup.shutdownGracefully();
         }
     }
 
     public static void main(String[] args) {
-        int port = 9999;
-        new DiscardServer(port).run();
+        int port = 9; // default discard protocol port
+        DiscardServer server = new DiscardServer(port);
+        server.run();
     }
 }
