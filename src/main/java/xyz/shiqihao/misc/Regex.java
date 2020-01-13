@@ -17,5 +17,7 @@ public class Regex {
         for (String s : list) {
             System.out.println(s);
         }
+        String s = "【title】string";
+        System.out.println(s.replaceFirst("【.*?】", ""));
     }
 }
