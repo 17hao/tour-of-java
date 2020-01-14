@@ -1,35 +1,23 @@
 package xyz.shiqihao.advanced.concurrency.juc.sync;
 
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
+import com.google.common.util.concurrent.RateLimiter;
 
 /**
- * ReentrantLock and condition demo
+ * Guava中RateLimiter的基本用法
  */
-public class MyTest3 implements Runnable {
-    private static ReentrantLock lock = new ReentrantLock();
-    private static Condition condition = lock.newCondition();
+public class MyTest3 {
+    static RateLimiter limiter = RateLimiter.create(2);
+     static class Task implements Runnable {
+         @Override
+         public void run() {
+             System.out.println(System.currentTimeMillis());
+         }
+     }
 
-    @Override
-    public void run() {
-        try {
-            lock.lock();
-            condition.await();
-            System.out.println("thread is going on");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            lock.unlock();
+    public static void main(String[] args) {
+        for (int i = 0; i < 20; i++) {
+            limiter.acquire();
+            new Thread(new Task()).start();
         }
-    }
-
-    public static void main(String[] args) throws InterruptedException {
-        MyTest3 t1 = new MyTest3();
-        Thread thread = new Thread(t1);
-        thread.start();
-        Thread.sleep(1);
-        lock.lock();
-        condition.signal();
-        lock.unlock();
     }
 }

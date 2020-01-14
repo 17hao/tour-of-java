@@ -1,62 +1,36 @@
 package xyz.shiqihao.advanced.concurrency.juc.sync;
 
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.Random;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
- * ReadWriteLock demo
+ * CountDownLatch基本用法
  */
-public class MyTest2 {
-    private Lock lock = new ReentrantLock();
-    private ReentrantReadWriteLock readWriteLock = new ReentrantReadWriteLock();
-    private ReentrantReadWriteLock.ReadLock readLock = readWriteLock.readLock();
-    private ReentrantReadWriteLock.WriteLock writeLock = readWriteLock.writeLock();
-    private int value;
+public class MyTest2 implements Runnable {
+    private CountDownLatch counter = new CountDownLatch(10);
 
-    private int read(Lock lock) {
+    @Override
+    public void run() {
         try {
-            lock.lock();
-            Thread.sleep(1000);
-            return value;
+            int time = new Random().nextInt(1000);
+            System.out.println("after " + time + " mills, check finished.");
+            Thread.sleep(time);
+            counter.countDown();
         } catch (InterruptedException e) {
             e.printStackTrace();
-            return value;
-        } finally {
-            lock.unlock();
         }
     }
 
-    private void write(Lock lock) {
-        try {
-            lock.lock();
-            Thread.sleep(1000);
-            value = 1;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
         MyTest2 demo = new MyTest2();
-        Runnable readHandler = () -> {
-            //demo.read(demo.lock);
-            demo.read(demo.readLock);
-        };
-
-        Runnable writeHandler = () -> {
-            //demo.write(demo.lock);
-            demo.write(demo.writeLock);
-        };
-
-        for (int i = 0; i < 18; i++) {
-            new Thread(readHandler).start();
+        ExecutorService service = Executors.newFixedThreadPool(10);
+        for (int i = 0; i < 10; i++) {
+            service.submit(demo);
         }
-
-        for (int i = 0; i < 2; i++) {
-            new Thread(writeHandler).start();
-        }
+        demo.counter.await();
+        System.out.println("check finished");
+        service.shutdown();
     }
 }

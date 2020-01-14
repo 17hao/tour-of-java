@@ -1,36 +1,35 @@
 package xyz.shiqihao.advanced.concurrency.juc.sync;
 
-import java.util.Random;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Semaphore;
 
 /**
- * CountDownLatch demo
+ * Semaphore基本用法
  */
-public class MyTest1 implements Runnable {
-    private CountDownLatch counter = new CountDownLatch(10);
+public class MyTest1 {
+    static Semaphore semaphore = new Semaphore(5);
 
-    @Override
-    public void run() {
-        try {
-            int time = new Random().nextInt(1000);
-            System.out.println("after " + time + " mills, check finished.");
-            Thread.sleep(time);
-            counter.countDown();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+    static class Task implements Runnable {
+        @Override
+        public void run() {
+            try {
+                semaphore.acquire();
+                Thread.sleep(200);
+                System.out.println(Thread.currentThread().getName() + " is done!");
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                semaphore.release();
+            }
         }
     }
 
-    public static void main(String[] args) throws InterruptedException{
-        MyTest1 demo = new MyTest1();
-        ExecutorService service = Executors.newFixedThreadPool(10);
-        for (int i = 0; i < 10; i++) {
-            service.submit(demo);
+    public static void main(String[] args) {
+        ExecutorService es = Executors.newFixedThreadPool(20);
+        for (int i = 0; i < 20; i++) {
+            es.submit(new Task());
         }
-        demo.counter.await();
-        System.out.println("check finished");
-        service.shutdown();
+        es.shutdown();
     }
 }
