@@ -1,10 +1,13 @@
-package xyz.shiqihao.advanced.concurrency;
+package xyz.shiqihao.advanced.concurrency.pattern;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-public class CompletableFutureTest {
+/**
+ * CompleteFuture基本用法
+ */
+public class MyTest2 {
     static class MySupplier implements Supplier<Integer> {
 
         @Override

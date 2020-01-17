@@ -1,8 +1,11 @@
-package xyz.shiqihao.advanced.concurrency;
+package xyz.shiqihao.advanced.concurrency.pattern;
 
 import java.util.concurrent.*;
 
-public class FutureDemo {
+/**
+ * Future基本用法
+ */
+public class MyTest1 {
     private ExecutorService es = new ThreadPoolExecutor(5, 5,
             0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(10));
 
@@ -13,7 +16,7 @@ public class FutureDemo {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        FutureDemo demo = new FutureDemo();
+        MyTest1 demo = new MyTest1();
         Future<Integer> future = demo.computeInFuture(1, 2);
         CountDownLatch signal = new CountDownLatch(10);
         for (int i = 0; i < 10; i++) {
