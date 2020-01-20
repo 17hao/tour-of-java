@@ -1,0 +1,27 @@
+package xyz.shiqihao.advanced.concurrency.pattern.guarded_suspension;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+/**
+ * J.U.C中的LinkedBlockingQueue
+ */
+public class RequestQueue {
+    private Queue<Request> queue = new LinkedList<>();
+
+    public synchronized Request getRequest() {
+        while (queue.peek() == null) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        return queue.remove();
+    }
+
+    public synchronized void putRequest(Request r) {
+        queue.offer(r);
+        notifyAll();
+    }
+}
