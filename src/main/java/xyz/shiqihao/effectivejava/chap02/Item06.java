@@ -2,14 +2,17 @@ package xyz.shiqihao.effectivejava.chap02;
 
 import java.util.regex.Pattern;
 
-public class Item06_AvoidCreateUnnecessaryObj {
+/**
+ * Avoid create unnecessary objects.
+ */
+public class Item06 {
     /**
      * We don't use `new` to create a String object.
      * Because the String literal is interned in JVM.
-     * String a = "abc", b = "a";
-     * a == b -> True
+     * String a = "abc", b = "abc";
+     * a == b is True
      * String a = new String("a"), b = new String("a");
-     * a == b -> False
+     * a == b is False
      */
 
     // DON'T DO THIS!

@@ -2,7 +2,10 @@ package xyz.shiqihao.effectivejava.chap02;
 
 import java.io.*;
 
-public class Item09_PreferTryWithResources {
+/**
+ * Prefer try-with-resource to try-finally
+ */
+public class Item09 {
     /**
      * try-finally: No longer the best way to close resources
      */

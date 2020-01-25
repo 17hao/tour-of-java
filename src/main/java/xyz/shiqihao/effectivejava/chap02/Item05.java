@@ -2,7 +2,10 @@ package xyz.shiqihao.effectivejava.chap02;
 
 import java.util.Objects;
 
-public class Item05_PreferDI {
+/**
+ * Prefer dependency injection to hardwiring resources.
+ */
+public class Item05 {
     public static void main(String[] args) {
         SpellChecker zh = new SpellChecker(new Lexicon("zh"));
         SpellChecker en = new SpellChecker(new Lexicon("en"));
@@ -11,8 +14,9 @@ public class Item05_PreferDI {
 }
 
 /**
- * What is required is the ability to support multi instances of the class(in our example, SpellChecker)
- * If we need a SpellChecker supports multi languages,
+ * What required is the ability to support multi instances of
+ * the class(in our example, SpellChecker).
+ * We need several kinds of SpellCheckers support multi languages,
  */
 class SpellChecker {
     // Inappropriate use of static utility

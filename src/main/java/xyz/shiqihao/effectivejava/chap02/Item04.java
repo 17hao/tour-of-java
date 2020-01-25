@@ -1,11 +1,11 @@
 package xyz.shiqihao.effectivejava.chap02;
 
-public class Item03_EnforceInstantiability {
+/**
+ * Noninstantiable utility class.
+ */
+public class Item04 {
 }
 
-/**
- * Noninstantiable utility class
- */
 class Tool {
     static int sum(int a, int b) {
         return a + b;
