@@ -7,6 +7,24 @@ public class User {
     private String city;
     private String password;
 
+    /**
+     * java bean需要一个默认的无参构造方法, 当显示提供
+     * 一个有参构造方法时, 除非显示定义否则无参构造方法会失效.
+     */
+    public User() {
+    }
+
+    /**
+     * mybatis查询数据库部分字段返回null时, 可以添加一个为null值对应字段赋值的构造方法.
+     */
+    public User(int id, String name, String password) {
+        this.id = id;
+        this.name = name;
+        this.age = 0;
+        this.city = null;
+        this.password = password;
+    }
+
     public User(int id, String name, int age, String city, String password) {
         this.id = id;
         this.name = name;
