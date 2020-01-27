@@ -1,9 +1,11 @@
 package xyz.shiqihao.advanced.reflection.resource;
 
-import java.util.List;
-
+@A("class")
 public class C {
-    private int method1(String s, List<Integer> l, int i) {
-        return i * Integer.parseInt(s);
+    @A("field")
+    int aField;
+
+    @A("method")
+    void aMethod(@A("param") String param) {
     }
 }
