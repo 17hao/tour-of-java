@@ -1,4 +1,4 @@
-package xyz.shiqihao.designpattern.creational.factory;
+package xyz.shiqihao.designpattern.creational.abstractfactory.example_1;
 
 public class Consumer {
     public static void main(String[] args) {

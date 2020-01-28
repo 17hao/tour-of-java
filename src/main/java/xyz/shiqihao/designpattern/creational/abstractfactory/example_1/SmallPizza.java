@@ -1,4 +1,4 @@
-package xyz.shiqihao.designpattern.creational.factory;
+package xyz.shiqihao.designpattern.creational.abstractfactory.example_1;
 
 class SmallPizza extends Pizza {
     SmallPizza(String name, double price) {

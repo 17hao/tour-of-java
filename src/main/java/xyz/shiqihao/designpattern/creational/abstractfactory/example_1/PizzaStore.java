@@ -1,4 +1,4 @@
-package xyz.shiqihao.designpattern.creational.factory;
+package xyz.shiqihao.designpattern.creational.abstractfactory.example_1;
 
 abstract class PizzaStore {
     abstract Pizza createPizza(String type);
