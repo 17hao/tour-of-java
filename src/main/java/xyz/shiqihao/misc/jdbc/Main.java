@@ -1,14 +1,17 @@
 package xyz.shiqihao.misc.jdbc;
 
+import org.apache.ibatis.datasource.pooled.PooledDataSource;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * JDBC的关键组件:
- * 1. Connection(获取Connection的2种方式)
- * 2. Statement/PreparedStatement
- * 3. ResultSet
+ * 使用JDBC的模板流程:
+ * 1. 获取Connection(DataSource是更推荐的方式)
+ * 2. 创建Statement/PreparedStatement
+ * 3. 执行步骤2中的对象, 获取ResultSet
+ * 4. 对ResultSet进行处理
  * JDBC4以后不用手动用Class.forName("org.postgresql.Driver")的方式注册
  */
 public class Main {
@@ -46,7 +49,7 @@ public class Main {
             getUser.setInt(1, 1);
             ResultSet rs2 = getUser.executeQuery();
             while (rs2.next()) {
-                System.out.println(args[0] + ": " + rs2.getString(args[0]));
+                System.out.println("id: 1, name: " + rs2.getString(2));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -54,13 +57,14 @@ public class Main {
     }
 
     private Connection getConnection() {
-        Connection connection = null;
+        Connection conn = null;
         try {
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres",
-                    "apps", "");
+            conn = new PooledDataSource("org.postgresql.Driver",
+                    "jdbc:postgresql://localhost:5432/postgres",
+                    "apps", "").getConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return connection;
+        return conn;
     }
 }
