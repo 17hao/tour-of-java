@@ -4,6 +4,12 @@ plugins {
     id "com.google.protobuf" version "0.8.8"
 }
 
+group = 'xyz.shiqihao'
+description = 'java-tour'
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
 repositories {
     mavenLocal()
     maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
@@ -34,13 +40,6 @@ dependencies {
             'org.mybatis:mybatis:3.5.3',
             'org.postgresql:postgresql:42.2.9'
     )
-}
-
-group = 'xyz.shiqihao'
-version = '1.0-SNAPSHOT'
-description = 'javacode'
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
 }
 
 sourceSets {

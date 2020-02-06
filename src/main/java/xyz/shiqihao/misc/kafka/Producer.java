@@ -1,20 +1,34 @@
 package xyz.shiqihao.misc.kafka;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.util.Properties;
 
 public class Producer {
-    static private Properties kafkaProperties = new Properties();
+    private static final String TOPIC = "test";
 
     public static void main(String[] args) {
-        kafkaProperties.put("bootstrap.servers", "localhost:9092");
-        kafkaProperties.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        kafkaProperties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        KafkaProducer<String, String> producer = new KafkaProducer<>(kafkaProperties);
-        ProducerRecord<String, String> record = new ProducerRecord<>("test", "country", "China");
-        producer.send(record);
+        Properties props = initConf();
+        KafkaProducer<String, String> producer = new KafkaProducer<>(props);
+        ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC, "country", "China");
+        producer.send(record, (metadata, exception) -> {
+            if (exception != null) {
+                exception.printStackTrace();
+            } else {
+                System.out.println(metadata.topic() + "-" + metadata.partition() + ":" + metadata.offset());
+            }
+        });
         producer.close();
+    }
+
+    private static Properties initConf() {
+        Properties conf = new Properties();
+        conf.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        conf.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        conf.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        return conf;
     }
 }
