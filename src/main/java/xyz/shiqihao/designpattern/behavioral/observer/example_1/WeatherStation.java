@@ -1,4 +1,4 @@
-package xyz.shiqihao.designpattern.behavioral.observer;
+package xyz.shiqihao.designpattern.behavioral.observer.example_1;
 
 import java.util.ArrayList;
 import java.util.List;

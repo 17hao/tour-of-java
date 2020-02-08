@@ -26,7 +26,7 @@ public class Consumer {
                 System.out.println("partition: " + info.partition() + ", leader: " + info.leader() +
                         ", topic: " + info.topic());
             }
-            // consumer.subscribe(Collections.singletonList("test"));
+            // consumer.subscribe(Collections.singletonList("test")); // 有自动再均衡的功能
             consumer.assign(partitions);
             while (true) {
                 ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(1000));

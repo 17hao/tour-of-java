@@ -1,4 +1,4 @@
-package xyz.shiqihao.designpattern.behavioral.observer;
+package xyz.shiqihao.designpattern.behavioral.observer.example_1;
 
 /**
  * Shared actions between `ConditionsDisplay`s
