@@ -11,46 +11,41 @@ import java.util.Random;
 public class PassByValue {
     public static void main(String[] args) {
         Dog myDog = new Dog("Mimi");
+        Dog fooDog = foo(myDog);
+        System.out.println(myDog == fooDog); // false
 
-        System.out.println("the dog is changed before foo(myDog)? " + !myDog.getName().equals("Mimi"));
-        foo(myDog);
-        System.out.println("the dog is changed after foo(myDog)? " + myDog.getName().equals("Mimi"));
-        System.out.println("\n===\n");
-
-        Dog barDog = bar(myDog);
-        System.out.println("1) myDog still points to original object: " + myDog.getName().equals("barDog"));
-        System.out.println("2) myDog points to the new Dog object instantiated in bar method: " + myDog.getName().equals("renameBarDog"));
-        System.out.println("3) reference myDog and barDog are the same: " + (barDog == myDog));
-        System.out.println("4) whether oldDog and the dog from bar(myDog) is the same dog: " + (myDog == barDog));
-        System.out.println("\n===\n");
-
-        System.out.println(method1());
+        String str = "";
+        bar(str);
+        System.out.println(str); // ""
     }
 
     /**
      * 考虑这个例子:
-     * Dog d = new Dog("d");
-     * Dog newD = bar(d);
-     * d是一个引用, 可以把它简单理解成一个内存地址类似于C的指针, 它指向真正的Dog对象(以下简记为dog1), 假设指向地址42.
-     * 在这次调用bar(d)方法中, AAA行真正改变了对象dog1的名字;
-     * BBB行实例化了一个新的对象(简记为dog2), 假设存储在内存地71这个位置.
-     * 关键点在于d这个引用依旧指向dog1对象, 也就是地址42. 指向地址71上的对象的引用是myDog.
-     * 在Java和C中可以修改引用/指针指向的内存空间的值, 但是不能直接修改引用/指针的值.
+     * Dog myDog = new Dog("myD");
+     * Dog fooDog = foo(myDog);
+     * myDog是一个引用, 可以把它简单理解成一个内存地址类似于C的指针, 它指向真正的Dog对象(以下简记为outsideDog), 假设指向地址42.
+     * 在这次调用foo(myDog))方法中, AAA行改变了对象outsideDog的名字;
+     * BBB行实例化了一个新的对象(简记为insideDog), 假设存储在内存地址71这个位置.
+     * 关键点在于myDog这个引用依旧指向outsideDog对象, 也就是地址42. 指向地址71上的对象的引用是fooDog. 假如传递给foo()的
+     * 是outsideDog的引用(内存地址42), BBB行中这个引用指向的位置可以直接改变为insideDog的地址(71).
+     * <p>
+     * 在Java和C类似, 你可以申请一个指针, 并将指针传递给方法, 在方法中可以修改指针所指向位置上的内容,
+     * 但是不能改变指针指向的位置. 也就是指针指向的内存空间中的数据被传递给被调用的方法并被修改了, 但是指针指向的位置无法被改变.
      */
-    private static Dog bar(Dog myDog) {
-        myDog.setName("barDog"); // AAA
-        myDog = new Dog("newDog"); // BBB
-        myDog.setName("renameBarDog"); // CCC
-        return myDog;
+    private static Dog foo(Dog fooD) {
+        fooD.setName("fooDog"); // AAA
+        fooD = new Dog("newDog"); // BBB
+        fooD.setName("renameFooDog"); // CCC
+        return fooD;
     }
 
     /**
-     * 如果Java是按引用传递, DDD行代码会将传入方法的引用指向一个新的对象(新的内存地址).
-     * 但是调用foo(Dog d)方法时传入的引用并没有被改变, 依旧指向旧的对象(旧的内存地址).
-     * Java是按值传递的, 但是却传递了值的引用, 所以容易引起误解.
+     * 字符串对象创建过程: 首先在字符串常量池中寻找是否有已被创建的对象, 如果直接将引用指向该对象, 如果没新创建一个.
+     * DDD行中创建了新的String对象. 传递进来的n的值为"", "name"在常量池中不存在. 新建一个对象. 但是调用bar()的main()
+     * 中str指向的值并未被改变.
      */
-    private static void foo(Dog d) {
-        d = new Dog("Fifi"); // DDD
+    private static void bar(String n) {
+        n = "name"; // DDD
     }
 
     private static List<List<Integer>> method1() {
