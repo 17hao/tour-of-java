@@ -1,4 +1,4 @@
-package xyz.shiqihao.misc.grpc;
+package xyz.shiqihao.misc.grpc.helloworld;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
