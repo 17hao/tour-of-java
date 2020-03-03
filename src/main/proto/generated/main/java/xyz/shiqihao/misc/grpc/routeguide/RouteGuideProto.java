@@ -556,6 +556,932 @@ public final class RouteGuideProto {
 
   }
 
+  public interface RectangleOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:routeguide.Rectangle)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * One corner of the rectangle.
+     * </pre>
+     *
+     * <code>.routeguide.Point lo = 1;</code>
+     */
+    boolean hasLo();
+    /**
+     * <pre>
+     * One corner of the rectangle.
+     * </pre>
+     *
+     * <code>.routeguide.Point lo = 1;</code>
+     */
+    xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point getLo();
+    /**
+     * <pre>
+     * One corner of the rectangle.
+     * </pre>
+     *
+     * <code>.routeguide.Point lo = 1;</code>
+     */
+    xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.PointOrBuilder getLoOrBuilder();
+
+    /**
+     * <pre>
+     * The other corner of the rectangle.
+     * </pre>
+     *
+     * <code>.routeguide.Point hi = 2;</code>
+     */
+    boolean hasHi();
+    /**
+     * <pre>
+     * The other corner of the rectangle.
+     * </pre>
+     *
+     * <code>.routeguide.Point hi = 2;</code>
+     */
+    xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point getHi();
+    /**
+     * <pre>
+     * The other corner of the rectangle.
+     * </pre>
+     *
+     * <code>.routeguide.Point hi = 2;</code>
+     */
+    xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.PointOrBuilder getHiOrBuilder();
+  }
+  /**
+   * Protobuf type {@code routeguide.Rectangle}
+   */
+  public  static final class Rectangle extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:routeguide.Rectangle)
+      RectangleOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Rectangle.newBuilder() to construct.
+    private Rectangle(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Rectangle() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Rectangle();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Rectangle(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point.Builder subBuilder = null;
+              if (lo_ != null) {
+                subBuilder = lo_.toBuilder();
+              }
+              lo_ = input.readMessage(xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(lo_);
+                lo_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point.Builder subBuilder = null;
+              if (hi_ != null) {
+                subBuilder = hi_.toBuilder();
+              }
+              hi_ = input.readMessage(xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(hi_);
+                hi_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.internal_static_routeguide_Rectangle_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.internal_static_routeguide_Rectangle_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle.class, xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle.Builder.class);
+    }
+
+    public static final int LO_FIELD_NUMBER = 1;
+    private xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point lo_;
+    /**
+     * <pre>
+     * One corner of the rectangle.
+     * </pre>
+     *
+     * <code>.routeguide.Point lo = 1;</code>
+     */
+    public boolean hasLo() {
+      return lo_ != null;
+    }
+    /**
+     * <pre>
+     * One corner of the rectangle.
+     * </pre>
+     *
+     * <code>.routeguide.Point lo = 1;</code>
+     */
+    public xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point getLo() {
+      return lo_ == null ? xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point.getDefaultInstance() : lo_;
+    }
+    /**
+     * <pre>
+     * One corner of the rectangle.
+     * </pre>
+     *
+     * <code>.routeguide.Point lo = 1;</code>
+     */
+    public xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.PointOrBuilder getLoOrBuilder() {
+      return getLo();
+    }
+
+    public static final int HI_FIELD_NUMBER = 2;
+    private xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point hi_;
+    /**
+     * <pre>
+     * The other corner of the rectangle.
+     * </pre>
+     *
+     * <code>.routeguide.Point hi = 2;</code>
+     */
+    public boolean hasHi() {
+      return hi_ != null;
+    }
+    /**
+     * <pre>
+     * The other corner of the rectangle.
+     * </pre>
+     *
+     * <code>.routeguide.Point hi = 2;</code>
+     */
+    public xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point getHi() {
+      return hi_ == null ? xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point.getDefaultInstance() : hi_;
+    }
+    /**
+     * <pre>
+     * The other corner of the rectangle.
+     * </pre>
+     *
+     * <code>.routeguide.Point hi = 2;</code>
+     */
+    public xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.PointOrBuilder getHiOrBuilder() {
+      return getHi();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (lo_ != null) {
+        output.writeMessage(1, getLo());
+      }
+      if (hi_ != null) {
+        output.writeMessage(2, getHi());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (lo_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getLo());
+      }
+      if (hi_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getHi());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle)) {
+        return super.equals(obj);
+      }
+      xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle other = (xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle) obj;
+
+      if (hasLo() != other.hasLo()) return false;
+      if (hasLo()) {
+        if (!getLo()
+            .equals(other.getLo())) return false;
+      }
+      if (hasHi() != other.hasHi()) return false;
+      if (hasHi()) {
+        if (!getHi()
+            .equals(other.getHi())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasLo()) {
+        hash = (37 * hash) + LO_FIELD_NUMBER;
+        hash = (53 * hash) + getLo().hashCode();
+      }
+      if (hasHi()) {
+        hash = (37 * hash) + HI_FIELD_NUMBER;
+        hash = (53 * hash) + getHi().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code routeguide.Rectangle}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:routeguide.Rectangle)
+        xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.RectangleOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.internal_static_routeguide_Rectangle_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.internal_static_routeguide_Rectangle_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle.class, xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle.Builder.class);
+      }
+
+      // Construct using xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (loBuilder_ == null) {
+          lo_ = null;
+        } else {
+          lo_ = null;
+          loBuilder_ = null;
+        }
+        if (hiBuilder_ == null) {
+          hi_ = null;
+        } else {
+          hi_ = null;
+          hiBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.internal_static_routeguide_Rectangle_descriptor;
+      }
+
+      @java.lang.Override
+      public xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle getDefaultInstanceForType() {
+        return xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle build() {
+        xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle buildPartial() {
+        xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle result = new xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle(this);
+        if (loBuilder_ == null) {
+          result.lo_ = lo_;
+        } else {
+          result.lo_ = loBuilder_.build();
+        }
+        if (hiBuilder_ == null) {
+          result.hi_ = hi_;
+        } else {
+          result.hi_ = hiBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle) {
+          return mergeFrom((xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle other) {
+        if (other == xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle.getDefaultInstance()) return this;
+        if (other.hasLo()) {
+          mergeLo(other.getLo());
+        }
+        if (other.hasHi()) {
+          mergeHi(other.getHi());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point lo_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point, xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point.Builder, xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.PointOrBuilder> loBuilder_;
+      /**
+       * <pre>
+       * One corner of the rectangle.
+       * </pre>
+       *
+       * <code>.routeguide.Point lo = 1;</code>
+       */
+      public boolean hasLo() {
+        return loBuilder_ != null || lo_ != null;
+      }
+      /**
+       * <pre>
+       * One corner of the rectangle.
+       * </pre>
+       *
+       * <code>.routeguide.Point lo = 1;</code>
+       */
+      public xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point getLo() {
+        if (loBuilder_ == null) {
+          return lo_ == null ? xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point.getDefaultInstance() : lo_;
+        } else {
+          return loBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * One corner of the rectangle.
+       * </pre>
+       *
+       * <code>.routeguide.Point lo = 1;</code>
+       */
+      public Builder setLo(xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point value) {
+        if (loBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          lo_ = value;
+          onChanged();
+        } else {
+          loBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * One corner of the rectangle.
+       * </pre>
+       *
+       * <code>.routeguide.Point lo = 1;</code>
+       */
+      public Builder setLo(
+          xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point.Builder builderForValue) {
+        if (loBuilder_ == null) {
+          lo_ = builderForValue.build();
+          onChanged();
+        } else {
+          loBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * One corner of the rectangle.
+       * </pre>
+       *
+       * <code>.routeguide.Point lo = 1;</code>
+       */
+      public Builder mergeLo(xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point value) {
+        if (loBuilder_ == null) {
+          if (lo_ != null) {
+            lo_ =
+              xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point.newBuilder(lo_).mergeFrom(value).buildPartial();
+          } else {
+            lo_ = value;
+          }
+          onChanged();
+        } else {
+          loBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * One corner of the rectangle.
+       * </pre>
+       *
+       * <code>.routeguide.Point lo = 1;</code>
+       */
+      public Builder clearLo() {
+        if (loBuilder_ == null) {
+          lo_ = null;
+          onChanged();
+        } else {
+          lo_ = null;
+          loBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * One corner of the rectangle.
+       * </pre>
+       *
+       * <code>.routeguide.Point lo = 1;</code>
+       */
+      public xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point.Builder getLoBuilder() {
+        
+        onChanged();
+        return getLoFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * One corner of the rectangle.
+       * </pre>
+       *
+       * <code>.routeguide.Point lo = 1;</code>
+       */
+      public xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.PointOrBuilder getLoOrBuilder() {
+        if (loBuilder_ != null) {
+          return loBuilder_.getMessageOrBuilder();
+        } else {
+          return lo_ == null ?
+              xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point.getDefaultInstance() : lo_;
+        }
+      }
+      /**
+       * <pre>
+       * One corner of the rectangle.
+       * </pre>
+       *
+       * <code>.routeguide.Point lo = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point, xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point.Builder, xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.PointOrBuilder> 
+          getLoFieldBuilder() {
+        if (loBuilder_ == null) {
+          loBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point, xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point.Builder, xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.PointOrBuilder>(
+                  getLo(),
+                  getParentForChildren(),
+                  isClean());
+          lo_ = null;
+        }
+        return loBuilder_;
+      }
+
+      private xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point hi_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point, xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point.Builder, xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.PointOrBuilder> hiBuilder_;
+      /**
+       * <pre>
+       * The other corner of the rectangle.
+       * </pre>
+       *
+       * <code>.routeguide.Point hi = 2;</code>
+       */
+      public boolean hasHi() {
+        return hiBuilder_ != null || hi_ != null;
+      }
+      /**
+       * <pre>
+       * The other corner of the rectangle.
+       * </pre>
+       *
+       * <code>.routeguide.Point hi = 2;</code>
+       */
+      public xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point getHi() {
+        if (hiBuilder_ == null) {
+          return hi_ == null ? xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point.getDefaultInstance() : hi_;
+        } else {
+          return hiBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * The other corner of the rectangle.
+       * </pre>
+       *
+       * <code>.routeguide.Point hi = 2;</code>
+       */
+      public Builder setHi(xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point value) {
+        if (hiBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          hi_ = value;
+          onChanged();
+        } else {
+          hiBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The other corner of the rectangle.
+       * </pre>
+       *
+       * <code>.routeguide.Point hi = 2;</code>
+       */
+      public Builder setHi(
+          xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point.Builder builderForValue) {
+        if (hiBuilder_ == null) {
+          hi_ = builderForValue.build();
+          onChanged();
+        } else {
+          hiBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The other corner of the rectangle.
+       * </pre>
+       *
+       * <code>.routeguide.Point hi = 2;</code>
+       */
+      public Builder mergeHi(xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point value) {
+        if (hiBuilder_ == null) {
+          if (hi_ != null) {
+            hi_ =
+              xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point.newBuilder(hi_).mergeFrom(value).buildPartial();
+          } else {
+            hi_ = value;
+          }
+          onChanged();
+        } else {
+          hiBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The other corner of the rectangle.
+       * </pre>
+       *
+       * <code>.routeguide.Point hi = 2;</code>
+       */
+      public Builder clearHi() {
+        if (hiBuilder_ == null) {
+          hi_ = null;
+          onChanged();
+        } else {
+          hi_ = null;
+          hiBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The other corner of the rectangle.
+       * </pre>
+       *
+       * <code>.routeguide.Point hi = 2;</code>
+       */
+      public xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point.Builder getHiBuilder() {
+        
+        onChanged();
+        return getHiFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * The other corner of the rectangle.
+       * </pre>
+       *
+       * <code>.routeguide.Point hi = 2;</code>
+       */
+      public xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.PointOrBuilder getHiOrBuilder() {
+        if (hiBuilder_ != null) {
+          return hiBuilder_.getMessageOrBuilder();
+        } else {
+          return hi_ == null ?
+              xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point.getDefaultInstance() : hi_;
+        }
+      }
+      /**
+       * <pre>
+       * The other corner of the rectangle.
+       * </pre>
+       *
+       * <code>.routeguide.Point hi = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point, xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point.Builder, xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.PointOrBuilder> 
+          getHiFieldBuilder() {
+        if (hiBuilder_ == null) {
+          hiBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point, xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Point.Builder, xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.PointOrBuilder>(
+                  getHi(),
+                  getParentForChildren(),
+                  isClean());
+          hi_ = null;
+        }
+        return hiBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:routeguide.Rectangle)
+    }
+
+    // @@protoc_insertion_point(class_scope:routeguide.Rectangle)
+    private static final xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle();
+    }
+
+    public static xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Rectangle>
+        PARSER = new com.google.protobuf.AbstractParser<Rectangle>() {
+      @java.lang.Override
+      public Rectangle parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Rectangle(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Rectangle> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Rectangle> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public xyz.shiqihao.misc.grpc.routeguide.RouteGuideProto.Rectangle getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface FeatureOrBuilder extends
       // @@protoc_insertion_point(interface_extends:routeguide.Feature)
       com.google.protobuf.MessageOrBuilder {
@@ -1311,6 +2237,11 @@ public final class RouteGuideProto {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_routeguide_Point_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_routeguide_Rectangle_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_routeguide_Rectangle_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_routeguide_Feature_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -1325,12 +2256,16 @@ public final class RouteGuideProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\021route_guide.proto\022\nrouteguide\",\n\005Point" +
-      "\022\020\n\010latitude\030\001 \001(\005\022\021\n\tlongitude\030\002 \001(\005\"<\n" +
-      "\007Feature\022\014\n\004name\030\001 \001(\t\022#\n\010location\030\002 \001(\013" +
-      "2\021.routeguide.Point2D\n\nRouteGuide\0226\n\nGet" +
-      "Feature\022\021.routeguide.Point\032\023.routeguide." +
-      "Feature\"\000B4\n!xyz.shiqihao.misc.grpc.rout" +
-      "eguideB\017RouteGuideProtob\006proto3"
+      "\022\020\n\010latitude\030\001 \001(\005\022\021\n\tlongitude\030\002 \001(\005\"I\n" +
+      "\tRectangle\022\035\n\002lo\030\001 \001(\0132\021.routeguide.Poin" +
+      "t\022\035\n\002hi\030\002 \001(\0132\021.routeguide.Point\"<\n\007Feat" +
+      "ure\022\014\n\004name\030\001 \001(\t\022#\n\010location\030\002 \001(\0132\021.ro" +
+      "uteguide.Point2\204\001\n\nRouteGuide\0226\n\nGetFeat" +
+      "ure\022\021.routeguide.Point\032\023.routeguide.Feat" +
+      "ure\"\000\022>\n\014ListFeatures\022\025.routeguide.Recta" +
+      "ngle\032\023.routeguide.Feature\"\0000\001B4\n!xyz.shi" +
+      "qihao.misc.grpc.routeguideB\017RouteGuidePr" +
+      "otob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1342,8 +2277,14 @@ public final class RouteGuideProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_routeguide_Point_descriptor,
         new java.lang.String[] { "Latitude", "Longitude", });
-    internal_static_routeguide_Feature_descriptor =
+    internal_static_routeguide_Rectangle_descriptor =
       getDescriptor().getMessageTypes().get(1);
+    internal_static_routeguide_Rectangle_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_routeguide_Rectangle_descriptor,
+        new java.lang.String[] { "Lo", "Hi", });
+    internal_static_routeguide_Feature_descriptor =
+      getDescriptor().getMessageTypes().get(2);
     internal_static_routeguide_Feature_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_routeguide_Feature_descriptor,

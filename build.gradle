@@ -51,14 +51,23 @@ sourceSets {
 }
 
 protobuf {
+    // Configure the protoc executable.
     protoc {
-        artifact = "com.google.protobuf:protoc:3.9.1"
+        artifact = "com.google.protobuf:protoc:3.9.0" // Download from repositories.
+        // path = "/usr/local/bin/protoc" // you may alse specify a local path.
     }
+    // Locate the codegen plugin.
     plugins {
         grpc {
             artifact = "io.grpc:protoc-gen-grpc-java:1.19.0"
+            // or
+            // path = ""
         }
     }
+    // Customize code generation tasks.
+    // Each code generation task has two collections:
+    // - builtins: code generators built in protoc, e.g. java, python
+    // - plugins: code generation plugin work with protoc, e.g. grpc
     generateProtoTasks {
         all().each { task ->
             task.plugins {
@@ -67,78 +76,4 @@ protobuf {
         }
     }
     generatedFilesBaseDir = "$projectDir/src/main/proto/generated"
-}
-
-task printSourceSets {
-    sourceSets { sourceSet ->
-        println sourceSet.main.runtimeClasspath
-    }
-}
-
-task runMain(type: JavaExec) {
-    main = 'xyz.shiqihao.misc.Base64Encode'
-    classpath = sourceSets.main.runtimeClasspath
-}
-
-task hello() {
-    doLast {
-        println "Hello, world!"
-    }
-}
-
-task intro() {
-    dependsOn hello
-    doLast {
-        println "I am gradle."
-    }
-}
-
-hello.doFirst {
-    println("hello, first")
-}
-
-hello.doLast {
-    println("hello, jupiter")
-}
-
-task myTask {
-    ext.myProperty = "mar"
-}
-
-task printTaskProperty {
-    doLast {
-        println(myTask.myProperty)
-    }
-}
-
-task distribution {
-    doLast {
-        println "We build the zip with version=$version"
-    }
-}
-
-task release {
-    dependsOn distribution
-    doLast {
-        println "We release now."
-    }
-}
-
-gradle.taskGraph.whenReady { taskGraph ->
-    if (taskGraph.hasTask(":release")) {
-        version = '1.0'
-    } else {
-        version = '1.0-snapshot'
-    }
-}
-
-task printProjectProperties {
-    doLast {
-        println "project name: " + project.name
-        println "project path: " + project.path
-        println "project description: " + project.description
-        println "project version: " + version
-        println "project buildDir: " + buildDir
-        println "project group: " + project.group
-    }
 }
