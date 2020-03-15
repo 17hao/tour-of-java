@@ -1,4 +1,4 @@
-package xyz.shiqihao.misc.netty.echo;
+package xyz.shiqihao.misc.netty.echo.bio;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,7 +21,7 @@ import java.util.concurrent.Executors;
  * server: hi
  * close
  */
-public class BioEchoServer {
+public class EchoServer {
     private static final Logger logger = LogManager.getLogger();
 
     private final ExecutorService executor = Executors.newFixedThreadPool(124);
@@ -31,7 +31,9 @@ public class BioEchoServer {
             ServerSocket serverSocket = new ServerSocket();
             serverSocket.bind(new InetSocketAddress(9000));
             while (!Thread.interrupted()) {
-                new SocketHandler(serverSocket.accept()).handleRequest();
+                Socket socket = serverSocket.accept();
+                logger.info("client connected: " + socket);
+                new SocketHandler(socket).handleRequest();
             }
 
         } catch (IOException e) {
@@ -39,25 +41,25 @@ public class BioEchoServer {
         }
     }
 
-    private void multiThreadRun() {
-        try {
-            ServerSocket serverSocket = new ServerSocket();
-            serverSocket.bind(new InetSocketAddress(9000));
-            while (!Thread.interrupted()) {
-                executor.execute(new SocketHandler(serverSocket.accept()));
-            }
-        } catch (IOException e) {
-            logger.error(e.getMessage());
-        }
-    }
+//    private void multiThreadRun() {
+//        try {
+//            ServerSocket serverSocket = new ServerSocket();
+//            serverSocket.bind(new InetSocketAddress(9000));
+//            while (!Thread.interrupted()) {
+//                executor.execute(new SocketHandler(serverSocket.accept()));
+//            }
+//        } catch (IOException e) {
+//            logger.error(e.getMessage());
+//        }
+//    }
 
     public static void main(String[] args) {
-        BioEchoServer server = new BioEchoServer();
-        // server.singleThreadRun();
-        server.multiThreadRun();
+        EchoServer server = new EchoServer();
+        server.singleThreadRun();
+        //server.multiThreadRun();
     }
 
-    private static class SocketHandler implements Runnable {
+    private static class SocketHandler {
         private final Socket socket;
 
         public SocketHandler(Socket socket) {
@@ -79,11 +81,6 @@ public class BioEchoServer {
             } catch (IOException e) {
                 logger.error(e.getMessage());
             }
-        }
-
-        @Override
-        public void run() {
-            handleRequest();
         }
     }
 }
