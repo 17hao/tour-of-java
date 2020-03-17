@@ -12,41 +12,31 @@ import java.nio.channels.SocketChannel;
 final class Handler implements Runnable {
     private static final Logger logger = LogManager.getLogger();
 
-    final SocketChannel c;
-    final SelectionKey key;
-    ByteBuffer buffer = ByteBuffer.allocate(1024);
+    private final SelectionKey key;
+    private ByteBuffer buffer = ByteBuffer.allocate(1024);
 
-    public Handler(Selector sel, SocketChannel c) throws IOException {
-        this.c = c;
+    Handler(Selector selector, SocketChannel c) throws IOException {
         c.configureBlocking(false);
-        key = c.register(sel, SelectionKey.OP_READ | SelectionKey.OP_WRITE);
         logger.info("client connected: " + c);
-    }
 
-    void read() throws IOException {
-        if (!buffer.hasRemaining()) {
-            return;
-        }
-        c.read(buffer);
-    }
-
-    void process() {
-        String s = new String(buffer.array(), 0, buffer.remaining());
-        System.out.println("<=== " + s);
-    }
-
-    void write() throws IOException {
-        buffer.flip();
-        c.write(buffer);
-        c.close();
+        key = c.register(selector, SelectionKey.OP_READ);
+        key.attach(this);
     }
 
     @Override
     public void run() {
         try {
-            read();
-            process();
-            write();
+            SocketChannel client = (SocketChannel) key.channel();
+            int read = client.read(buffer);
+            logger.info("<=== " + new String(buffer.array(), 0, read).trim());
+            if (new String(buffer.array()).trim().equals("close")) {
+                client.close();
+                logger.info("client closed connection.");
+            }
+
+            buffer.flip();
+            client.write(buffer);
+            buffer.clear();
         } catch (IOException ex) {
             ex.getMessage();
         }
