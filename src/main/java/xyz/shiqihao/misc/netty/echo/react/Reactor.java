@@ -45,7 +45,10 @@ class Reactor implements Runnable {
                 }
 //                for (final Iterator<SelectionKey> it = selector.selectedKeys().iterator(); it.hasNext(); it.remove()) {
 //                    logger.info("next key: " + it.next());
-//                    dispatch(it.next());
+//                    SelectionKey key = it.next();
+//                    if (key.isAcceptable()) {
+//                        dispatch(it.next());
+//                    }
 //                }
             } catch (IOException ex) {
                 logger.info(ex.getMessage());
