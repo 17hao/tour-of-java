@@ -40,7 +40,8 @@ dependencies {
             'org.mybatis:mybatis:3.5.3',
             'org.postgresql:postgresql:42.2.9',
             'com.orbitz.consul:consul-client:1.4.0',
-            'org.hashids:hashids:1.0.3'
+            'org.hashids:hashids:1.0.3',
+            'org.roaringbitmap:RoaringBitmap:0.8.13'
     )
 }
 
