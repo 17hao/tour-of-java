@@ -9,7 +9,7 @@ import java.util.List;
  * 这是一个自定义的HashMap, key是ThreadLocal对象的引用, value是局部变量值.
  */
 public class MyTest4 {
-    static ThreadLocal<List<Integer>> tl = new ThreadLocal<>();
+    private static ThreadLocal<List<Integer>> tl = new ThreadLocal<>();
 
     static class Task implements Runnable {
         @Override

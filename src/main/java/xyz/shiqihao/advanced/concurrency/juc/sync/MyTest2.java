@@ -15,7 +15,7 @@ public class MyTest2 implements Runnable {
     public void run() {
         try {
             int time = new Random().nextInt(1000);
-            System.out.println("after " + time + " mills, check finished.");
+            System.out.println("After " + time + " mills, check finished.");
             Thread.sleep(time);
             counter.countDown();
         } catch (InterruptedException e) {
