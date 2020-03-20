@@ -18,10 +18,10 @@ class Reactor implements Runnable {
 
     private static final Logger logger = LogManager.getLogger();
 
-    final Selector selector;
-    final ServerSocketChannel serverSocket;
+    private final Selector selector;
+    private final ServerSocketChannel serverSocket;
 
-    public Reactor(int port) throws IOException {
+    Reactor(int port) throws IOException {
         selector = Selector.open();
         serverSocket = ServerSocketChannel.open();
         serverSocket.bind(new InetSocketAddress(port));
@@ -34,10 +34,26 @@ class Reactor implements Runnable {
     @Override
     public void run() {
         while (!Thread.interrupted()) {
-            for (final Iterator<SelectionKey> it = selector.selectedKeys().iterator(); it.hasNext(); it.remove()) {
-                logger.info("next key: " + it.next());
-                dispatch(it.next());
+            try {
+                if (selector.select(100) == 0) {
+                    continue;
+                }
+                Iterator<SelectionKey> it = selector.selectedKeys().iterator();
+                while (it.hasNext()) {
+                    dispatch(it.next());
+                    it.remove();
+                }
+//                for (final Iterator<SelectionKey> it = selector.selectedKeys().iterator(); it.hasNext(); it.remove()) {
+//                    logger.info("next key: " + it.next());
+//                    SelectionKey key = it.next();
+//                    if (key.isAcceptable()) {
+//                        dispatch(it.next());
+//                    }
+//                }
+            } catch (IOException ex) {
+                logger.info(ex.getMessage());
             }
+
         }
     }
 

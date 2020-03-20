@@ -12,43 +12,46 @@ import java.nio.channels.SocketChannel;
 final class Handler implements Runnable {
     private static final Logger logger = LogManager.getLogger();
 
-    final SocketChannel c;
-    final SelectionKey key;
-    ByteBuffer buffer = ByteBuffer.allocate(1024);
+    private final SocketChannel c;
+    private final SelectionKey key;
+    private ByteBuffer buffer = ByteBuffer.allocate(1024);
 
-    public Handler(Selector sel, SocketChannel c) throws IOException {
+    Handler(Selector selector, SocketChannel c) throws IOException {
         this.c = c;
         c.configureBlocking(false);
-        key = c.register(sel, SelectionKey.OP_READ | SelectionKey.OP_WRITE);
         logger.info("client connected: " + c);
+
+        key = c.register(selector, SelectionKey.OP_READ);
+        key.attach(this);
     }
 
-    void read() throws IOException {
-        if (!buffer.hasRemaining()) {
-            return;
+    private int read() throws IOException {
+        return c.read(buffer);
+    }
+
+    private void process(int readBytes) throws Exception {
+        Thread.sleep(5000);
+        String content = new String(buffer.array(), 0, readBytes).trim();
+        logger.info("<=== " + content);
+        if (content.equals("close")) {
+            c.close();
         }
-        c.read(buffer);
     }
 
-    void process() {
-        String s = new String(buffer.array(), 0, buffer.remaining());
-        System.out.println("<=== " + s);
-    }
-
-    void write() throws IOException {
+    private void write() throws IOException {
         buffer.flip();
         c.write(buffer);
-        c.close();
+        buffer.clear();
     }
 
     @Override
     public void run() {
         try {
-            read();
-            process();
+            int read = read();
+            process(read);
             write();
-        } catch (IOException ex) {
-            ex.getMessage();
+        } catch (Exception ex) {
+            logger.error(ex.getMessage());
         }
     }
 }
