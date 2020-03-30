@@ -26,15 +26,20 @@ public class Consumer {
             // consumer.subscribe(Collections.singletonList("test")); // 有自动再均衡的功能
             consumer.assign(topicPartitions);
             while (true) {
-                ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(1000));
-                System.out.println("count is: " + records.count());
+                ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(2000));
+                System.out.println("Size of fetched records: " + records.count());
                 for (ConsumerRecord<String, String> record : records) {
                     System.out.println(String.format("topic: %s; key/value: [%s : %s]; offset: %d", record.topic(),
                             record.key(), record.value(), record.offset()));
+                    System.out.println("Consumed offset: " + record.offset());
+                    /* 如果先获取committed offset再调用commitSync(), 会使committed offset = consumed offset */
                     // consumer.commitSync();
-                    System.out.println("Committed offset: " + consumer.committed(topicPartitions.get(0)).offset());
-                    System.out.println("Position: " + consumer.position(topicPartitions.get(0)));
+                    // consumer.commitAsync();
+                    // System.out.println("Committed offset: " + consumer.committed(topicPartitions.get(0)).offset());
+                    // System.out.println("Position: " + consumer.position(topicPartitions.get(0)));
                 }
+                System.out.println("Committed offset: " + consumer.committed(topicPartitions.get(0)).offset());
+                System.out.println("Position: " + consumer.position(topicPartitions.get(0)));
             }
         }
     }

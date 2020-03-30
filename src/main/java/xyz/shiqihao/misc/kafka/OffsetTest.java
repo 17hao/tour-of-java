@@ -12,7 +12,7 @@ import java.util.Properties;
 /**
  * lastConsumedOffset(最后消费位移) committedOffset(提交的位移)
  *
- * 默认的位移提交方式是自动提交, 每5秒提交一次, 提交的位移为poll()方法拉取的最大位移.
+ * 默认的位移提交方式是自动提交, 每5秒提交一次, 提交的位移为poll()方法拉取的最大位移 + 1.
  *
  * 默认的位移提交方式提供at least once的消息下发含义, 但是如果消费者消费完后来不及提交就宕机了,
  * 或者2次提交位移之间发生了再均衡, 会导致消息重复消费, 因为消费者恢复后从committedOffset开始消费.
