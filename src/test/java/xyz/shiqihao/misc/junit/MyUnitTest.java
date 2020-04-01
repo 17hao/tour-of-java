@@ -1,14 +1,14 @@
 package xyz.shiqihao.misc.junit;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
-class MyUnitTest {
+public class MyUnitTest {
     private MyUnit myUnit = new MyUnit();
 
     @Test
-    void testConcatenate() {
+    public void testConcatenate() {
         String result = myUnit.concatenate("o", "ne");
         assertEquals("one", result);
     }

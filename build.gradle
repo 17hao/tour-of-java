@@ -20,7 +20,6 @@ repositories {
 
 dependencies {
     implementation(
-            'org.junit.jupiter:junit-jupiter-api:5.3.1',
             'com.google.code.gson:gson:2.8.5',
             'org.apache.logging.log4j:log4j-api:2.12.1',
             'org.apache.logging.log4j:log4j-core:2.12.1',
@@ -42,6 +41,9 @@ dependencies {
             'com.orbitz.consul:consul-client:1.4.0',
             'org.hashids:hashids:1.0.3',
             'org.roaringbitmap:RoaringBitmap:0.8.13'
+    )
+    testCompile(
+            'junit:junit:4.12',
     )
 }
 
@@ -79,4 +81,8 @@ protobuf {
         }
     }
     generatedFilesBaseDir = "$projectDir/src/main/proto/generated"
+}
+
+test {
+    useJUnit()
 }
