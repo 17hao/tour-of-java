@@ -11,15 +11,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * Single Thread Blocking I/O echo server.
- * Create a new thread when request coming.
- *
- * Multi thread Blocking I/O echo server.
- * Use cached thread when request coming.
- * <p>
- * client: hi
- * server: hi
- * close
+ * Single thread blocking I/O: block thread until last connection closed.
  */
 public class EchoServer {
     private static final Logger logger = LogManager.getLogger();
@@ -67,20 +59,35 @@ public class EchoServer {
         }
 
         public void handleRequest() {
-            try (
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                    BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))
-            ) {
-                StringBuilder builder = new StringBuilder();
-                for (int i = reader.read(); (char) i != '\n'; i = reader.read()) {
-                    builder.append((char) i);
+            try {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+                for (String s = reader.readLine(); s != null; s = reader.readLine()) {
+                    logger.info(socket.getRemoteSocketAddress() + " said: " + s);
+                    writer.write(s);
+                    writer.newLine();
+                    writer.flush();
+                    if (s.equals("exit")) {
+                        socket.close();
+                    }
                 }
-                logger.info("===> " + builder.toString());
-                writer.write(builder.toString() + "\n");
-                writer.flush();
             } catch (IOException e) {
-                logger.error(e.getMessage());
+                logger.error(e);
             }
+            // try (
+            //         BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            //         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))
+            // ) {
+            //     StringBuilder builder = new StringBuilder();
+            //     for (int i = reader.read(); (char) i != '\n'; i = reader.read()) {
+            //         builder.append((char) i);
+            //     }
+            //     logger.info("===> " + builder.toString());
+            //     writer.write(builder.toString() + "\n");
+            //     writer.flush();
+            // } catch (IOException e) {
+            //     logger.error(e.getMessage());
+            // }
         }
     }
 }
