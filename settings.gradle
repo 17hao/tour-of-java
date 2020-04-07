@@ -3,3 +3,4 @@
  */
 
 rootProject.name = 'java-tour'
+include 'java-language', 'third-party-libs', 'books'

@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option java_package = "xyz.shiqihao.grpc.routeguide";
+option java_outer_classname = "RouteGuideProto";
+
+package routeguide;
+
+service RouteGuide {
+    // A simple RPC.
+    rpc GetFeature (Point) returns (Feature) {
+    }
+
+    // A server-to-client streaming RPC.
+    rpc ListFeatures (Rectangle) returns (stream Feature) {
+    }
+
+//    rpc RecordRoute (stream Point) returns (RouteSummary) {
+//    }
+//
+//    rpc RouteChat (stream RouteNote) returns (stream RouteNote) {
+//    }
+}
+
+message Point {
+    int32 latitude = 1;
+    int32 longitude = 2;
+}
+
+message Rectangle {
+    // One corner of the rectangle.
+    Point lo = 1;
+
+    // The other corner of the rectangle.
+    Point hi = 2;
+}
+
+message Feature {
+    string name = 1;
+    Point location = 2;
+}

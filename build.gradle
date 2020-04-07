@@ -6,8 +6,62 @@ plugins {
 
 group = 'xyz.shiqihao'
 description = 'java-tour'
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+project(':java-language') {
+    sourceSets {
+        main {
+            java {
+                srcDir 'java-language/src/main/java'
+            }
+        }
+        test {
+            java {
+                srcDir 'java-language/src/test/java'
+            }
+        }
+    }
+}
+
+project(':third-party-libs') {
+    sourceSets {
+        main {
+            java {
+                srcDirs 'third-party/src/main/java', 'third-party/src/main/proto/generated'
+            }
+            resources {
+                srcDir 'third-party/src/main/resources'
+            }
+        }
+        test {
+            java {
+                srcDir 'third-party/src/test/java'
+            }
+        }
+    }
+}
+
+project(':books') {
+    sourceSets {
+        main {
+            java {
+                srcDirs 'books/src/main/java'
+            }
+            resources {
+                srcDir 'books/src/main/resources'
+            }
+        }
+        test {
+            java {
+                srcDir 'books/src/test/java'
+            }
+        }
+    }
 }
 
 repositories {
@@ -44,14 +98,6 @@ dependencies {
     )
 }
 
-sourceSets {
-    main {
-        java {
-            srcDirs 'src/main/proto/generated'
-        }
-    }
-}
-
 protobuf {
     // Configure the protoc executable.
     protoc {
@@ -82,4 +128,18 @@ protobuf {
 
 test {
     useJUnit()
+}
+
+compileJava {
+    options.encoding("UTF-8")
+}
+
+jar {
+    manifest {
+        attributes("group-name": project.group, "description": project.description, "package-version": project.version)
+    }
+}
+
+task p {
+    println project.version
 }
