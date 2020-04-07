@@ -32,15 +32,15 @@ project(':third-party-libs') {
     sourceSets {
         main {
             java {
-                srcDirs 'third-party/src/main/java', 'third-party/src/main/proto/generated'
+                srcDirs 'third-party-libs/src/main/java', 'third-party-libs/src/main/proto/generated'
             }
             resources {
-                srcDir 'third-party/src/main/resources'
+                srcDir 'third-party-libs/src/main/resources'
             }
         }
         test {
             java {
-                srcDir 'third-party/src/test/java'
+                srcDir 'third-party-libs/src/test/java'
             }
         }
     }
@@ -51,9 +51,6 @@ project(':books') {
         main {
             java {
                 srcDirs 'books/src/main/java'
-            }
-            resources {
-                srcDir 'books/src/main/resources'
             }
         }
         test {
@@ -123,7 +120,7 @@ protobuf {
             }
         }
     }
-    generatedFilesBaseDir = "$projectDir/src/main/proto/generated"
+    generatedFilesBaseDir = "third-party-libs/src/main/proto/generated"
 }
 
 test {
