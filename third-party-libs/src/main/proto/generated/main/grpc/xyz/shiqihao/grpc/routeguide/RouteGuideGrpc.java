@@ -1,13 +1,18 @@
-package main.grpc.xyz.shiqihao.misc.grpc.routeguide;
+package xyz.shiqihao.grpc.routeguide;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
+import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
 import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
 import static io.grpc.stub.ClientCalls.asyncUnaryCall;
 import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
 import static io.grpc.stub.ClientCalls.blockingUnaryCall;
 import static io.grpc.stub.ClientCalls.futureUnaryCall;
+import static io.grpc.stub.ServerCalls.asyncBidiStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnaryCall;
+import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
 /**
@@ -119,7 +124,7 @@ public final class RouteGuideGrpc {
      * </pre>
      */
     public void getFeature(xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point request,
-                           io.grpc.stub.StreamObserver<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature> responseObserver) {
+        io.grpc.stub.StreamObserver<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature> responseObserver) {
       asyncUnimplementedUnaryCall(getGetFeatureMethod(), responseObserver);
     }
 
@@ -129,7 +134,7 @@ public final class RouteGuideGrpc {
      * </pre>
      */
     public void listFeatures(xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle request,
-                             io.grpc.stub.StreamObserver<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature> responseObserver) {
+        io.grpc.stub.StreamObserver<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature> responseObserver) {
       asyncUnimplementedUnaryCall(getListFeaturesMethod(), responseObserver);
     }
 
@@ -177,7 +182,7 @@ public final class RouteGuideGrpc {
      * </pre>
      */
     public void getFeature(xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point request,
-                           io.grpc.stub.StreamObserver<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature> responseObserver) {
+        io.grpc.stub.StreamObserver<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getGetFeatureMethod(), getCallOptions()), request, responseObserver);
     }
@@ -188,7 +193,7 @@ public final class RouteGuideGrpc {
      * </pre>
      */
     public void listFeatures(xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle request,
-                             io.grpc.stub.StreamObserver<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature> responseObserver) {
+        io.grpc.stub.StreamObserver<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature> responseObserver) {
       asyncServerStreamingCall(
           getChannel().newCall(getListFeaturesMethod(), getCallOptions()), request, responseObserver);
     }

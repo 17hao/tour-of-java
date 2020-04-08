@@ -1,11 +1,18 @@
-package main.grpc.xyz.shiqihao.misc.grpc.helloworld;
+package xyz.shiqihao.grpc.helloworld;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
+import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
 import static io.grpc.stub.ClientCalls.asyncUnaryCall;
 import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
 import static io.grpc.stub.ClientCalls.blockingUnaryCall;
 import static io.grpc.stub.ClientCalls.futureUnaryCall;
+import static io.grpc.stub.ServerCalls.asyncBidiStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnaryCall;
+import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
 /**
@@ -91,7 +98,7 @@ public final class GreeterGrpc {
      * </pre>
      */
     public void sayHello(xyz.shiqihao.grpc.helloworld.HelloWorldProto.HelloRequest request,
-                         io.grpc.stub.StreamObserver<xyz.shiqihao.grpc.helloworld.HelloWorldProto.HelloReply> responseObserver) {
+        io.grpc.stub.StreamObserver<xyz.shiqihao.grpc.helloworld.HelloWorldProto.HelloReply> responseObserver) {
       asyncUnimplementedUnaryCall(getSayHelloMethod(), responseObserver);
     }
 
@@ -135,7 +142,7 @@ public final class GreeterGrpc {
      * </pre>
      */
     public void sayHello(xyz.shiqihao.grpc.helloworld.HelloWorldProto.HelloRequest request,
-                         io.grpc.stub.StreamObserver<xyz.shiqihao.grpc.helloworld.HelloWorldProto.HelloReply> responseObserver) {
+        io.grpc.stub.StreamObserver<xyz.shiqihao.grpc.helloworld.HelloWorldProto.HelloReply> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getSayHelloMethod(), getCallOptions()), request, responseObserver);
     }

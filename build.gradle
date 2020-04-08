@@ -31,8 +31,13 @@ project(':java-language') {
 project(':third-party-libs') {
     sourceSets {
         main {
+            proto {
+                // In additional to the default 'src/main/proto'
+                srcDir 'third-party-libs/src/main/proto'
+            }
             java {
-                srcDirs 'third-party-libs/src/main/java', 'third-party-libs/src/main/proto/generated'
+                srcDir 'third-party-libs/src/main/proto/generated'
+                srcDir 'third-party-libs/src/main/java'
             }
             resources {
                 srcDir 'third-party-libs/src/main/resources'
