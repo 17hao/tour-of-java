@@ -1,13 +1,13 @@
-package xyz.shiqihao.netty.firstexample;
+package xyz.shiqihao.netty.httpserver;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 
 /**
@@ -25,13 +25,14 @@ public class MyHttpServer {
                         @Override
                         protected void initChannel(SocketChannel ch) {
                             ChannelPipeline pipeline = ch.pipeline();
-                            pipeline.addLast("httpServerCodec", new HttpServerCodec());
+                            pipeline.addLast("codec", new HttpServerCodec());
+                            // http chunked transfer encoding
+                            pipeline.addLast("aggregator", new HttpObjectAggregator(1048576));
                             pipeline.addLast("testHandler", new MyHandler());
                         }
                     });
             System.out.println("server is running...\n");
-            ChannelFuture channelFuture = serverBootstrap.bind(80).sync();
-            channelFuture.channel().closeFuture().sync();
+            serverBootstrap.bind(80).channel().closeFuture().sync();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

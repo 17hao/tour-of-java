@@ -1,4 +1,4 @@
-package xyz.shiqihao.netty.secondexample;
+package xyz.shiqihao.netty.echo;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;

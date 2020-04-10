@@ -1,7 +1,6 @@
 package xyz.shiqihao.netty.time;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -25,8 +24,8 @@ public class TimeServer {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
                     .childHandler(new TimeServerHandler());
-            ChannelFuture f = b.bind(port).sync();
-            f.channel().closeFuture().sync();
+            System.out.println("Server is running.");
+            b.bind(port).channel().closeFuture().sync();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

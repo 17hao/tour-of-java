@@ -1,4 +1,4 @@
-package xyz.shiqihao.netty.fourthexample;
+package xyz.shiqihao.netty.heartbeat;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;

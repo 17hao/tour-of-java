@@ -1,4 +1,4 @@
-package xyz.shiqihao.netty.thirdexample;
+package xyz.shiqihao.netty.chatserver;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;

@@ -12,9 +12,31 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 
-public class EchoServer {
+/**
+ * 当使用bio的单线程模型时,客户端的连接会被阻塞,只有一个连接的请求能够被响应.
+ * 当服务器和客户端建立连接后,服务器上的操作系统将数据从网络设备中拷贝到内核空间,
+ * 网络设备数量是有限的,多个连接共享同一个网卡. socket是对网络连接的抽象, 应用程序
+ * 在用户态,需要陷入内核态将网络设备上传来的数据拷贝到用户空间.
+ * 阻塞I/O与非阻塞I/O发生在资源的请求阶段(包括磁盘,文件,CPU等), 阻塞意味着一次只能有一个
+ * I/O请求获得资源, 哪怕这个请求只是占用了资源却不使用, 其他请求也必须排队等待. 非阻塞意味
+ * 着在请求资源阶段不会持续等待,而是会不断进行轮询.
+ * I/O多路复用模型:多个IO请求复用一个线程或进程,减少资源的消耗. 应用程序发起系统调用,检查是否有可用的
+ * 设备,也就是检查文件描述符,操作系统遍历文件描述符,找到可用的文件描述符.
+ * 异步IO:发出io请求后直接返回,请求结果由操作系统写入到缓冲区,应用程序读取缓冲区.
+ * java nio使用了非阻塞IO和IO多路复用2者的结合,不论是bio还是nio都是同步的,也就是上一个请求
+ * 处理完成后才能继续处理下一个.
+ *
+ * 单线程bio -> 多线程bio -> 单线程nio -> 多线程nio(多个逻辑处理线程 -> 多个)
+ * 多线程bio对于每个请求创建一个新的线程,大量空闲的线程会浪费系统资源.
+ * 多线程nio虽然也创建了多个线程,但是它和多线程bio的真正差别在于它不会为io操作创建线程,它是为逻辑处理的流程建立多个线程,所以系统中不会有
+ * 空闲的多余线程,每个线程都尽可能地物尽其用进行逻辑处理. 这是最基础的reactor模型, io线程和分发逻辑处理都在同一个reactor角色中.
+ * 当请求量非常大时(假设同时有1万个请求),一个reactor角色,也就是一个io线程会成为系统吞吐量的瓶颈,io线程为了给应用程序挑选出能读或写的通道耗时很久,
+ * 所以为了增加吞吐量创建2个reactor,一个reactor负责io操作,当接收到io请求时将逻辑处理分发的任务给另一个reactor.
+ */
+public class EchoServer implements Runnable {
     private static final Logger logger = LogManager.getLogger();
 
+    @Override
     public void run() {
         try (
                 final ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
@@ -23,6 +45,7 @@ public class EchoServer {
             serverSocketChannel.bind(new InetSocketAddress(9000));
             serverSocketChannel.configureBlocking(false);
             serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
+            logger.info("Echo server started.");
             while (!Thread.interrupted()) {
                 if (selector.select(1000) == 0) {
                     continue;
@@ -40,7 +63,7 @@ public class EchoServer {
                     }
                 }
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             logger.error(e.getMessage());
         }
     }
@@ -64,7 +87,7 @@ public class EchoServer {
         logger.info("<===" + content);
     }
 
-    private void write(SelectionKey key) throws IOException {
+    private void write(SelectionKey key) throws Exception {
         final SocketChannel socketChannel = (SocketChannel) key.channel();
         final ByteBuffer buffer = (ByteBuffer) key.attachment();
         try {
@@ -72,11 +95,12 @@ public class EchoServer {
             if (!buffer.hasRemaining()) {
                 return;
             }
+            Thread.sleep(5000);
             socketChannel.write(buffer);
         } finally {
             buffer.clear();
         }
-        socketChannel.close();
+        // socketChannel.close();
     }
 
     public static void main(String[] args) {

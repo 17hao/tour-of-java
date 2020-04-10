@@ -1,4 +1,4 @@
-package xyz.shiqihao.netty.fourthexample;
+package xyz.shiqihao.netty.heartbeat;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
