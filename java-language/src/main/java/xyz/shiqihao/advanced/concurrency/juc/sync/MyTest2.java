@@ -1,36 +1,45 @@
 package xyz.shiqihao.advanced.concurrency.juc.sync;
 
-import java.util.Random;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * CountDownLatch基本用法
  */
-public class MyTest2 implements Runnable {
-    private CountDownLatch counter = new CountDownLatch(10);
+public class MyTest2 {
+    public static void main(String[] args) throws InterruptedException {
+        CountDownLatch startSignal = new CountDownLatch(1);
+        CountDownLatch doneSignal = new CountDownLatch(5);
+        for (int i = 0; i < 5; i++) {
+            new Thread(new Worker(startSignal, doneSignal)).start();
+        }
+        startSignal.countDown();
+        doneSignal.await();
+    }
+}
+
+class Worker implements Runnable {
+    private final CountDownLatch startSignal;
+    private final CountDownLatch doneSignal;
+
+    public Worker(CountDownLatch startSignal, CountDownLatch doneSignal) {
+        this.startSignal = startSignal;
+        this.doneSignal = doneSignal;
+    }
 
     @Override
     public void run() {
         try {
-            int time = new Random().nextInt(1000);
-            System.out.println("After " + time + " mills, check finished.");
-            Thread.sleep(time);
-            counter.countDown();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            startSignal.await();
+            doWork();
+            doneSignal.countDown();
+        } catch (InterruptedException ex) {
+            ex.getStackTrace();
         }
     }
 
-    public static void main(String[] args) throws InterruptedException{
-        MyTest2 demo = new MyTest2();
-        ExecutorService service = Executors.newFixedThreadPool(10);
-        for (int i = 0; i < 10; i++) {
-            service.submit(demo);
-        }
-        demo.counter.await();
-        System.out.println("check finished");
-        service.shutdown();
+    private void doWork() throws InterruptedException {
+        Thread.sleep(ThreadLocalRandom.current().nextInt(100, 1000));
+        System.out.println(Thread.currentThread().getName() + " done.");
     }
 }

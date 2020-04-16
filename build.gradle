@@ -140,6 +140,7 @@ jar {
     manifest {
         attributes("group-name": project.group, "description": project.description, "package-version": project.version)
     }
+    from sourceSets.main.allSource
 }
 
 task p {

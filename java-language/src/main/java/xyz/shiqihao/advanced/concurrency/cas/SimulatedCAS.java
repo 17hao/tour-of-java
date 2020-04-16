@@ -1,8 +1,5 @@
 package xyz.shiqihao.advanced.concurrency.cas;
 
-/**
- * 变量oldValue的值在①和②之间有可能被改变.
- */
 public class SimulatedCAS {
     private int value;
 
