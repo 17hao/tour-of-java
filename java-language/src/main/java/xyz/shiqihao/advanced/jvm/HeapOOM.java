@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * JVM args: -Xms5m -Xmx20m -XX:+HeapDumpOutOfMemoryError -XX:HeapDumpPath=./a.dump
+ * JVM args: -Xms5m -Xmx20m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=./a.dump
  *
  * 排查堆内存oom的简要步骤: 常规方法是通过内存dump文件进行分析. 首先确定是内存泄露(memory leak)还是
  * 内存溢出(memory overflow). 如果是内存泄露, 意味着有部分对象应该被垃圾回收, 但是程序中还保留着它们的引用,
