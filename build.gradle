@@ -94,7 +94,7 @@ dependencies {
             'com.orbitz.consul:consul-client:1.4.0',
             'org.hashids:hashids:1.0.3',
             'org.roaringbitmap:RoaringBitmap:0.8.13',
-            'commons-codec:commons-codec:1.10',
+            'commons-codec:commons-codec:1.14',
             'org.apache.hadoop:hadoop-client:3.2.0'
     )
     testCompile(
@@ -149,10 +149,15 @@ jar {
 //    println project.version
 //}
 
-task makeJar(type: Jar) {
-    baseName 'maxTemperature'
+task makeHadoopJar(type: Jar) {
+    baseName 'hadoop-job'
     from('build/classes/java/main/xyz/shiqihao/hadoop')
     into('xyz/shiqihao/hadoop')
 }
 
-makeJar.dependsOn(build)
+makeHadoopJar.dependsOn(build)
+
+task makeHadoopSrcJar(type: Jar) {
+    baseName 'Hadoop-src'
+    from()
+}

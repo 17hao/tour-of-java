@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
  * From repository path:
  *
  * javac -cp /Users/17hao/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/27.1-jre
- * /e47b59c893079b87743cdcfb6f17ca95c08c592c/guava-27.1-jre.jar src/main/java/xyz/shiqihao/misc/javac/MyTest1.java -d .
+ * /e47b59c893079b87743cdcfb6f17ca95c08c592c/guava-27.1-jre.jar src/main/java/xyz.shiqihao.advanced.javac.MyTest1.java -d .
  *
  * java -classpath .:/Users/17hao/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/27.1-jre
  * /e47b59c893079b87743cdcfb6f17ca95c08c592c/guava-27.1-jre.jar  xyz.shiqihao.advanced.javac.MyTest1
