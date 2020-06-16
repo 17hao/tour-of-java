@@ -11,7 +11,7 @@ import java.util.Map;
 public class Hmac {
     public static void main(String[] args) {
         Map<String, String> payload = new HashMap<>();
-        String secret = "secret";
+        String secret = "";
         System.out.println(sign(payload, secret));
         System.out.println(OffsetDateTime.now());
         System.out.println(System.currentTimeMillis());
