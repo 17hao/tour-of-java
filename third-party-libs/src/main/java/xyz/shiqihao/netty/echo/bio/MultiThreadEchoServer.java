@@ -24,7 +24,7 @@ public class MultiThreadEchoServer {
             serverSocket.bind(new InetSocketAddress(9000));
             logger.info("server is started." + serverSocket);
             while (!Thread.interrupted()) {
-                executor.execute(new SocketHandler(serverSocket));
+                executor.execute(new SocketHandler(serverSocket.accept()));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -32,16 +32,15 @@ public class MultiThreadEchoServer {
     }
 
     private static class SocketHandler implements Runnable {
-        private final ServerSocket serverSocket;
+        private final Socket socket;
 
-        SocketHandler(ServerSocket serverSocket) {
-            this.serverSocket = serverSocket;
+        SocketHandler(Socket socket) {
+            this.socket = socket;
         }
 
         @Override
         public void run() {
             try {
-                Socket socket = serverSocket.accept();
                 logger.info("client connected." + socket);
                 BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
@@ -52,6 +51,7 @@ public class MultiThreadEchoServer {
                         writer.close();
                         break;
                     }
+                    logger.info("<=== " + s);
                     writer.write(s);
                     writer.newLine();
                     writer.flush();

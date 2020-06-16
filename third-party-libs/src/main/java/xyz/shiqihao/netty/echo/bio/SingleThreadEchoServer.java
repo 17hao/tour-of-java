@@ -18,6 +18,7 @@ public class SingleThreadEchoServer {
         try {
             ServerSocket serverSocket = new ServerSocket();
             serverSocket.bind(new InetSocketAddress(9000));
+            logger.info("server is started." + serverSocket);
             while (!Thread.interrupted()) {
                 Socket socket = serverSocket.accept();
                 logger.info("client connected: " + socket);
@@ -46,13 +47,15 @@ public class SingleThreadEchoServer {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
                 for (String s = reader.readLine(); s != null; s = reader.readLine()) {
+                    if (s.equals("exit")) {
+                        logger.info("client disconnected " + socket);
+                        socket.close();
+                        break;
+                    }
                     logger.info(socket.getRemoteSocketAddress() + " said: " + s);
                     writer.write(s);
                     writer.newLine();
                     writer.flush();
-                    if (s.equals("exit")) {
-                        socket.close();
-                    }
                 }
             } catch (IOException e) {
                 logger.error(e);
