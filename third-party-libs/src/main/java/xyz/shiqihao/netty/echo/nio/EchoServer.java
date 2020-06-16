@@ -13,6 +13,16 @@ import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 
 /**
+ * 传统的io操作模型是阻塞io, 不论是socket连接还是磁盘文件读取都是阻塞的,
+ * 最简单的应对方式是创建多个线程或进程, 类似于众人拾柴火焰高, 但是缺点在于大量的进程和线程会消耗完资源.
+ * 所以从节约资源的角度来看用单个进程或线程同时处理多个io更好.
+ * linux有3个io多路复用的系统调用select/poll/epoll, 将待选择的文件描述符传递给内核, 让内核帮助应用程序在大量文件中挑选出能进行io操作的文件
+ *
+ * java nio的selector模型和io多路复用?
+ * java nio需要基于这些系统调用吗?还是只是借用了io多路复用的模型?
+ * netty的reactor模型和nio的selector模型和io多路复用异同?
+ * 阻塞和非阻塞和io多路复用?
+ *
  * 当使用bio的单线程模型时,客户端的连接会被阻塞,只有一个连接的请求能够被响应.
  * 当服务器和客户端建立连接后,服务器上的操作系统将数据从网络设备中拷贝到内核空间,
  * 网络设备数量是有限的,多个连接共享同一个网卡. socket是对网络连接的抽象, 应用程序
@@ -58,13 +68,13 @@ public class EchoServer implements Runnable {
                     if (key.isReadable()) {
                         read(key);
                     }
-                    if (key.isWritable()) {
-                        write(key);
+                    if (key.isValid() && key.isWritable()) { // after returning from read(), the key is potentially canceled
+                       write(key);
                     }
                 }
             }
         } catch (Exception e) {
-            logger.error(e.getMessage());
+            logger.error(e);
         }
     }
 
@@ -84,6 +94,11 @@ public class EchoServer implements Runnable {
             return;
         }
         String content = new String(buffer.array(), 0, read).trim();
+        if (content.equals("quit") || content.equals("exit")) {
+            logger.info("client disconnected" + socketChannel);
+            socketChannel.close();
+            return;
+        }
         logger.info("<===" + content);
     }
 
@@ -100,7 +115,6 @@ public class EchoServer implements Runnable {
         } finally {
             buffer.clear();
         }
-        // socketChannel.close();
     }
 
     public static void main(String[] args) {

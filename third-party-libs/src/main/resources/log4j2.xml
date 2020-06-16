@@ -10,7 +10,7 @@
             <AppenderRef ref="Console"/>
         </Root>
 
-        <logger name="xyz.shiqihao" level="WARN" />
+        <logger name="xyz.shiqihao" level="info" />
 
         <logger name="org.apache.htrace.core.Tracer" level="OFF" />
         <logger name="org.apache.hadoop.util.NativeCodeLoader" level="OFF" />
