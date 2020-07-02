@@ -1,4 +1,4 @@
-package xyz.shiqihao.advanced.jvm.classload;
+package xyz.shiqihao.advanced.jvm.classload.loading;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,7 +14,8 @@ public class ResourcesLoader {
         if (cl == null) {
             cl = ResourcesLoader.class.getClassLoader();
         }
-        URL resource = cl.getResource("configuration.xml");
+        // URL resource = cl.getResource("configuration.xml");
+        URL resource = cl.getResource("Test.groovy");
         if (resource == null) {
             return;
         }
@@ -22,7 +23,6 @@ public class ResourcesLoader {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(resource.openStream()))) {
             for (String line = reader.readLine(); line != null; line = reader.readLine()) {
                 System.out.println(line);
-
             }
         }
     }

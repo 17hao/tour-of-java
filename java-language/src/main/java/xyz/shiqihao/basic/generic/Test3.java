@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * 通配符的含义是unknown,意味着类型的不确定
  */
-public class Demo3 {
+public class Test3 {
     static void printElement1(List<? extends Number> l) {
         for (Number n : l) {
             System.out.println(n);

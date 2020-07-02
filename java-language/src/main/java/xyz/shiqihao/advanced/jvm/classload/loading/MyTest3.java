@@ -9,7 +9,7 @@ public class MyTest3 {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         //System.out.println(classLoader);
 
-        String resourceName = "xyz/shiqihao/advanced/jvm/classload";
+        String resourceName = "xyz/shiqihao/advanced/jvm/classload/loading";
         Enumeration<URL> urls = classLoader.getResources(resourceName);
         while (urls.hasMoreElements()) {
             System.out.println(urls.nextElement());

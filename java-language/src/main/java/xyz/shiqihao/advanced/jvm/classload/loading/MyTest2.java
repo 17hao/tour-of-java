@@ -7,6 +7,7 @@ package xyz.shiqihao.advanced.jvm.classload.loading;
  * null
  *
  * 双亲委派模式的委派路径: 应用类加载器 -> 扩展类加载器 -> bootstrap类加载器
+ * HotSpot中bootstrap类加载器由c++实现,无法获取它的引用,所以是null
  */
 public class MyTest2 {
     public static void main(String[] args) {
