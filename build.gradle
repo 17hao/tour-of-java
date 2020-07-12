@@ -99,7 +99,8 @@ dependencies {
             'org.roaringbitmap:RoaringBitmap:0.8.13',
             'commons-codec:commons-codec:1.14',
             'org.apache.hadoop:hadoop-client:3.2.0',
-            'org.apache.hbase:hbase-client:2.2.5'
+            'org.apache.hbase:hbase-client:2.2.5',
+            'javax.annotation:javax.annotation-api:1.2'
     )
     testCompile(
             'junit:junit:4.12',

@@ -2,6 +2,7 @@ package xyz.shiqihao.hbase;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.HConstants;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.ConnectionFactory;
 import org.apache.hadoop.hbase.client.Get;
@@ -14,6 +15,9 @@ import java.io.IOException;
 public class GetExample {
     public static void main(String[] args) throws IOException {
         Configuration c = HBaseConfiguration.create();
+        c.clear();
+        c.set(HConstants.ZOOKEEPER_QUORUM, "shiqihao.xyz");
+        c.set(HConstants.ZOOKEEPER_CLIENT_PORT, "2181");
         Table table = ConnectionFactory.createConnection(c).getTable(TableName.valueOf("test"));
         Get get = new Get(Bytes.toBytes("row-1"));
         get.addColumn(Bytes.toBytes("cf"), Bytes.toBytes("a"));
