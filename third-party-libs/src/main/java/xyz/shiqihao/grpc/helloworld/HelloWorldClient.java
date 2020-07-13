@@ -4,7 +4,7 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import xyz.shiqihao.grpc.helloworld.HelloWorldProto.HelloReply;
 import xyz.shiqihao.grpc.helloworld.HelloWorldProto.HelloRequest;
-
+import xyz.shiqihao.grpc.helloworld.GreeterGrpc;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 

@@ -5,6 +5,7 @@ import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 import xyz.shiqihao.grpc.helloworld.HelloWorldProto.HelloReply;
 import xyz.shiqihao.grpc.helloworld.HelloWorldProto.HelloRequest;
+import xyz.shiqihao.grpc.helloworld.GreeterGrpc;
 
 import java.io.IOException;
 import java.util.logging.Logger;

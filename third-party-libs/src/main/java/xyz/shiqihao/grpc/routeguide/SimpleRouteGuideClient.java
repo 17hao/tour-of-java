@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import xyz.shiqihao.grpc.routeguide.RouteGuideGrpc.RouteGuideBlockingStub;
 import xyz.shiqihao.grpc.routeguide.RouteGuideGrpc.RouteGuideStub;
 import xyz.shiqihao.grpc.routeguide.RouteGuideProto.*;
+import xyz.shiqihao.grpc.routeguide.RouteGuideGrpc;
 
 public class SimpleRouteGuideClient {
     private final Logger logger = LogManager.getLogger();
