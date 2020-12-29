@@ -1,0 +1,16 @@
+Configuration:
+  name: default
+  status: warn
+  appenders:
+    Console:
+      name: stdout
+      target: SYSTEM_OUT
+      PatternLayout:
+        pattern: "%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"
+
+  Loggers:
+    logger:
+      name: xyz.shiqihao
+      level: info
+    Root:
+      level: info

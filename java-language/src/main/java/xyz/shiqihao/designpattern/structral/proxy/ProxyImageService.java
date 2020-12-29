@@ -10,6 +10,7 @@ public class ProxyImageService implements ImageService {
 
     @Override
     public void display() {
+        System.out.println("proxy obj");
         if (is == null) {
             is = new RealImageService(filename);
         }

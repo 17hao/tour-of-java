@@ -7,6 +7,5 @@ public class Main {
     public static void main(String[] args) {
         ImageService is = new ProxyImageService("download.jpg");
         is.display();
-        is.display();
     }
 }

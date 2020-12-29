@@ -1,7 +1,7 @@
 package xyz.shiqihao.advanced.reflection.resource;
 
 @A("class")
-public class C {
+public class C implements I<String> {
     @A("field")
     int aField;
 
