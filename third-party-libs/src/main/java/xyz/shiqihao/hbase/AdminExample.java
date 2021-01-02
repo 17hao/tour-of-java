@@ -16,25 +16,26 @@ import java.util.List;
 public class AdminExample {
     public static void main(String[] args) throws IOException {
         Configuration config = HBaseConfiguration.create();
-        config.set("hbase.zookeeper.quorum", "47.102.157.109");
+        config.set("hbase.zookeeper.quorum", "shiqihao.xyz");
         Admin admin = ConnectionFactory.createConnection(config).getAdmin();
         ClusterMetrics cm = admin.getClusterMetrics();
+
         System.out.println("Cluster Metrics:\n------");
         System.out.println("Hbase version: " + cm.getHBaseVersion());
         System.out.println("Cluster id: " + cm.getClusterId());
+        System.out.println("Master Server: " + cm.getMasterName());
         System.out.println("Servers: " + cm.getServersName());
 
-        System.out.println("\nServer Info\n------");
-        for (ServerName server : cm.getServersName()) {
-            System.out.println("Server Name: " + server.getServerName());
-            System.out.println("Hostname: " + server.getHostname());
-            System.out.println("Host and Port: " + server.getHostAndPort());
-            System.out.println("RPC Port: " + server.getPort());
-            System.out.println("Start Code: " + server.getStartcode());
-        }
+        System.out.println("\nMaster Server Info\n------");
+        ServerName master = admin.getMaster();
+        System.out.println("Server Name: " + master.getServerName());
+        System.out.println("Hostname: " + master.getHostname());
+        System.out.println("Host and Port: " + master.getAddress());
+        System.out.println("RPC Port: " + master.getPort());
+        System.out.println("Start Code: " + master.getStartcode());
 
         System.out.println("\nRegion Info\n------");
-        List<RegionInfo> regions = admin.getRegions(TableName.valueOf("test"));
+        List<RegionInfo> regions = admin.getRegions(TableName.valueOf("test-table"));
         for (RegionInfo ri : regions) {
             System.out.println("Region Name: " + ri.getRegionNameAsString());
             System.out.println("Region ID: " + ri.getRegionId());
