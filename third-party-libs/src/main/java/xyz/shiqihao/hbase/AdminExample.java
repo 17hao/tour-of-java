@@ -15,8 +15,9 @@ import java.util.List;
 
 public class AdminExample {
     public static void main(String[] args) throws IOException {
-        Configuration c = HBaseConfiguration.create();
-        Admin admin = ConnectionFactory.createConnection(c).getAdmin();
+        Configuration config = HBaseConfiguration.create();
+        config.set("hbase.zookeeper.quorum", "47.102.157.109");
+        Admin admin = ConnectionFactory.createConnection(config).getAdmin();
         ClusterMetrics cm = admin.getClusterMetrics();
         System.out.println("Cluster Metrics:\n------");
         System.out.println("Hbase version: " + cm.getHBaseVersion());

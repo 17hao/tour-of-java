@@ -41,7 +41,7 @@ dependencies {
 sourceSets {
     main {
         java {
-            srcDir 'src/main/proto/generated'
+            srcDir 'src/main/generated'
         }
     }
 }
@@ -71,7 +71,7 @@ protobuf {
             }
         }
     }
-    generatedFilesBaseDir = 'src/main/proto/generated'
+    generatedFilesBaseDir = "${projectDir}/src/main/generated"
 }
 
 task makeHadoopJar(type: Jar) {
