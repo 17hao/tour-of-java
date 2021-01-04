@@ -1,0 +1,81 @@
+plugins {
+    id 'java'
+    id 'com.google.protobuf'
+}
+
+compileJava {
+    options.encoding("UTF-8")
+}
+
+repositories {
+    mavenLocal()
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    mavenCentral()
+}
+
+dependencies {
+    implementation(
+            'redis.clients:jedis:2.9.0',
+            'io.grpc:grpc-netty-shaded:1.24.0',
+            'io.grpc:grpc-protobuf:1.24.0',
+            'io.grpc:grpc-stub:1.24.0',
+            'com.lmax:disruptor:3.4.2',
+            'org.apache.hadoop:hadoop-client:3.2.0',
+            'org.apache.hbase:hbase-client:2.2.5',
+            'org.apache.hive:hive-jdbc:3.1.2',
+            'org.apache.zookeeper:zookeeper:3.6.2',
+            'org.roaringbitmap:RoaringBitmap:0.8.13',
+            'com.orbitz.consul:consul-client:1.4.0',
+            'org.hashids:hashids:1.0.3',
+            'org.apache.kafka:kafka-clients:2.4.0',
+            'io.netty:netty-all:4.1.42.Final',
+            'org.postgresql:postgresql:42.2.9',
+            'org.mybatis:mybatis:3.5.3',
+            'commons-codec:commons-codec:1.14',
+            'javax.servlet:javax.servlet-api:4.0.0',
+            'javax.inject:javax.inject:1',
+            'com.google.inject:guice:4.2.2',
+    )
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/generated'
+        }
+    }
+}
+
+protobuf {
+    // Configure the protoc executable.
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.9.0' // Download from repositories.
+        // path = "/usr/local/bin/protoc" // you may alse specify a local path.
+    }
+    // Locate the codegen plugin.
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.19.0'
+            // or
+            // path = ""
+        }
+    }
+    // Customize code generation tasks.
+    // Each code generation task has two collections:
+    // - builtins: code generators built in protoc, e.g. java, python
+    // - plugins: code generation plugin work with protoc, e.g. grpc
+    generateProtoTasks {
+        all().each { task ->
+            task.plugins {
+                grpc {}
+            }
+        }
+    }
+    generatedFilesBaseDir = "${projectDir}/src/main/generated"
+}
+
+task makeHadoopJar(type: Jar) {
+    baseName 'hadoop-job'
+    from('build/classes/java/main/xyz/shiqihao/hadoop')
+    into('xyz/shiqihao/hadoop')
+}

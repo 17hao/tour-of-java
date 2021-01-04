@@ -12,6 +12,7 @@
 
 # Package Files #
 *.jar
+!*gradle-wrapper.jar
 *.war
 *.nar
 *.ear
@@ -34,4 +35,6 @@ build/
 *.iml
 *.ids
 *.html
-gradle/
+
+test.*
+Test.*
