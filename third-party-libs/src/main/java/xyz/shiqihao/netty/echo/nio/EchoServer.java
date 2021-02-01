@@ -10,19 +10,18 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
-import java.util.Iterator;
 
 /**
  * 传统的io操作模型是阻塞io, 不论是socket连接还是磁盘文件读取都是阻塞的,
  * 最简单的应对方式是创建多个线程或进程, 类似于众人拾柴火焰高, 但是缺点在于大量的进程和线程会消耗完资源.
  * 所以从节约资源的角度来看用单个进程或线程同时处理多个io更好.
  * linux有3个io多路复用的系统调用select/poll/epoll, 将待选择的文件描述符传递给内核, 让内核帮助应用程序在大量文件中挑选出能进行io操作的文件
- *
+ * <p>
  * java nio的selector模型和io多路复用?
  * java nio需要基于这些系统调用吗?还是只是借用了io多路复用的模型?
  * netty的reactor模型和nio的selector模型和io多路复用异同?
  * 阻塞和非阻塞和io多路复用?
- *
+ * <p>
  * 当使用bio的单线程模型时,客户端的连接会被阻塞,只有一个连接的请求能够被响应.
  * 当服务器和客户端建立连接后,服务器上的操作系统将数据从网络设备中拷贝到内核空间,
  * 网络设备数量是有限的,多个连接共享同一个网卡. socket是对网络连接的抽象, 应用程序
@@ -35,7 +34,7 @@ import java.util.Iterator;
  * 异步IO:发出io请求后直接返回,请求结果由操作系统写入到缓冲区,应用程序读取缓冲区.
  * java nio使用了非阻塞IO和IO多路复用2者的结合,不论是bio还是nio都是同步的,也就是上一个请求
  * 处理完成后才能继续处理下一个.
- *
+ * <p>
  * 单线程bio -> 多线程bio -> 单线程nio -> 多线程nio(多个逻辑处理线程 -> 多个)
  * 多线程bio对于每个请求创建一个新的线程,大量空闲的线程会浪费系统资源.
  * 多线程nio虽然也创建了多个线程,但是它和多线程bio的真正差别在于它不会为io操作创建线程,它是为逻辑处理的流程建立多个线程,所以系统中不会有
@@ -54,23 +53,26 @@ public class EchoServer implements Runnable {
         ) {
             serverSocketChannel.bind(new InetSocketAddress(9000));
             serverSocketChannel.configureBlocking(false);
-            serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
+            serverSocketChannel.register(selector, serverSocketChannel.validOps());
             logger.info("Echo server started.");
             while (!Thread.interrupted()) {
                 if (selector.select(1000) == 0) {
                     continue;
                 }
-                for (final Iterator<SelectionKey> it = selector.selectedKeys().iterator(); it.hasNext(); it.remove()) {
-                    final SelectionKey key = it.next();
+                //for (final Iterator<SelectionKey> it = selector.selectedKeys().iterator(); it.hasNext(); it.remove()) {
+                //    final SelectionKey key = it.next();
+                for (SelectionKey key : selector.selectedKeys()) {
                     if (key.isAcceptable()) {
                         accept(key);
                     }
                     if (key.isReadable()) {
                         read(key);
                     }
-                    if (key.isValid() && key.isWritable()) { // after returning from read(), the key is potentially canceled
-                       write(key);
+                    // if not test isValid(), the key is potentially canceled after returning from read()
+                    if (key.isValid() && key.isWritable()) {
+                        write(key);
                     }
+                    selector.selectedKeys().remove(key);
                 }
             }
         } catch (Exception e) {
@@ -82,11 +84,12 @@ public class EchoServer implements Runnable {
         final ServerSocketChannel serverSocketChannel = (ServerSocketChannel) key.channel();
         final SocketChannel socketChannel = serverSocketChannel.accept();
         socketChannel.configureBlocking(false);
-        socketChannel.register(key.selector(), SelectionKey.OP_READ | SelectionKey.OP_WRITE, ByteBuffer.allocate(1024));
+        socketChannel.register(key.selector(), socketChannel.validOps(), ByteBuffer.allocate(1024));
         logger.info("client connected: " + socketChannel);
     }
 
     private void read(SelectionKey key) throws IOException {
+        logger.info("read");
         final SocketChannel socketChannel = (SocketChannel) key.channel();
         final ByteBuffer buffer = (ByteBuffer) key.attachment();
         final int read = socketChannel.read(buffer);
@@ -102,7 +105,7 @@ public class EchoServer implements Runnable {
         logger.info("<===" + content);
     }
 
-    private void write(SelectionKey key) throws Exception {
+    private void write(SelectionKey key) throws IOException {
         final SocketChannel socketChannel = (SocketChannel) key.channel();
         final ByteBuffer buffer = (ByteBuffer) key.attachment();
         try {
@@ -110,7 +113,6 @@ public class EchoServer implements Runnable {
             if (!buffer.hasRemaining()) {
                 return;
             }
-            Thread.sleep(5000);
             socketChannel.write(buffer);
         } finally {
             buffer.clear();
@@ -118,7 +120,6 @@ public class EchoServer implements Runnable {
     }
 
     public static void main(String[] args) {
-        EchoServer server = new EchoServer();
-        server.run();
+        new Thread(new EchoServer()).start();
     }
 }

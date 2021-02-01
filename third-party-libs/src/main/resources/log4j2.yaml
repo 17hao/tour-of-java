@@ -1,16 +1,21 @@
 Configuration:
-  name: default
   status: warn
-  appenders:
+  name: Default
+  Appenders:
     Console:
-      name: stdout
+      name: ConsoleAppender
       target: SYSTEM_OUT
       PatternLayout:
-        pattern: "%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"
+        pattern: "%date{yyyy-MM-dd HH:mm:ss.SSS} [%level] from %logger in %thread - %message%n%xException"
 
   Loggers:
     logger:
-      name: xyz.shiqihao
-      level: info
+      - name: xyz.shiqihao
+        level: info
+        additivity: false
+        AppenderRef:
+          - ref: ConsoleAppender
     Root:
       level: info
+      AppenderRef:
+        - ref: ConsoleAppender
