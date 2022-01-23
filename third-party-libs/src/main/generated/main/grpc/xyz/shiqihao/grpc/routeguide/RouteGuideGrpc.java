@@ -1,24 +1,24 @@
 package xyz.shiqihao.grpc.routeguide;
 
-import static io.grpc.MethodDescriptor.generateFullMethodName;
-import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
 import static io.grpc.stub.ClientCalls.asyncUnaryCall;
-import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
 import static io.grpc.stub.ClientCalls.blockingUnaryCall;
+import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
 import static io.grpc.stub.ClientCalls.futureUnaryCall;
-import static io.grpc.stub.ServerCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
+import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ServerCalls.asyncUnaryCall;
-import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncBidiStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
+import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.19.0)",
+    value = "by gRPC proto compiler (version 1.4.0)",
     comments = "Source: route_guide.proto")
 public final class RouteGuideGrpc {
 
@@ -27,69 +27,30 @@ public final class RouteGuideGrpc {
   public static final String SERVICE_NAME = "routeguide.RouteGuide";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point,
-      xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature> getGetFeatureMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "GetFeature",
-      requestType = xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point.class,
-      responseType = xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point,
-      xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature> getGetFeatureMethod() {
-    io.grpc.MethodDescriptor<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point, xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature> getGetFeatureMethod;
-    if ((getGetFeatureMethod = RouteGuideGrpc.getGetFeatureMethod) == null) {
-      synchronized (RouteGuideGrpc.class) {
-        if ((getGetFeatureMethod = RouteGuideGrpc.getGetFeatureMethod) == null) {
-          RouteGuideGrpc.getGetFeatureMethod = getGetFeatureMethod = 
-              io.grpc.MethodDescriptor.<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point, xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "routeguide.RouteGuide", "GetFeature"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature.getDefaultInstance()))
-                  .setSchemaDescriptor(new RouteGuideMethodDescriptorSupplier("GetFeature"))
-                  .build();
-          }
-        }
-     }
-     return getGetFeatureMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle,
-      xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature> getListFeaturesMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "ListFeatures",
-      requestType = xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle.class,
-      responseType = xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle,
-      xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature> getListFeaturesMethod() {
-    io.grpc.MethodDescriptor<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle, xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature> getListFeaturesMethod;
-    if ((getListFeaturesMethod = RouteGuideGrpc.getListFeaturesMethod) == null) {
-      synchronized (RouteGuideGrpc.class) {
-        if ((getListFeaturesMethod = RouteGuideGrpc.getListFeaturesMethod) == null) {
-          RouteGuideGrpc.getListFeaturesMethod = getListFeaturesMethod = 
-              io.grpc.MethodDescriptor.<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle, xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-              .setFullMethodName(generateFullMethodName(
-                  "routeguide.RouteGuide", "ListFeatures"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature.getDefaultInstance()))
-                  .setSchemaDescriptor(new RouteGuideMethodDescriptorSupplier("ListFeatures"))
-                  .build();
-          }
-        }
-     }
-     return getListFeaturesMethod;
-  }
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static final io.grpc.MethodDescriptor<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point,
+      xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature> METHOD_GET_FEATURE =
+      io.grpc.MethodDescriptor.<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point, xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature>newBuilder()
+          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+          .setFullMethodName(generateFullMethodName(
+              "routeguide.RouteGuide", "GetFeature"))
+          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point.getDefaultInstance()))
+          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature.getDefaultInstance()))
+          .build();
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static final io.grpc.MethodDescriptor<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle,
+      xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature> METHOD_LIST_FEATURES =
+      io.grpc.MethodDescriptor.<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle, xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature>newBuilder()
+          .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+          .setFullMethodName(generateFullMethodName(
+              "routeguide.RouteGuide", "ListFeatures"))
+          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle.getDefaultInstance()))
+          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature.getDefaultInstance()))
+          .build();
 
   /**
    * Creates a new async stub that supports all call types for the service
@@ -125,7 +86,7 @@ public final class RouteGuideGrpc {
      */
     public void getFeature(xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point request,
         io.grpc.stub.StreamObserver<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetFeatureMethod(), responseObserver);
+      asyncUnimplementedUnaryCall(METHOD_GET_FEATURE, responseObserver);
     }
 
     /**
@@ -135,20 +96,20 @@ public final class RouteGuideGrpc {
      */
     public void listFeatures(xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle request,
         io.grpc.stub.StreamObserver<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature> responseObserver) {
-      asyncUnimplementedUnaryCall(getListFeaturesMethod(), responseObserver);
+      asyncUnimplementedUnaryCall(METHOD_LIST_FEATURES, responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-            getGetFeatureMethod(),
+            METHOD_GET_FEATURE,
             asyncUnaryCall(
               new MethodHandlers<
                 xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point,
                 xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature>(
                   this, METHODID_GET_FEATURE)))
           .addMethod(
-            getListFeaturesMethod(),
+            METHOD_LIST_FEATURES,
             asyncServerStreamingCall(
               new MethodHandlers<
                 xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle,
@@ -184,7 +145,7 @@ public final class RouteGuideGrpc {
     public void getFeature(xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point request,
         io.grpc.stub.StreamObserver<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(getGetFeatureMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(METHOD_GET_FEATURE, getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -195,7 +156,7 @@ public final class RouteGuideGrpc {
     public void listFeatures(xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle request,
         io.grpc.stub.StreamObserver<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature> responseObserver) {
       asyncServerStreamingCall(
-          getChannel().newCall(getListFeaturesMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(METHOD_LIST_FEATURES, getCallOptions()), request, responseObserver);
     }
   }
 
@@ -224,7 +185,7 @@ public final class RouteGuideGrpc {
      */
     public xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature getFeature(xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point request) {
       return blockingUnaryCall(
-          getChannel(), getGetFeatureMethod(), getCallOptions(), request);
+          getChannel(), METHOD_GET_FEATURE, getCallOptions(), request);
     }
 
     /**
@@ -235,7 +196,7 @@ public final class RouteGuideGrpc {
     public java.util.Iterator<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature> listFeatures(
         xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle request) {
       return blockingServerStreamingCall(
-          getChannel(), getListFeaturesMethod(), getCallOptions(), request);
+          getChannel(), METHOD_LIST_FEATURES, getCallOptions(), request);
     }
   }
 
@@ -265,7 +226,7 @@ public final class RouteGuideGrpc {
     public com.google.common.util.concurrent.ListenableFuture<xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature> getFeature(
         xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point request) {
       return futureUnaryCall(
-          getChannel().newCall(getGetFeatureMethod(), getCallOptions()), request);
+          getChannel().newCall(METHOD_GET_FEATURE, getCallOptions()), request);
     }
   }
 
@@ -313,38 +274,10 @@ public final class RouteGuideGrpc {
     }
   }
 
-  private static abstract class RouteGuideBaseDescriptorSupplier
-      implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
-    RouteGuideBaseDescriptorSupplier() {}
-
+  private static final class RouteGuideDescriptorSupplier implements io.grpc.protobuf.ProtoFileDescriptorSupplier {
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
       return xyz.shiqihao.grpc.routeguide.RouteGuideProto.getDescriptor();
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("RouteGuide");
-    }
-  }
-
-  private static final class RouteGuideFileDescriptorSupplier
-      extends RouteGuideBaseDescriptorSupplier {
-    RouteGuideFileDescriptorSupplier() {}
-  }
-
-  private static final class RouteGuideMethodDescriptorSupplier
-      extends RouteGuideBaseDescriptorSupplier
-      implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
-    private final String methodName;
-
-    RouteGuideMethodDescriptorSupplier(String methodName) {
-      this.methodName = methodName;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Descriptors.MethodDescriptor getMethodDescriptor() {
-      return getServiceDescriptor().findMethodByName(methodName);
     }
   }
 
@@ -357,9 +290,9 @@ public final class RouteGuideGrpc {
         result = serviceDescriptor;
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
-              .setSchemaDescriptor(new RouteGuideFileDescriptorSupplier())
-              .addMethod(getGetFeatureMethod())
-              .addMethod(getListFeaturesMethod())
+              .setSchemaDescriptor(new RouteGuideDescriptorSupplier())
+              .addMethod(METHOD_GET_FEATURE)
+              .addMethod(METHOD_LIST_FEATURES)
               .build();
         }
       }

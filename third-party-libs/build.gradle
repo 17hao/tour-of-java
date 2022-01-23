@@ -37,6 +37,9 @@ dependencies {
             'com.google.inject:guice:4.2.2',
             'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.8.6'
     )
+    testCompile(
+            'junit:junit:4.12',
+    )
 }
 
 sourceSets {
@@ -50,13 +53,13 @@ sourceSets {
 protobuf {
     // Configure the protoc executable.
     protoc {
-        artifact = 'com.google.protobuf:protoc:3.9.0' // Download from repositories.
+        artifact = 'com.google.protobuf:protoc:3.9.0:osx-x86_64' // Download from repositories.
         // path = "/usr/local/bin/protoc" // you may alse specify a local path.
     }
     // Locate the codegen plugin.
     plugins {
         grpc {
-            artifact = 'io.grpc:protoc-gen-grpc-java:1.19.0'
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.19.0:osx-x86_64'
             // or
             // path = ""
         }
@@ -73,6 +76,22 @@ protobuf {
         }
     }
     generatedFilesBaseDir = "${projectDir}/src/main/generated"
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.2.0:osx-x86_64"
+    }
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.4.0:osx-x86_64'
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
 }
 
 task makeHadoopJar(type: Jar) {

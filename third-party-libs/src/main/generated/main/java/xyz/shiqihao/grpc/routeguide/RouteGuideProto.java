@@ -35,36 +35,26 @@ public final class RouteGuideProto {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:routeguide.Point)
       PointOrBuilder {
-  private static final long serialVersionUID = 0L;
     // Use Point.newBuilder() to construct.
     private Point(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
     private Point() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new Point();
+      latitude_ = 0;
+      longitude_ = 0;
     }
 
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return this.unknownFields;
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private Point(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      int mutable_bitField0_ = 0;
       try {
         boolean done = false;
         while (!done) {
@@ -73,6 +63,12 @@ public final class RouteGuideProto {
             case 0:
               done = true;
               break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
             case 8: {
 
               latitude_ = input.readInt32();
@@ -83,13 +79,6 @@ public final class RouteGuideProto {
               longitude_ = input.readInt32();
               break;
             }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -98,7 +87,6 @@ public final class RouteGuideProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -107,7 +95,6 @@ public final class RouteGuideProto {
       return xyz.shiqihao.grpc.routeguide.RouteGuideProto.internal_static_routeguide_Point_descriptor;
     }
 
-    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return xyz.shiqihao.grpc.routeguide.RouteGuideProto.internal_static_routeguide_Point_fieldAccessorTable
@@ -134,7 +121,6 @@ public final class RouteGuideProto {
     }
 
     private byte memoizedIsInitialized = -1;
-    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -144,7 +130,6 @@ public final class RouteGuideProto {
       return true;
     }
 
-    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (latitude_ != 0) {
@@ -153,10 +138,8 @@ public final class RouteGuideProto {
       if (longitude_ != 0) {
         output.writeInt32(2, longitude_);
       }
-      unknownFields.writeTo(output);
     }
 
-    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -170,11 +153,11 @@ public final class RouteGuideProto {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, longitude_);
       }
-      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
+    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -185,12 +168,12 @@ public final class RouteGuideProto {
       }
       xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point other = (xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point) obj;
 
-      if (getLatitude()
-          != other.getLatitude()) return false;
-      if (getLongitude()
-          != other.getLongitude()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      boolean result = true;
+      result = result && (getLatitude()
+          == other.getLatitude());
+      result = result && (getLongitude()
+          == other.getLongitude());
+      return result;
     }
 
     @java.lang.Override
@@ -209,17 +192,6 @@ public final class RouteGuideProto {
       return hash;
     }
 
-    public static xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
     public static xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -279,7 +251,6 @@ public final class RouteGuideProto {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -287,7 +258,6 @@ public final class RouteGuideProto {
     public static Builder newBuilder(xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -311,7 +281,6 @@ public final class RouteGuideProto {
         return xyz.shiqihao.grpc.routeguide.RouteGuideProto.internal_static_routeguide_Point_descriptor;
       }
 
-      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return xyz.shiqihao.grpc.routeguide.RouteGuideProto.internal_static_routeguide_Point_fieldAccessorTable
@@ -334,7 +303,6 @@ public final class RouteGuideProto {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @java.lang.Override
       public Builder clear() {
         super.clear();
         latitude_ = 0;
@@ -344,18 +312,15 @@ public final class RouteGuideProto {
         return this;
       }
 
-      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return xyz.shiqihao.grpc.routeguide.RouteGuideProto.internal_static_routeguide_Point_descriptor;
       }
 
-      @java.lang.Override
       public xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point getDefaultInstanceForType() {
         return xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point.getDefaultInstance();
       }
 
-      @java.lang.Override
       public xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point build() {
         xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point result = buildPartial();
         if (!result.isInitialized()) {
@@ -364,7 +329,6 @@ public final class RouteGuideProto {
         return result;
       }
 
-      @java.lang.Override
       public xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point buildPartial() {
         xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point result = new xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point(this);
         result.latitude_ = latitude_;
@@ -373,39 +337,32 @@ public final class RouteGuideProto {
         return result;
       }
 
-      @java.lang.Override
       public Builder clone() {
-        return super.clone();
+        return (Builder) super.clone();
       }
-      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
+          Object value) {
+        return (Builder) super.setField(field, value);
       }
-      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
+        return (Builder) super.clearField(field);
       }
-      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
+        return (Builder) super.clearOneof(oneof);
       }
-      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
       }
-      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
       }
-      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point) {
           return mergeFrom((xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point)other);
@@ -423,17 +380,14 @@ public final class RouteGuideProto {
         if (other.getLongitude() != 0) {
           setLongitude(other.getLongitude());
         }
-        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
 
-      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -503,16 +457,14 @@ public final class RouteGuideProto {
         onChanged();
         return this;
       }
-      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
+        return this;
       }
 
-      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
+        return this;
       }
 
 
@@ -531,12 +483,11 @@ public final class RouteGuideProto {
 
     private static final com.google.protobuf.Parser<Point>
         PARSER = new com.google.protobuf.AbstractParser<Point>() {
-      @java.lang.Override
       public Point parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Point(input, extensionRegistry);
+          return new Point(input, extensionRegistry);
       }
     };
 
@@ -549,7 +500,6 @@ public final class RouteGuideProto {
       return PARSER;
     }
 
-    @java.lang.Override
     public xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -617,7 +567,6 @@ public final class RouteGuideProto {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:routeguide.Rectangle)
       RectangleOrBuilder {
-  private static final long serialVersionUID = 0L;
     // Use Rectangle.newBuilder() to construct.
     private Rectangle(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -626,27 +575,16 @@ public final class RouteGuideProto {
     }
 
     @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new Rectangle();
-    }
-
-    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return this.unknownFields;
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private Rectangle(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      int mutable_bitField0_ = 0;
       try {
         boolean done = false;
         while (!done) {
@@ -655,6 +593,12 @@ public final class RouteGuideProto {
             case 0:
               done = true;
               break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
             case 10: {
               xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point.Builder subBuilder = null;
               if (lo_ != null) {
@@ -681,13 +625,6 @@ public final class RouteGuideProto {
 
               break;
             }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -696,7 +633,6 @@ public final class RouteGuideProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -705,7 +641,6 @@ public final class RouteGuideProto {
       return xyz.shiqihao.grpc.routeguide.RouteGuideProto.internal_static_routeguide_Rectangle_descriptor;
     }
 
-    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return xyz.shiqihao.grpc.routeguide.RouteGuideProto.internal_static_routeguide_Rectangle_fieldAccessorTable
@@ -780,7 +715,6 @@ public final class RouteGuideProto {
     }
 
     private byte memoizedIsInitialized = -1;
-    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -790,7 +724,6 @@ public final class RouteGuideProto {
       return true;
     }
 
-    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (lo_ != null) {
@@ -799,10 +732,8 @@ public final class RouteGuideProto {
       if (hi_ != null) {
         output.writeMessage(2, getHi());
       }
-      unknownFields.writeTo(output);
     }
 
-    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -816,11 +747,11 @@ public final class RouteGuideProto {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, getHi());
       }
-      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
+    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -831,18 +762,18 @@ public final class RouteGuideProto {
       }
       xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle other = (xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle) obj;
 
-      if (hasLo() != other.hasLo()) return false;
+      boolean result = true;
+      result = result && (hasLo() == other.hasLo());
       if (hasLo()) {
-        if (!getLo()
-            .equals(other.getLo())) return false;
+        result = result && getLo()
+            .equals(other.getLo());
       }
-      if (hasHi() != other.hasHi()) return false;
+      result = result && (hasHi() == other.hasHi());
       if (hasHi()) {
-        if (!getHi()
-            .equals(other.getHi())) return false;
+        result = result && getHi()
+            .equals(other.getHi());
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return result;
     }
 
     @java.lang.Override
@@ -865,17 +796,6 @@ public final class RouteGuideProto {
       return hash;
     }
 
-    public static xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
     public static xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -935,7 +855,6 @@ public final class RouteGuideProto {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -943,7 +862,6 @@ public final class RouteGuideProto {
     public static Builder newBuilder(xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -967,7 +885,6 @@ public final class RouteGuideProto {
         return xyz.shiqihao.grpc.routeguide.RouteGuideProto.internal_static_routeguide_Rectangle_descriptor;
       }
 
-      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return xyz.shiqihao.grpc.routeguide.RouteGuideProto.internal_static_routeguide_Rectangle_fieldAccessorTable
@@ -990,7 +907,6 @@ public final class RouteGuideProto {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @java.lang.Override
       public Builder clear() {
         super.clear();
         if (loBuilder_ == null) {
@@ -1008,18 +924,15 @@ public final class RouteGuideProto {
         return this;
       }
 
-      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return xyz.shiqihao.grpc.routeguide.RouteGuideProto.internal_static_routeguide_Rectangle_descriptor;
       }
 
-      @java.lang.Override
       public xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle getDefaultInstanceForType() {
         return xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle.getDefaultInstance();
       }
 
-      @java.lang.Override
       public xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle build() {
         xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle result = buildPartial();
         if (!result.isInitialized()) {
@@ -1028,7 +941,6 @@ public final class RouteGuideProto {
         return result;
       }
 
-      @java.lang.Override
       public xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle buildPartial() {
         xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle result = new xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle(this);
         if (loBuilder_ == null) {
@@ -1045,39 +957,32 @@ public final class RouteGuideProto {
         return result;
       }
 
-      @java.lang.Override
       public Builder clone() {
-        return super.clone();
+        return (Builder) super.clone();
       }
-      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
+          Object value) {
+        return (Builder) super.setField(field, value);
       }
-      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
+        return (Builder) super.clearField(field);
       }
-      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
+        return (Builder) super.clearOneof(oneof);
       }
-      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
       }
-      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
       }
-      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle) {
           return mergeFrom((xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle)other);
@@ -1095,17 +1000,14 @@ public final class RouteGuideProto {
         if (other.hasHi()) {
           mergeHi(other.getHi());
         }
-        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
 
-      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1124,7 +1026,7 @@ public final class RouteGuideProto {
         return this;
       }
 
-      private xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point lo_;
+      private xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point lo_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
           xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point, xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point.Builder, xyz.shiqihao.grpc.routeguide.RouteGuideProto.PointOrBuilder> loBuilder_;
       /**
@@ -1277,7 +1179,7 @@ public final class RouteGuideProto {
         return loBuilder_;
       }
 
-      private xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point hi_;
+      private xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point hi_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
           xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point, xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point.Builder, xyz.shiqihao.grpc.routeguide.RouteGuideProto.PointOrBuilder> hiBuilder_;
       /**
@@ -1429,16 +1331,14 @@ public final class RouteGuideProto {
         }
         return hiBuilder_;
       }
-      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
+        return this;
       }
 
-      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
+        return this;
       }
 
 
@@ -1457,12 +1357,11 @@ public final class RouteGuideProto {
 
     private static final com.google.protobuf.Parser<Rectangle>
         PARSER = new com.google.protobuf.AbstractParser<Rectangle>() {
-      @java.lang.Override
       public Rectangle parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Rectangle(input, extensionRegistry);
+          return new Rectangle(input, extensionRegistry);
       }
     };
 
@@ -1475,7 +1374,6 @@ public final class RouteGuideProto {
       return PARSER;
     }
 
-    @java.lang.Override
     public xyz.shiqihao.grpc.routeguide.RouteGuideProto.Rectangle getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -1516,7 +1414,6 @@ public final class RouteGuideProto {
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:routeguide.Feature)
       FeatureOrBuilder {
-  private static final long serialVersionUID = 0L;
     // Use Feature.newBuilder() to construct.
     private Feature(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -1526,27 +1423,16 @@ public final class RouteGuideProto {
     }
 
     @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new Feature();
-    }
-
-    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return this.unknownFields;
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private Feature(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+      int mutable_bitField0_ = 0;
       try {
         boolean done = false;
         while (!done) {
@@ -1555,6 +1441,12 @@ public final class RouteGuideProto {
             case 0:
               done = true;
               break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
@@ -1574,13 +1466,6 @@ public final class RouteGuideProto {
 
               break;
             }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1589,7 +1474,6 @@ public final class RouteGuideProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
@@ -1598,7 +1482,6 @@ public final class RouteGuideProto {
       return xyz.shiqihao.grpc.routeguide.RouteGuideProto.internal_static_routeguide_Feature_descriptor;
     }
 
-    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return xyz.shiqihao.grpc.routeguide.RouteGuideProto.internal_static_routeguide_Feature_fieldAccessorTable
@@ -1662,7 +1545,6 @@ public final class RouteGuideProto {
     }
 
     private byte memoizedIsInitialized = -1;
-    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -1672,7 +1554,6 @@ public final class RouteGuideProto {
       return true;
     }
 
-    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getNameBytes().isEmpty()) {
@@ -1681,10 +1562,8 @@ public final class RouteGuideProto {
       if (location_ != null) {
         output.writeMessage(2, getLocation());
       }
-      unknownFields.writeTo(output);
     }
 
-    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
@@ -1697,11 +1576,11 @@ public final class RouteGuideProto {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, getLocation());
       }
-      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
+    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
@@ -1712,15 +1591,15 @@ public final class RouteGuideProto {
       }
       xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature other = (xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature) obj;
 
-      if (!getName()
-          .equals(other.getName())) return false;
-      if (hasLocation() != other.hasLocation()) return false;
+      boolean result = true;
+      result = result && getName()
+          .equals(other.getName());
+      result = result && (hasLocation() == other.hasLocation());
       if (hasLocation()) {
-        if (!getLocation()
-            .equals(other.getLocation())) return false;
+        result = result && getLocation()
+            .equals(other.getLocation());
       }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
+      return result;
     }
 
     @java.lang.Override
@@ -1741,17 +1620,6 @@ public final class RouteGuideProto {
       return hash;
     }
 
-    public static xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
     public static xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1811,7 +1679,6 @@ public final class RouteGuideProto {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
@@ -1819,7 +1686,6 @@ public final class RouteGuideProto {
     public static Builder newBuilder(xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
           ? new Builder() : new Builder().mergeFrom(this);
@@ -1843,7 +1709,6 @@ public final class RouteGuideProto {
         return xyz.shiqihao.grpc.routeguide.RouteGuideProto.internal_static_routeguide_Feature_descriptor;
       }
 
-      @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return xyz.shiqihao.grpc.routeguide.RouteGuideProto.internal_static_routeguide_Feature_fieldAccessorTable
@@ -1866,7 +1731,6 @@ public final class RouteGuideProto {
                 .alwaysUseFieldBuilders) {
         }
       }
-      @java.lang.Override
       public Builder clear() {
         super.clear();
         name_ = "";
@@ -1880,18 +1744,15 @@ public final class RouteGuideProto {
         return this;
       }
 
-      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return xyz.shiqihao.grpc.routeguide.RouteGuideProto.internal_static_routeguide_Feature_descriptor;
       }
 
-      @java.lang.Override
       public xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature getDefaultInstanceForType() {
         return xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature.getDefaultInstance();
       }
 
-      @java.lang.Override
       public xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature build() {
         xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature result = buildPartial();
         if (!result.isInitialized()) {
@@ -1900,7 +1761,6 @@ public final class RouteGuideProto {
         return result;
       }
 
-      @java.lang.Override
       public xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature buildPartial() {
         xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature result = new xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature(this);
         result.name_ = name_;
@@ -1913,39 +1773,32 @@ public final class RouteGuideProto {
         return result;
       }
 
-      @java.lang.Override
       public Builder clone() {
-        return super.clone();
+        return (Builder) super.clone();
       }
-      @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
+          Object value) {
+        return (Builder) super.setField(field, value);
       }
-      @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
+        return (Builder) super.clearField(field);
       }
-      @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
+        return (Builder) super.clearOneof(oneof);
       }
-      @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
       }
-      @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
       }
-      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature) {
           return mergeFrom((xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature)other);
@@ -1964,17 +1817,14 @@ public final class RouteGuideProto {
         if (other.hasLocation()) {
           mergeLocation(other.getLocation());
         }
-        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
 
-      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2062,7 +1912,7 @@ public final class RouteGuideProto {
         return this;
       }
 
-      private xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point location_;
+      private xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point location_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
           xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point, xyz.shiqihao.grpc.routeguide.RouteGuideProto.Point.Builder, xyz.shiqihao.grpc.routeguide.RouteGuideProto.PointOrBuilder> locationBuilder_;
       /**
@@ -2178,16 +2028,14 @@ public final class RouteGuideProto {
         }
         return locationBuilder_;
       }
-      @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
+        return this;
       }
 
-      @java.lang.Override
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
+        return this;
       }
 
 
@@ -2206,12 +2054,11 @@ public final class RouteGuideProto {
 
     private static final com.google.protobuf.Parser<Feature>
         PARSER = new com.google.protobuf.AbstractParser<Feature>() {
-      @java.lang.Override
       public Feature parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Feature(input, extensionRegistry);
+          return new Feature(input, extensionRegistry);
       }
     };
 
@@ -2224,7 +2071,6 @@ public final class RouteGuideProto {
       return PARSER;
     }
 
-    @java.lang.Override
     public xyz.shiqihao.grpc.routeguide.RouteGuideProto.Feature getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -2264,13 +2110,21 @@ public final class RouteGuideProto {
       "ure\022\021.routeguide.Point\032\023.routeguide.Feat" +
       "ure\"\000\022>\n\014ListFeatures\022\025.routeguide.Recta" +
       "ngle\032\023.routeguide.Feature\"\0000\001B/\n\034xyz.shi" +
-      "qihao.grpc.routeguideB\017RouteGuideProtob\006" +
+      "qihao.grpc.routeguideB\017RouteGuideProtob\006",
       "proto3"
     };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
+    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
+        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
+          public com.google.protobuf.ExtensionRegistry assignDescriptors(
+              com.google.protobuf.Descriptors.FileDescriptor root) {
+            descriptor = root;
+            return null;
+          }
+        };
+    com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-        });
+        }, assigner);
     internal_static_routeguide_Point_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_routeguide_Point_fieldAccessorTable = new
