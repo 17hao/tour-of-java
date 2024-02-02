@@ -4,13 +4,13 @@ plugins {
 
 repositories {
     mavenLocal()
-    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    maven { url 'https://maven.aliyun.com/repository/public/' }
     mavenCentral()
 }
 
 dependencies {
     implementation(
-        'com.google.guava:guava:27.1-jre',
-        'com.google.code.gson:gson:2.8.5'
+            'com.google.guava:guava:27.1-jre',
+            'com.google.code.gson:gson:2.8.5'
     )
 }
